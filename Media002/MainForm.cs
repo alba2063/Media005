@@ -23,6 +23,14 @@ namespace Media002
         public SDBApplicationClass sDB;
         private OrquestraCollection orqs;
 
+        string songArtistFont = "Courier";
+        FontStyle songArtistFontStyle = FontStyle.Bold;
+        string songTitleFont = "Arial";
+        FontStyle songTitleFontStyle = FontStyle.Bold;
+        string songAlbumFont = "Arial";
+        FontStyle songAlbumFontStyle = FontStyle.Bold;
+        string nextFont = "Algerian";
+        FontStyle nextFontStyle = FontStyle.Regular;
         double cswm = 1;      //WIDTH multiplyer Current song label
         double cshm = .225;   //HEIGHT multiplyer Current song label 
         double csofm = .045;  //FONT multiplyer Current song Orquestra
@@ -33,7 +41,15 @@ namespace Media002
         double cstvl = .28;   //Vertical Location multiplyer Current song Title label 
         double csavl = .55;   //Vertical Location multiplyer Current song Album label 
 
-        double oifm = .035;   //FONT multiplyer Orq Info
+        string orqInfoFont1 = "Arial";
+        FontStyle orqInfoFontStyle1 = FontStyle.Bold;
+        string orqInfoFont2 = "Arial";
+        FontStyle orqInfoFontStyle2 = FontStyle.Bold;
+        string orqInfoFont3 = "Arial";
+        FontStyle orqInfoFontStyle3 = FontStyle.Bold;
+        double oifm1 = .035;   //FONT multiplyer Orq Info 1
+        double oifm2 = .035;   //FONT multiplyer Orq Info 2
+        double oifm3 = .035;   //FONT multiplyer Orq Info 3
         double oihl = .15;    //Horisontal Location multiplyer ORQ Info
         double oi1vl = .15;   //Vertical Location multiplyer Orq Info 1 label 
         double oi2vl = .38;   //Vertical Location multiplyer Orq Info 2 label 
@@ -205,10 +221,10 @@ namespace Media002
             int lblWidthCur = (int)(splitContainerBig.Panel1.Width * cswm);       //Label wigth for current song
             int lblHeightCur = (int)(splitContainerBig.Panel1.Height * cshm);     //Label height for current song
 
-            lblCurSongArtist.Font = new Font("Arial", fontSizeCurO, FontStyle.Bold);
-            lblCurSongTitle.Font = new Font("Arial", fontSizeCurT, FontStyle.Bold);
-            lblCurSongAlbum.Font = new Font("Arial", fontSizeCurA, FontStyle.Bold);
-            lblNext.Font = new Font("Arial", fontSizeNextTanda, FontStyle.Bold);
+            lblCurSongArtist.Font = new Font(songArtistFont, fontSizeCurO, songArtistFontStyle);
+            lblCurSongTitle.Font = new Font(songTitleFont, fontSizeCurT, songTitleFontStyle);
+            lblCurSongAlbum.Font = new Font(songAlbumFont, fontSizeCurA, songAlbumFontStyle);
+            lblNext.Font = new Font(nextFont, fontSizeNextTanda, nextFontStyle);
 
             //Current song Artist (Orquestra)
             lblCurSongArtist.Width = lblWidthCur;
@@ -270,7 +286,9 @@ namespace Media002
         private void FormatOrqInfo()
         {
             //Orq Info Formating
-            int fontSizeOrq = (int)(splitContainerOrq.Panel2.Width * oifm);     //Font size for Orq Info
+            int fontSizeOrq1 = (int)(splitContainerOrq.Panel2.Width * oifm1);     //Font size for Orq Info 1
+            int fontSizeOrq2 = (int)(splitContainerOrq.Panel2.Width * oifm2);     //Font size for Orq Info 2
+            int fontSizeOrq3 = (int)(splitContainerOrq.Panel2.Width * oifm3);     //Font size for Orq Info 3
             int lblWidthOrq = (int)(splitContainerOrq.Panel2.Width * cswm);     //Label wigth for Orq Info
             int lblHeightOrq = (int)(splitContainerOrq.Panel2.Height * cshm);   //Label height for Orq Info
 
@@ -297,9 +315,29 @@ namespace Media002
             lblOrqInfo3.Height = lblHeightOrq;
             lblOrqInfo3.TextAlign = ContentAlignment.MiddleLeft;
 
-            lblOrqInfo2.Font = new Font("Arial", fontSizeOrq, FontStyle.Bold);
-            lblOrqInfo3.Font = new Font("Arial", fontSizeOrq, FontStyle.Bold);
-            lblOrqInfo1.Font = new Font("Arial", fontSizeOrq, FontStyle.Bold);
+            lblOrqInfo1.Font = new Font(orqInfoFont1, fontSizeOrq1, orqInfoFontStyle1);
+            lblOrqInfo2.Font = new Font(orqInfoFont2, fontSizeOrq2, orqInfoFontStyle2);
+            lblOrqInfo3.Font = new Font(orqInfoFont3, fontSizeOrq3, orqInfoFontStyle3);
+        }
+
+        //Original size and frame when double click on the picture
+        private void PictureBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.FormBorderStyle = FormBorderStyle.Sizable;
+            }
+ 
+        }
+
+        //Remove frame when maximazed
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.FormBorderStyle = FormBorderStyle.None;
+            }
         }
     }
 }

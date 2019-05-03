@@ -66,6 +66,7 @@
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 2;
             this.pictureBox.TabStop = false;
+            this.pictureBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDoubleClick);
             // 
             // lblOrqInfo1
             // 
@@ -209,7 +210,7 @@
             // splitContainerBig.Panel1
             // 
             this.splitContainerBig.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.splitContainerBig.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.splitContainerBig.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.splitContainerBig.Panel1.Controls.Add(this.lblNext);
             this.splitContainerBig.Panel1.Controls.Add(this.lblCurSongAlbum);
             this.splitContainerBig.Panel1.Controls.Add(this.lblCurSongTitle);
@@ -277,8 +278,8 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1024, 576);
             this.Controls.Add(this.splitContainerBig);
@@ -288,7 +289,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Media Info by Alex Baliasnikau - v1.0";
-            this.TransparencyKey = System.Drawing.Color.Gray;
+            this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.splitContainerOrq.Panel1.ResumeLayout(false);
             this.splitContainerOrq.Panel1.PerformLayout();

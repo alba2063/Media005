@@ -165,36 +165,39 @@ namespace Media002
                 {
                     curGenre = SDB.Player.CurrentPlaylist.Item[songIndex].Genre;
 
-                    tot += 1;
-                    cur += 1;
-
-                    if (songIndex >= 1)
+                    if (curGenre != null)
                     {
-                        if (SDB.Player.CurrentPlaylist.Item[songIndex - 1].Genre.Equals(curGenre))
+                        tot += 1;
+                        cur += 1;
+
+                        if (songIndex >= 1)
                         {
-                            tot += 1;
-                            cur += 1;
-
-                            if (songIndex >= 2)
+                            if (SDB.Player.CurrentPlaylist.Item[songIndex - 1].Genre.Equals(curGenre))
                             {
-                                if (SDB.Player.CurrentPlaylist.Item[songIndex - 2].Genre.Equals(curGenre))
+                                tot += 1;
+                                cur += 1;
+
+                                if (songIndex >= 2)
                                 {
-                                    tot += 1;
-                                    cur += 1;
-
-                                    if (songIndex >= 3)
+                                    if (SDB.Player.CurrentPlaylist.Item[songIndex - 2].Genre.Equals(curGenre))
                                     {
-                                        if (SDB.Player.CurrentPlaylist.Item[songIndex - 3].Genre.Equals(curGenre))
-                                        {
-                                            tot += 1;
-                                            cur += 1;
+                                        tot += 1;
+                                        cur += 1;
 
-                                            if (songIndex >= 4)
+                                        if (songIndex >= 3)
+                                        {
+                                            if (SDB.Player.CurrentPlaylist.Item[songIndex - 3].Genre.Equals(curGenre))
                                             {
-                                                if (SDB.Player.CurrentPlaylist.Item[songIndex - 4].Genre.Equals(curGenre))
+                                                tot += 1;
+                                                cur += 1;
+
+                                                if (songIndex >= 4)
                                                 {
-                                                    tot += 1;
-                                                    cur += 1;
+                                                    if (SDB.Player.CurrentPlaylist.Item[songIndex - 4].Genre.Equals(curGenre))
+                                                    {
+                                                        tot += 1;
+                                                        cur += 1;
+                                                    }
                                                 }
                                             }
                                         }
@@ -202,30 +205,30 @@ namespace Media002
                                 }
                             }
                         }
-                    }
 
 
-                    if (SDB.Player.CurrentPlaylist.Item[songIndex + 1].Genre.Equals(curGenre))
-                    {
-                        tot += 1;
-
-                        if (songIndex + 2 < SDB.Player.CurrentSongList.Count)
+                        if (SDB.Player.CurrentPlaylist.Item[songIndex + 1].Genre.Equals(curGenre))
                         {
-                            if (SDB.Player.CurrentPlaylist.Item[songIndex + 2].Genre.Equals(curGenre))
+                            tot += 1;
+
+                            if (songIndex + 2 < SDB.Player.CurrentSongList.Count)
                             {
-                                tot += 1;
-
-                                if (songIndex + 3 < SDB.Player.CurrentSongList.Count)
+                                if (SDB.Player.CurrentPlaylist.Item[songIndex + 2].Genre.Equals(curGenre))
                                 {
-                                    if (SDB.Player.CurrentPlaylist.Item[songIndex + 3].Genre.Equals(curGenre))
-                                    {
-                                        tot += 1;
+                                    tot += 1;
 
-                                        if (songIndex + 4 < SDB.Player.CurrentSongList.Count)
+                                    if (songIndex + 3 < SDB.Player.CurrentSongList.Count)
+                                    {
+                                        if (SDB.Player.CurrentPlaylist.Item[songIndex + 3].Genre.Equals(curGenre))
                                         {
-                                            if (SDB.Player.CurrentPlaylist.Item[songIndex + 4].Genre.Equals(curGenre))
+                                            tot += 1;
+
+                                            if (songIndex + 4 < SDB.Player.CurrentSongList.Count)
                                             {
-                                                tot += 1;
+                                                if (SDB.Player.CurrentPlaylist.Item[songIndex + 4].Genre.Equals(curGenre))
+                                                {
+                                                    tot += 1;
+                                                }
                                             }
                                         }
                                     }

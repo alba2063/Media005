@@ -287,9 +287,10 @@
             this.MinimumSize = new System.Drawing.Size(1024, 576);
             this.Name = "MainForm";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Media Info by Alex Baliasnikau - v1.0";
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.splitContainerOrq.Panel1.ResumeLayout(false);
             this.splitContainerOrq.Panel1.PerformLayout();

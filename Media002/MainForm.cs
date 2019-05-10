@@ -18,91 +18,132 @@ namespace Media002
     {
         //event is an instance of delegate
         //The Event declaration
-       
+        
         public event NewSongDel NewSongStarted = delegate { };
         public SDBApplicationClass sDB;
         private OrquestraCollection orqs;
+        private UISettings ui;
 
-//****************** Current Song ********************************
+        //************************ Genetal settings *********************************
 
+        Color formBGColor = Color.FromArgb(64, 64, 64);     //Main Form BG Color
+        Color songBGColor = Color.FromArgb(15, 15, 15);     //Song Info (Top Panel) BG Color
+        Color orqBGColor = Color.FromArgb(50, 50, 50);      //Orq Info (Bottom Panel) BG Color
+        double imgPosition = .5;        //Image position (.5 - middle)
+        bool orqInfoVisible = true;     //Orquestra Info visability
+        bool nextTandaVisible = true;   //Next Tanda Visability
+        int songCountMode = 1;          //0 - invisible; 1 - three rows; 2 - one row;
+        string songNumbOf = "out of";   //of, out of, empty, "/"
+
+        //*********************** Current Song Info ********************************       
+        #region
+        //Artist (Orquestra) label
         string songArtistFont = "Courier";
         FontStyle songArtistFontStyle = FontStyle.Bold;
+        Color songArtistColor = Color.FromArgb(247, 220, 111);
         double csofm = .045;   //FONT SIZE multiplyer Current song Artist (Orquestra)
         double csovl = .001;   //Vertical Location multiplyer Current song Artist (Orquestra) label
         double cswm1 = 1;      //WIDTH multiplyer Current Artist (Orquestra) label
         double cshm1 = .225;   //HEIGHT multiplyer Current Artist (Orquestra) label
         ContentAlignment songArtistAlignment = ContentAlignment.MiddleCenter;
 
+        //Title label
         string songTitleFont = "Arial";
         FontStyle songTitleFontStyle = FontStyle.Bold;
+        Color songTitleColor = Color.FromArgb(253, 243, 207);
         double cstfm = .035;   //FONT SIZE multiplyer Current song Title
         double cstvl = .28;    //Vertical Location multiplyer Current song Title label
         double cswm2 = 1;      //WIDTH multiplyer Current song Title label
         double cshm2 = .225;   //HEIGHT multiplyer Current song Title label
         ContentAlignment songTitleAlignment = ContentAlignment.MiddleCenter;
 
+        //Album (Singer) label
         string songAlbumFont = "Arial";
         FontStyle songAlbumFontStyle = FontStyle.Bold;
+        Color songAlbumColor = Color.FromArgb(253, 243, 207);
         double csafm = .030;   //FONT SIZE multiplyer Current song Album (Singer)
         double csavl = .55;    //Vertical Location multiplyer Current song Album label
         double cswm3 = 1;      //WIDTH multiplyer Current song Album label
         double cshm3 = .225;   //HEIGHT multiplyer Current song Album label
         ContentAlignment songAlbumAlignment = ContentAlignment.MiddleCenter;
 
-        string nextFont = "Algerian";
+        //Next Tanda label
+        string nextFont = "Sitka Text";
         FontStyle nextFontStyle = FontStyle.Regular;
+        Color nextTandaColor = Color.FromArgb(100, 100, 100);
         double ntfm = .02;     //FONT SIZE multiplyer Next Tanda
         double ntvl = .77;     //Vertical Location multiplyer Next Tanda label
         double cswm4 = 1;      //WIDTH multiplyer Next Tanda label
         double cshm4 = .225;   //HEIGHT multiplyer Next Tanda label
         ContentAlignment nextTandaAlignment = ContentAlignment.MiddleCenter;
-
-//******************* Orquestra *******************************
-
-        string orqInfoFont1 = "Arial";
-        FontStyle orqInfoFontStyle1 = FontStyle.Bold;
-        double oifm1 = .035;   //FONT SIZE multiplyer Orq Info 1
+        #endregion
+        //**************************** Orquestra ***********************************
+        #region
+        //Orquestra Info 1 (Top label)
+        string orqInfoFont1 = "Sitka Text";
+        FontStyle orqInfoFontStyle1 = FontStyle.Italic;
+        Color orqInfoColor1 = Color.FromArgb(95, 158, 160);
+        double oifm1 = .04;   //FONT SIZE multiplyer Orq Info 1
         double oi1vl = .15;    //Vertical Location multiplyer Orq Info 1 label 
         double orqwm1 = 1;     //WIDTH multiplyer Orq Info 1 label
         double orqhm1 = .225;  //HEIGHT multiplyer Orq Info 1 label
         ContentAlignment orqInfoAlignment1 = ContentAlignment.MiddleLeft;
 
-        string orqInfoFont2 = "Arial";
-        FontStyle orqInfoFontStyle2 = FontStyle.Bold;
-        double oifm2 = .035;   //FONT SIZE multiplyer Orq Info 2
+        //Orquestra Info 2 (Middle label)
+        string orqInfoFont2 = "Sitka Text";
+        FontStyle orqInfoFontStyle2 = FontStyle.Italic;
+        Color orqInfoColor2 = Color.FromArgb(95, 158, 160);
+        double oifm2 = .04;   //FONT SIZE multiplyer Orq Info 2
         double oi2vl = .38;    //Vertical Location multiplyer Orq Info 2 label
         double orqwm2 = 1;     //WIDTH multiplyer Orq Info 1 label
         double orqhm2 = .225;  //HEIGHT multiplyer Orq Info 1 label
         ContentAlignment orqInfoAlignment2 = ContentAlignment.MiddleLeft;
 
-        string orqInfoFont3 = "Arial";
-        FontStyle orqInfoFontStyle3 = FontStyle.Bold;
-        double oifm3 = .035;   //FONT SIZE multiplyer Orq Info 3
+        //Orquestra Info 3 (Bottom label)
+        string orqInfoFont3 = "Sitka Text";
+        FontStyle orqInfoFontStyle3 = FontStyle.Italic;
+        Color orqInfoColor3 = Color.FromArgb(95, 158, 160);
+        double oifm3 = .04;   //FONT SIZE multiplyer Orq Info 3
         double oi3vl = .6;     //Vertical Location multiplyer Orq Info 3 label
         double orqwm3 = 1;     //WIDTH multiplyer Orq Info 1 label
         double orqhm3 = .225;  //HEIGHT multiplyer Orq Info 1 label
         ContentAlignment orqInfoAlignment3 = ContentAlignment.MiddleLeft;
 
         double oihl = .15;     //Horisontal Location multiplyer ORQ Info
-
-//******************** Song Numbers *****************************
-
+        #endregion
+        //************************** Song Numbers **********************************
+        #region
         string songNumbFont1 = "Arial";
         FontStyle songNumbFontStyle1 = FontStyle.Bold;
-        double snfm1 = .04;   //FONT multiplyer Song Numbers 1
+        Color songNumbColor1 = Color.FromArgb(95, 158, 160);
+        double snfm1 = .03;   //FONT SIZE multiplyer Song Numbers 1
+        double sncvl = .14;   //Vertical Location multiplyer Song Number Current label
+        double snwm1 = .3;     //WIDTH multiplyer Song Numb 1 label
+        double snhm1 = .2;  //HEIGHT multiplyer Song Numb 1 label
+        ContentAlignment songNumberAlignment1 = ContentAlignment.MiddleCenter;
 
         string songNumbFont2 = "Arial";
         FontStyle songNumbFontStyle2 = FontStyle.Bold;
-        double snfm2 = .04;   //FONT multiplyer Song Numbers 2
+        Color songNumbColor2 = Color.FromArgb(95, 158, 160);
+        double snfm2 = .03;   //FONT SIZE multiplyer Song Numbers 2
+        double snmvl = .39;    //Vertical Location multiplyer Song Number Middle label
+        double snwm2 = .3;     //WIDTH multiplyer Song Numb 2 label
+        double snhm2 = .2;  //HEIGHT multiplyer Song Numb 2 label
+        ContentAlignment songNumberAlignment2 = ContentAlignment.MiddleCenter;
 
         string songNumbFont3 = "Arial";
         FontStyle songNumbFontStyle3 = FontStyle.Bold;
-        double snfm3 = .04;   //FONT multiplyer Song Numbers 3
+        Color songNumbColor3 = Color.FromArgb(95, 158, 160);
+        double snfm3 = .03;   //FONT SIZE multiplyer Song Numbers 3
+        double sntvl = .63;   //Vertical Location multiplyer Song Number Total label
+        double snwm3 = .3;     //WIDTH multiplyer Song Numb 3 label
+        double snhm3 = .2;  //HEIGHT multiplyer Song Numb 3 label
+        ContentAlignment songNumberAlignment3 = ContentAlignment.MiddleCenter;
 
         double snhl = .25;    //Horisontal Location multiplyer Song Numbers
-        double sncvl = .15;   //Vertical Location multiplyer Song Number Current label 
-        double snmvl = .4;   //Vertical Location multiplyer Song Number Middle label 
-        double sntvl = .66;    //Vertical Location multiplyer Song Number Total label
+        #endregion
+
+
 
         public MainForm()
         {
@@ -117,6 +158,15 @@ namespace Media002
             sDB = new SDBApplicationClass();
             sDB.OnPlay += newSong.Invoke;   //OnPlay event from MediaMonkey API
 
+            ui = MediaInfoSettings.GetUI();
+
+            this.BackColor = formBGColor;                       //Main Form BG Color
+            splitContainerBig.Panel1.BackColor = songBGColor;   //Song Info (Top Panel) BG Color
+            splitContainerOrq.BackColor = orqBGColor;           //Orq Info (Bottom Panel) BG Color
+
+            SetNextTandaVisability();
+            SetSongNumbVisability();
+            SetOrqInfoVisability();
             ShowInfo();
         }
 
@@ -145,6 +195,10 @@ namespace Media002
             lblOutOf.AutoSize = false;
             lblsongsTotal.AutoSize = false;
 
+            lblOrqInfo2.AutoSize = false;
+            lblOrqInfo3.AutoSize = false;
+            lblOrqInfo1.AutoSize = false;
+
             FormatCurSong();
 
             //PlayList Info
@@ -164,8 +218,19 @@ namespace Media002
             {
                 songCurrent = songOrder[0].ToString();
                 songTotal = songOrder[1].ToString();
-                //songNumbers = "(" + songCurrent + " out of " + songTotal + ")";
-                songNumbers = "out of";
+
+                switch (songCountMode)
+                {
+                    case 1:
+                        songNumbers = songNumbOf;   //of or out of
+                        break;
+                    case 2:
+                        songNumbers = songCurrent + " " + songNumbOf + " " + songTotal;
+                        break;
+                    default:
+                        songNumbers = songNumbOf;   //of or out of
+                        break;
+                }
             }
 
             if (songOrder[0] == 1 && songOrder[1] == 1)
@@ -196,18 +261,55 @@ namespace Media002
             FormatSongNumbers();
 
 
-            //********************************* Orq Info *************************************
-
-            lblOrqInfo2.AutoSize = false;
-            lblOrqInfo3.AutoSize = false;
-            lblOrqInfo1.AutoSize = false;
-
+            //********************************* Orq Info *********************************
             //Load Orq Info
             ShowOrqInfo(curSong.Artist);
+            ResizeOrqSplitPanel();
             FormatOrqInfo();           
           
         }
-       
+
+        private void SetSongNumbVisability()
+        {
+            switch (songCountMode)
+            {
+                case 0:
+                    lblSongInTanda.Visible = false;
+                    lblOutOf.Visible = false;
+                    lblsongsTotal.Visible = false;
+                    break;
+                case 1:
+                    //lblSongInTanda.Visible = false;
+                    //lblOutOf.Visible = false;
+                    //lblsongsTotal.Visible = false;
+                    break;
+                case 2:
+                    lblSongInTanda.Visible = false;
+                    lblOutOf.Visible = true;
+                    lblsongsTotal.Visible = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void SetOrqInfoVisability()
+        {
+            if (!orqInfoVisible)
+            {
+                lblOrqInfo1.Visible = false;
+                lblOrqInfo2.Visible = false;
+                lblOrqInfo3.Visible = false;
+            }
+        }
+
+        private void SetNextTandaVisability()
+        {
+            if (!nextTandaVisible)
+            {
+                lblNext.Visible = false;
+            }
+        }
 
         //Load Orquestra Info
         private void ShowOrqInfo(string artist)
@@ -261,13 +363,15 @@ namespace Media002
             int fontSizeCurA = (int)(splitContainerBig.Panel1.Width * csafm);     //Font size for current song Album (Singer)
             int fontSizeNextTanda = (int)(splitContainerBig.Panel1.Width * ntfm); //Font size for Netx Tanda
 
-            //int lblWidthCur = (int)(splitContainerBig.Panel1.Width * cswm);       //Label wigth for current song
-            //int lblHeightCur = (int)(splitContainerBig.Panel1.Height * cshm);     //Label height for current song
-
             lblCurSongArtist.Font = new Font(songArtistFont, fontSizeCurO, songArtistFontStyle);
             lblCurSongTitle.Font = new Font(songTitleFont, fontSizeCurT, songTitleFontStyle);
             lblCurSongAlbum.Font = new Font(songAlbumFont, fontSizeCurA, songAlbumFontStyle);
             lblNext.Font = new Font(nextFont, fontSizeNextTanda, nextFontStyle);
+
+            lblCurSongArtist.ForeColor = songArtistColor;
+            lblCurSongTitle.ForeColor = songTitleColor;
+            lblCurSongAlbum.ForeColor = songAlbumColor;
+            lblNext.ForeColor = nextTandaColor;
 
             //Current song Artist (Orquestra)
             lblCurSongArtist.Width = (int)(splitContainerBig.Panel1.Width * cswm1);
@@ -296,7 +400,7 @@ namespace Media002
 
         private void ResizeOrqSplitPanel()
         {
-            splitContainerOrq.SplitterDistance = (splitContainerBig.Width / 2 + pictureBox.Width / 2) - 5;
+            splitContainerOrq.SplitterDistance = ((int)(splitContainerBig.Width * imgPosition) + (int)(pictureBox.Width * .5)) - 5;
         }
 
         private void FormatSongNumbers()
@@ -307,25 +411,29 @@ namespace Media002
 
             int xPosition = (int)(splitContainerOrq.Panel1.Width * snhl);
 
+            lblSongInTanda.ForeColor = songNumbColor1;
+            lblOutOf.ForeColor = songNumbColor2;
+            lblsongsTotal.ForeColor = songNumbColor3;
+
             //lblSongInTanda.Text = songCurrent;
             lblSongInTanda.Font = new Font(songNumbFont1, fontSizeSongNumbers1, songNumbFontStyle1);
-            lblSongInTanda.Width = (int)(splitContainerOrq.Panel1.Width * .3);
-            lblSongInTanda.Height = (int)(splitContainerOrq.Panel1.Height * .2);
-            lblSongInTanda.TextAlign = ContentAlignment.MiddleCenter;
+            lblSongInTanda.Width = (int)(splitContainerOrq.Panel1.Width * snwm1);
+            lblSongInTanda.Height = (int)(splitContainerOrq.Panel1.Height * snhm1);
+            lblSongInTanda.TextAlign = songNumberAlignment1;
             lblSongInTanda.Location = new Point(xPosition, (int)(splitContainerOrq.Panel1.Height * sncvl)); //Vertical location
 
             //lblOutOf.Text = songNumbers;
             lblOutOf.Font = new Font(songNumbFont2, fontSizeSongNumbers2, songNumbFontStyle2);
-            lblOutOf.Width = (int)(splitContainerOrq.Panel1.Width * .3);
-            lblOutOf.Height = (int)(splitContainerOrq.Panel1.Height * .2);
-            lblOutOf.TextAlign = ContentAlignment.MiddleCenter;
+            lblOutOf.Width = (int)(splitContainerOrq.Panel1.Width * snwm2);
+            lblOutOf.Height = (int)(splitContainerOrq.Panel1.Height * snhm2);
+            lblOutOf.TextAlign = songNumberAlignment2;
             lblOutOf.Location = new Point(xPosition, (int)(splitContainerOrq.Panel1.Height * snmvl)); //Vertical location
 
             //lblsongsTotal.Text = songTotal;
             lblsongsTotal.Font = new Font(songNumbFont3, fontSizeSongNumbers3, songNumbFontStyle3);
-            lblsongsTotal.Width = (int)(splitContainerOrq.Panel1.Width * .3);
-            lblsongsTotal.Height = (int)(splitContainerOrq.Panel1.Height * .2);
-            lblsongsTotal.TextAlign = ContentAlignment.MiddleCenter;
+            lblsongsTotal.Width = (int)(splitContainerOrq.Panel1.Width * snwm3);
+            lblsongsTotal.Height = (int)(splitContainerOrq.Panel1.Height * snhm3);
+            lblsongsTotal.TextAlign = songNumberAlignment3;
             lblsongsTotal.Location = new Point(xPosition, (int)(splitContainerOrq.Panel1.Height * sntvl)); //Vertical location
         }
 
@@ -336,16 +444,17 @@ namespace Media002
             int fontSizeOrq2 = (int)(splitContainerOrq.Panel2.Width * oifm2);     //Font size for Orq Info 2
             int fontSizeOrq3 = (int)(splitContainerOrq.Panel2.Width * oifm3);     //Font size for Orq Info 3
 
-            //int lblWidthOrq = (int)(splitContainerOrq.Panel2.Width * orqwm1);     //Label wigth for Orq Info
-            //int lblHeightOrq = (int)(splitContainerOrq.Panel2.Height * orqhm1);   //Label height for Orq Info
-
             int xPosition = (int)(splitContainerOrq.Panel2.Width * oihl);
             //
-            pictureBox.Width = pictureBox.Height = (int)(splitContainerOrq.Panel1.Height - 10);
+            pictureBox.Width = pictureBox.Height = (int)(splitContainerOrq.Panel1.Height - 10);           
 
             lblOrqInfo1.Location = new Point(xPosition, (int)(splitContainerOrq.Panel2.Height * oi1vl));
             lblOrqInfo2.Location = new Point(xPosition, (int)(splitContainerOrq.Panel2.Height * oi2vl));
             lblOrqInfo3.Location = new Point(xPosition, (int)(splitContainerOrq.Panel2.Height * oi3vl));
+
+            lblOrqInfo1.ForeColor = orqInfoColor1;
+            lblOrqInfo2.ForeColor = orqInfoColor2;
+            lblOrqInfo3.ForeColor = orqInfoColor3;
 
             //Orquestro Info 1
             lblOrqInfo1.Width = (int)(splitContainerOrq.Panel2.Width * orqwm1);
@@ -374,8 +483,7 @@ namespace Media002
             {
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.Sizable;
-            }
- 
+            } 
         }
 
         //Remove frame when maximazed
@@ -384,6 +492,7 @@ namespace Media002
             if (this.WindowState == FormWindowState.Maximized)
             {
                 this.FormBorderStyle = FormBorderStyle.None;
+                //this.Bounds = Screen.PrimaryScreen.Bounds;
             }
         }
 
@@ -396,6 +505,16 @@ namespace Media002
                     this.WindowState = FormWindowState.Normal;
                     this.FormBorderStyle = FormBorderStyle.Sizable;                 
                 }
+            }
+        }
+
+        private void PictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                MediaInfoSettings settings = new MediaInfoSettings();
+                settings.Show();
+                //MessageBox.Show("Hi there this is my Tango contribution for DJ", "Programed by AlexB");
             }
         }
     }

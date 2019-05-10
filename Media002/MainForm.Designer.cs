@@ -58,7 +58,7 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.pictureBox.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox.Location = new System.Drawing.Point(398, 0);
             this.pictureBox.Name = "pictureBox";
@@ -67,13 +67,14 @@
             this.pictureBox.TabIndex = 2;
             this.pictureBox.TabStop = false;
             this.pictureBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDoubleClick);
+            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
             // 
             // lblOrqInfo1
             // 
             this.lblOrqInfo1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblOrqInfo1.AutoSize = true;
-            this.lblOrqInfo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblOrqInfo1.BackColor = System.Drawing.Color.Transparent;
             this.lblOrqInfo1.ForeColor = System.Drawing.Color.CadetBlue;
             this.lblOrqInfo1.Location = new System.Drawing.Point(8, 9);
             this.lblOrqInfo1.Name = "lblOrqInfo1";
@@ -86,7 +87,7 @@
             this.lblOrqInfo3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblOrqInfo3.AutoSize = true;
-            this.lblOrqInfo3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblOrqInfo3.BackColor = System.Drawing.Color.Transparent;
             this.lblOrqInfo3.ForeColor = System.Drawing.Color.CadetBlue;
             this.lblOrqInfo3.Location = new System.Drawing.Point(8, 157);
             this.lblOrqInfo3.Name = "lblOrqInfo3";
@@ -108,7 +109,7 @@
             this.lblOrqInfo2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblOrqInfo2.AutoSize = true;
-            this.lblOrqInfo2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblOrqInfo2.BackColor = System.Drawing.Color.Transparent;
             this.lblOrqInfo2.ForeColor = System.Drawing.Color.CadetBlue;
             this.lblOrqInfo2.Location = new System.Drawing.Point(8, 78);
             this.lblOrqInfo2.Name = "lblOrqInfo2";
@@ -147,7 +148,7 @@
             // 
             // splitContainerOrq.Panel1
             // 
-            this.splitContainerOrq.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.splitContainerOrq.Panel1.BackColor = System.Drawing.Color.Transparent;
             this.splitContainerOrq.Panel1.Controls.Add(this.lblsongsTotal);
             this.splitContainerOrq.Panel1.Controls.Add(this.lblOutOf);
             this.splitContainerOrq.Panel1.Controls.Add(this.lblSongInTanda);
@@ -156,7 +157,7 @@
             // 
             // splitContainerOrq.Panel2
             // 
-            this.splitContainerOrq.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.splitContainerOrq.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.splitContainerOrq.Panel2.Controls.Add(this.lblOrqInfo3);
             this.splitContainerOrq.Panel2.Controls.Add(this.lblNextSongArtist);
             this.splitContainerOrq.Panel2.Controls.Add(this.lblOrqInfo2);
@@ -230,7 +231,7 @@
             this.lblNext.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNext.AutoSize = true;
-            this.lblNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.lblNext.BackColor = System.Drawing.Color.Transparent;
             this.lblNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
             this.lblNext.Location = new System.Drawing.Point(3, 305);
             this.lblNext.Name = "lblNext";
@@ -243,7 +244,7 @@
             this.lblCurSongAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCurSongAlbum.AutoSize = true;
-            this.lblCurSongAlbum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.lblCurSongAlbum.BackColor = System.Drawing.Color.Transparent;
             this.lblCurSongAlbum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(243)))), ((int)(((byte)(207)))));
             this.lblCurSongAlbum.Location = new System.Drawing.Point(3, 201);
             this.lblCurSongAlbum.Name = "lblCurSongAlbum";
@@ -257,7 +258,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurSongTitle.AutoEllipsis = true;
             this.lblCurSongTitle.AutoSize = true;
-            this.lblCurSongTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.lblCurSongTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblCurSongTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(243)))), ((int)(((byte)(207)))));
             this.lblCurSongTitle.Location = new System.Drawing.Point(3, 104);
             this.lblCurSongTitle.Name = "lblCurSongTitle";
@@ -268,11 +269,12 @@
             // lblCurSongArtist
             // 
             this.lblCurSongArtist.AutoSize = true;
-            this.lblCurSongArtist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.lblCurSongArtist.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurSongArtist.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurSongArtist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(220)))), ((int)(((byte)(111)))));
             this.lblCurSongArtist.Location = new System.Drawing.Point(3, 9);
             this.lblCurSongArtist.Name = "lblCurSongArtist";
-            this.lblCurSongArtist.Size = new System.Drawing.Size(57, 13);
+            this.lblCurSongArtist.Size = new System.Drawing.Size(68, 13);
             this.lblCurSongArtist.TabIndex = 7;
             this.lblCurSongArtist.Text = "<curArtist>";
             // 

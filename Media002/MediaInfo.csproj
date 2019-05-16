@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F491588F-5D61-4D4F-AF32-237422754D95}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Media002</RootNamespace>
-    <AssemblyName>Media002</AssemblyName>
+    <RootNamespace>MediaInfo</RootNamespace>
+    <AssemblyName>MediaInfo</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlackTheme.cs" />
+    <Compile Include="CurrentTheme.cs" />
     <Compile Include="Dig.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -66,8 +68,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reader.cs" />
     <Compile Include="ReadFileErrorException.cs" />
+    <Compile Include="RetroTheme.cs" />
     <Compile Include="Song.cs" />
     <Compile Include="UISettings.cs" />
+    <Compile Include="UISettingsCollection.cs" />
     <Compile Include="Writer.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -113,10 +117,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Debug\Images\" />
     <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Debug\Images\cloude.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

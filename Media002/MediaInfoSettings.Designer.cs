@@ -1,4 +1,4 @@
-﻿namespace Media002
+﻿namespace MediaInfo
 {
     partial class MediaInfoSettings
     {
@@ -37,8 +37,23 @@
             this.comboBoxTheme = new System.Windows.Forms.ComboBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageDesign = new System.Windows.Forms.TabPage();
+            this.lblSNText = new System.Windows.Forms.Label();
+            this.textBoxSNText = new System.Windows.Forms.TextBox();
+            this.lblSNModeExplain = new System.Windows.Forms.Label();
+            this.comboBoxSongNumberMode = new System.Windows.Forms.ComboBox();
+            this.lblSongAlbumInfo = new System.Windows.Forms.Label();
+            this.lblSongNumberText = new System.Windows.Forms.Label();
+            this.lblSongNumbersMode = new System.Windows.Forms.Label();
+            this.lblImgPosition = new System.Windows.Forms.Label();
+            this.lblOrqBGColor = new System.Windows.Forms.Label();
+            this.lblSongBGColor = new System.Windows.Forms.Label();
+            this.lblFormBGColor = new System.Windows.Forms.Label();
+            this.textBoxThemeName = new System.Windows.Forms.TextBox();
+            this.lblThemeName = new System.Windows.Forms.Label();
             this.tabPageCurrentSong = new System.Windows.Forms.TabPage();
             this.groupBoxSongArtist = new System.Windows.Forms.GroupBox();
+            this.comboBoxArtistAlignment = new System.Windows.Forms.ComboBox();
+            this.lblArtistAlignment = new System.Windows.Forms.Label();
             this.textBoxArtistWidth = new System.Windows.Forms.TextBox();
             this.textBoxArtistHight = new System.Windows.Forms.TextBox();
             this.textBoxArtistHorizontalLocation = new System.Windows.Forms.TextBox();
@@ -59,10 +74,23 @@
             this.tabPageSongNumbers = new System.Windows.Forms.TabPage();
             this.fontDialog = new System.Windows.Forms.FontDialog();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.lblArtistAlignment = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBoxMainFormBGColor = new System.Windows.Forms.TextBox();
+            this.textBoxSongPanelBGColor = new System.Windows.Forms.TextBox();
+            this.textBoxOrqPanelBGColor = new System.Windows.Forms.TextBox();
+            this.btnMaioFormBGColor = new System.Windows.Forms.Button();
+            this.btnSongPanelBGColor = new System.Windows.Forms.Button();
+            this.btnOrqPanelBGColor = new System.Windows.Forms.Button();
+            this.textBoxImagePosition = new System.Windows.Forms.TextBox();
+            this.lblImagePosition = new System.Windows.Forms.Label();
+            this.checkBoxNextTanda = new System.Windows.Forms.CheckBox();
+            this.checkBoxOrqInfo = new System.Windows.Forms.CheckBox();
+            this.comboBoxAlbumSource = new System.Windows.Forms.ComboBox();
+            this.lblRGBMain = new System.Windows.Forms.Label();
+            this.lblSongRDB = new System.Windows.Forms.Label();
+            this.lblOrqRGB = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabControl.SuspendLayout();
+            this.tabPageDesign.SuspendLayout();
             this.tabPageCurrentSong.SuspendLayout();
             this.groupBoxSongArtist.SuspendLayout();
             this.SuspendLayout();
@@ -152,6 +180,33 @@
             // 
             // tabPageDesign
             // 
+            this.tabPageDesign.Controls.Add(this.lblOrqRGB);
+            this.tabPageDesign.Controls.Add(this.lblSongRDB);
+            this.tabPageDesign.Controls.Add(this.lblRGBMain);
+            this.tabPageDesign.Controls.Add(this.comboBoxAlbumSource);
+            this.tabPageDesign.Controls.Add(this.checkBoxOrqInfo);
+            this.tabPageDesign.Controls.Add(this.checkBoxNextTanda);
+            this.tabPageDesign.Controls.Add(this.lblImagePosition);
+            this.tabPageDesign.Controls.Add(this.textBoxImagePosition);
+            this.tabPageDesign.Controls.Add(this.btnOrqPanelBGColor);
+            this.tabPageDesign.Controls.Add(this.btnSongPanelBGColor);
+            this.tabPageDesign.Controls.Add(this.btnMaioFormBGColor);
+            this.tabPageDesign.Controls.Add(this.textBoxOrqPanelBGColor);
+            this.tabPageDesign.Controls.Add(this.textBoxSongPanelBGColor);
+            this.tabPageDesign.Controls.Add(this.textBoxMainFormBGColor);
+            this.tabPageDesign.Controls.Add(this.lblSNText);
+            this.tabPageDesign.Controls.Add(this.textBoxSNText);
+            this.tabPageDesign.Controls.Add(this.lblSNModeExplain);
+            this.tabPageDesign.Controls.Add(this.comboBoxSongNumberMode);
+            this.tabPageDesign.Controls.Add(this.lblSongAlbumInfo);
+            this.tabPageDesign.Controls.Add(this.lblSongNumberText);
+            this.tabPageDesign.Controls.Add(this.lblSongNumbersMode);
+            this.tabPageDesign.Controls.Add(this.lblImgPosition);
+            this.tabPageDesign.Controls.Add(this.lblOrqBGColor);
+            this.tabPageDesign.Controls.Add(this.lblSongBGColor);
+            this.tabPageDesign.Controls.Add(this.lblFormBGColor);
+            this.tabPageDesign.Controls.Add(this.textBoxThemeName);
+            this.tabPageDesign.Controls.Add(this.lblThemeName);
             this.tabPageDesign.Location = new System.Drawing.Point(4, 22);
             this.tabPageDesign.Name = "tabPageDesign";
             this.tabPageDesign.Padding = new System.Windows.Forms.Padding(3);
@@ -159,6 +214,122 @@
             this.tabPageDesign.TabIndex = 0;
             this.tabPageDesign.Text = "Design";
             this.tabPageDesign.UseVisualStyleBackColor = true;
+            // 
+            // lblSNText
+            // 
+            this.lblSNText.AutoSize = true;
+            this.lblSNText.Location = new System.Drawing.Point(248, 435);
+            this.lblSNText.Name = "lblSNText";
+            this.lblSNText.Size = new System.Drawing.Size(133, 13);
+            this.lblSNText.TabIndex = 14;
+            this.lblSNText.Text = "\"of\", \"out of\", \"/\" or empty";
+            // 
+            // textBoxSNText
+            // 
+            this.textBoxSNText.Location = new System.Drawing.Point(142, 432);
+            this.textBoxSNText.Name = "textBoxSNText";
+            this.textBoxSNText.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSNText.TabIndex = 13;
+            // 
+            // lblSNModeExplain
+            // 
+            this.lblSNModeExplain.AutoSize = true;
+            this.lblSNModeExplain.Location = new System.Drawing.Point(195, 384);
+            this.lblSNModeExplain.Name = "lblSNModeExplain";
+            this.lblSNModeExplain.Size = new System.Drawing.Size(188, 13);
+            this.lblSNModeExplain.TabIndex = 12;
+            this.lblSNModeExplain.Text = "0 - invisible; 1 - three rows; 2 - one row";
+            // 
+            // comboBoxSongNumberMode
+            // 
+            this.comboBoxSongNumberMode.FormattingEnabled = true;
+            this.comboBoxSongNumberMode.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2"});
+            this.comboBoxSongNumberMode.Location = new System.Drawing.Point(142, 381);
+            this.comboBoxSongNumberMode.Name = "comboBoxSongNumberMode";
+            this.comboBoxSongNumberMode.Size = new System.Drawing.Size(47, 21);
+            this.comboBoxSongNumberMode.TabIndex = 11;
+            // 
+            // lblSongAlbumInfo
+            // 
+            this.lblSongAlbumInfo.AutoSize = true;
+            this.lblSongAlbumInfo.Location = new System.Drawing.Point(284, 21);
+            this.lblSongAlbumInfo.Name = "lblSongAlbumInfo";
+            this.lblSongAlbumInfo.Size = new System.Drawing.Size(125, 13);
+            this.lblSongAlbumInfo.TabIndex = 10;
+            this.lblSongAlbumInfo.Text = "Song Album Info Source:";
+            // 
+            // lblSongNumberText
+            // 
+            this.lblSongNumberText.AutoSize = true;
+            this.lblSongNumberText.Location = new System.Drawing.Point(26, 435);
+            this.lblSongNumberText.Name = "lblSongNumberText";
+            this.lblSongNumberText.Size = new System.Drawing.Size(104, 13);
+            this.lblSongNumberText.TabIndex = 9;
+            this.lblSongNumberText.Text = "Song Numbers Text:";
+            // 
+            // lblSongNumbersMode
+            // 
+            this.lblSongNumbersMode.AutoSize = true;
+            this.lblSongNumbersMode.Location = new System.Drawing.Point(26, 384);
+            this.lblSongNumbersMode.Name = "lblSongNumbersMode";
+            this.lblSongNumbersMode.Size = new System.Drawing.Size(110, 13);
+            this.lblSongNumbersMode.TabIndex = 8;
+            this.lblSongNumbersMode.Text = "Song Numbers Mode:";
+            // 
+            // lblImgPosition
+            // 
+            this.lblImgPosition.AutoSize = true;
+            this.lblImgPosition.Location = new System.Drawing.Point(26, 207);
+            this.lblImgPosition.Name = "lblImgPosition";
+            this.lblImgPosition.Size = new System.Drawing.Size(79, 13);
+            this.lblImgPosition.TabIndex = 5;
+            this.lblImgPosition.Text = "Image Position:";
+            // 
+            // lblOrqBGColor
+            // 
+            this.lblOrqBGColor.AutoSize = true;
+            this.lblOrqBGColor.Location = new System.Drawing.Point(26, 154);
+            this.lblOrqBGColor.Name = "lblOrqBGColor";
+            this.lblOrqBGColor.Size = new System.Drawing.Size(173, 13);
+            this.lblOrqBGColor.TabIndex = 4;
+            this.lblOrqBGColor.Text = "Orquestra (Bottom Panel) BG Color:";
+            // 
+            // lblSongBGColor
+            // 
+            this.lblSongBGColor.AutoSize = true;
+            this.lblSongBGColor.Location = new System.Drawing.Point(61, 106);
+            this.lblSongBGColor.Name = "lblSongBGColor";
+            this.lblSongBGColor.Size = new System.Drawing.Size(138, 13);
+            this.lblSongBGColor.TabIndex = 3;
+            this.lblSongBGColor.Text = "Song (Top Panel) BG Color:";
+            // 
+            // lblFormBGColor
+            // 
+            this.lblFormBGColor.AutoSize = true;
+            this.lblFormBGColor.Location = new System.Drawing.Point(121, 60);
+            this.lblFormBGColor.Name = "lblFormBGColor";
+            this.lblFormBGColor.Size = new System.Drawing.Size(78, 13);
+            this.lblFormBGColor.TabIndex = 2;
+            this.lblFormBGColor.Text = "Main BG Color:";
+            // 
+            // textBoxThemeName
+            // 
+            this.textBoxThemeName.Location = new System.Drawing.Point(106, 18);
+            this.textBoxThemeName.Name = "textBoxThemeName";
+            this.textBoxThemeName.Size = new System.Drawing.Size(149, 20);
+            this.textBoxThemeName.TabIndex = 1;
+            // 
+            // lblThemeName
+            // 
+            this.lblThemeName.AutoSize = true;
+            this.lblThemeName.Location = new System.Drawing.Point(26, 21);
+            this.lblThemeName.Name = "lblThemeName";
+            this.lblThemeName.Size = new System.Drawing.Size(74, 13);
+            this.lblThemeName.TabIndex = 0;
+            this.lblThemeName.Text = "Theme Name:";
             // 
             // tabPageCurrentSong
             // 
@@ -173,7 +344,7 @@
             // 
             // groupBoxSongArtist
             // 
-            this.groupBoxSongArtist.Controls.Add(this.comboBox1);
+            this.groupBoxSongArtist.Controls.Add(this.comboBoxArtistAlignment);
             this.groupBoxSongArtist.Controls.Add(this.lblArtistAlignment);
             this.groupBoxSongArtist.Controls.Add(this.textBoxArtistWidth);
             this.groupBoxSongArtist.Controls.Add(this.textBoxArtistHight);
@@ -197,6 +368,27 @@
             this.groupBoxSongArtist.TabIndex = 0;
             this.groupBoxSongArtist.TabStop = false;
             this.groupBoxSongArtist.Text = "Orquestra/Artist Label";
+            // 
+            // comboBoxArtistAlignment
+            // 
+            this.comboBoxArtistAlignment.FormattingEnabled = true;
+            this.comboBoxArtistAlignment.Items.AddRange(new object[] {
+            "MiddleCenter",
+            "MiddleLeft",
+            "MiddleRight"});
+            this.comboBoxArtistAlignment.Location = new System.Drawing.Point(437, 26);
+            this.comboBoxArtistAlignment.Name = "comboBoxArtistAlignment";
+            this.comboBoxArtistAlignment.Size = new System.Drawing.Size(182, 21);
+            this.comboBoxArtistAlignment.TabIndex = 19;
+            // 
+            // lblArtistAlignment
+            // 
+            this.lblArtistAlignment.AutoSize = true;
+            this.lblArtistAlignment.Location = new System.Drawing.Point(328, 29);
+            this.lblArtistAlignment.Name = "lblArtistAlignment";
+            this.lblArtistAlignment.Size = new System.Drawing.Size(96, 13);
+            this.lblArtistAlignment.TabIndex = 18;
+            this.lblArtistAlignment.Text = "Content Alignment:";
             // 
             // textBoxArtistWidth
             // 
@@ -350,22 +542,132 @@
             this.tabPageSongNumbers.Text = "Song Numbers";
             this.tabPageSongNumbers.UseVisualStyleBackColor = true;
             // 
-            // lblArtistAlignment
+            // textBoxMainFormBGColor
             // 
-            this.lblArtistAlignment.AutoSize = true;
-            this.lblArtistAlignment.Location = new System.Drawing.Point(328, 29);
-            this.lblArtistAlignment.Name = "lblArtistAlignment";
-            this.lblArtistAlignment.Size = new System.Drawing.Size(96, 13);
-            this.lblArtistAlignment.TabIndex = 18;
-            this.lblArtistAlignment.Text = "Content Alignment:";
+            this.textBoxMainFormBGColor.Location = new System.Drawing.Point(214, 57);
+            this.textBoxMainFormBGColor.Name = "textBoxMainFormBGColor";
+            this.textBoxMainFormBGColor.Size = new System.Drawing.Size(181, 20);
+            this.textBoxMainFormBGColor.TabIndex = 15;
             // 
-            // comboBox1
+            // textBoxSongPanelBGColor
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(437, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(182, 21);
-            this.comboBox1.TabIndex = 19;
+            this.textBoxSongPanelBGColor.Location = new System.Drawing.Point(214, 103);
+            this.textBoxSongPanelBGColor.Name = "textBoxSongPanelBGColor";
+            this.textBoxSongPanelBGColor.Size = new System.Drawing.Size(181, 20);
+            this.textBoxSongPanelBGColor.TabIndex = 16;
+            // 
+            // textBoxOrqPanelBGColor
+            // 
+            this.textBoxOrqPanelBGColor.Location = new System.Drawing.Point(214, 151);
+            this.textBoxOrqPanelBGColor.Name = "textBoxOrqPanelBGColor";
+            this.textBoxOrqPanelBGColor.Size = new System.Drawing.Size(181, 20);
+            this.textBoxOrqPanelBGColor.TabIndex = 17;
+            // 
+            // btnMaioFormBGColor
+            // 
+            this.btnMaioFormBGColor.Location = new System.Drawing.Point(504, 54);
+            this.btnMaioFormBGColor.Name = "btnMaioFormBGColor";
+            this.btnMaioFormBGColor.Size = new System.Drawing.Size(75, 23);
+            this.btnMaioFormBGColor.TabIndex = 18;
+            this.btnMaioFormBGColor.Text = "Color";
+            this.btnMaioFormBGColor.UseVisualStyleBackColor = true;
+            this.btnMaioFormBGColor.Click += new System.EventHandler(this.BtnMaioFormBGColor_Click);
+            // 
+            // btnSongPanelBGColor
+            // 
+            this.btnSongPanelBGColor.Location = new System.Drawing.Point(504, 101);
+            this.btnSongPanelBGColor.Name = "btnSongPanelBGColor";
+            this.btnSongPanelBGColor.Size = new System.Drawing.Size(75, 23);
+            this.btnSongPanelBGColor.TabIndex = 19;
+            this.btnSongPanelBGColor.Text = "Color";
+            this.btnSongPanelBGColor.UseVisualStyleBackColor = true;
+            this.btnSongPanelBGColor.Click += new System.EventHandler(this.BtnSongPanelBGColor_Click);
+            // 
+            // btnOrqPanelBGColor
+            // 
+            this.btnOrqPanelBGColor.Location = new System.Drawing.Point(504, 149);
+            this.btnOrqPanelBGColor.Name = "btnOrqPanelBGColor";
+            this.btnOrqPanelBGColor.Size = new System.Drawing.Size(75, 23);
+            this.btnOrqPanelBGColor.TabIndex = 20;
+            this.btnOrqPanelBGColor.Text = "Color";
+            this.btnOrqPanelBGColor.UseVisualStyleBackColor = true;
+            this.btnOrqPanelBGColor.Click += new System.EventHandler(this.BtnOrqPanelBGColor_Click);
+            // 
+            // textBoxImagePosition
+            // 
+            this.textBoxImagePosition.Location = new System.Drawing.Point(124, 204);
+            this.textBoxImagePosition.Name = "textBoxImagePosition";
+            this.textBoxImagePosition.Size = new System.Drawing.Size(31, 20);
+            this.textBoxImagePosition.TabIndex = 21;
+            // 
+            // lblImagePosition
+            // 
+            this.lblImagePosition.AutoSize = true;
+            this.lblImagePosition.Location = new System.Drawing.Point(171, 207);
+            this.lblImagePosition.Name = "lblImagePosition";
+            this.lblImagePosition.Size = new System.Drawing.Size(177, 13);
+            this.lblImagePosition.TabIndex = 22;
+            this.lblImagePosition.Text = "Value between 0 and 1, 0.5 - middle";
+            // 
+            // checkBoxNextTanda
+            // 
+            this.checkBoxNextTanda.AutoSize = true;
+            this.checkBoxNextTanda.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxNextTanda.Location = new System.Drawing.Point(29, 261);
+            this.checkBoxNextTanda.Name = "checkBoxNextTanda";
+            this.checkBoxNextTanda.Size = new System.Drawing.Size(139, 17);
+            this.checkBoxNextTanda.TabIndex = 23;
+            this.checkBoxNextTanda.Text = "Next Tanda Info Visible:";
+            this.checkBoxNextTanda.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxOrqInfo
+            // 
+            this.checkBoxOrqInfo.AutoSize = true;
+            this.checkBoxOrqInfo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxOrqInfo.Location = new System.Drawing.Point(39, 308);
+            this.checkBoxOrqInfo.Name = "checkBoxOrqInfo";
+            this.checkBoxOrqInfo.Size = new System.Drawing.Size(129, 17);
+            this.checkBoxOrqInfo.TabIndex = 24;
+            this.checkBoxOrqInfo.Text = "Orquestra Info Visible:";
+            this.checkBoxOrqInfo.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxAlbumSource
+            // 
+            this.comboBoxAlbumSource.FormattingEnabled = true;
+            this.comboBoxAlbumSource.Location = new System.Drawing.Point(415, 18);
+            this.comboBoxAlbumSource.Name = "comboBoxAlbumSource";
+            this.comboBoxAlbumSource.Size = new System.Drawing.Size(164, 21);
+            this.comboBoxAlbumSource.TabIndex = 25;
+            // 
+            // lblRGBMain
+            // 
+            this.lblRGBMain.AutoSize = true;
+            this.lblRGBMain.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblRGBMain.Location = new System.Drawing.Point(412, 59);
+            this.lblRGBMain.Name = "lblRGBMain";
+            this.lblRGBMain.Size = new System.Drawing.Size(36, 13);
+            this.lblRGBMain.TabIndex = 27;
+            this.lblRGBMain.Text = "R,G,B";
+            // 
+            // lblSongRDB
+            // 
+            this.lblSongRDB.AutoSize = true;
+            this.lblSongRDB.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblSongRDB.Location = new System.Drawing.Point(412, 106);
+            this.lblSongRDB.Name = "lblSongRDB";
+            this.lblSongRDB.Size = new System.Drawing.Size(36, 13);
+            this.lblSongRDB.TabIndex = 28;
+            this.lblSongRDB.Text = "R,G,B";
+            // 
+            // lblOrqRGB
+            // 
+            this.lblOrqRGB.AutoSize = true;
+            this.lblOrqRGB.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblOrqRGB.Location = new System.Drawing.Point(412, 154);
+            this.lblOrqRGB.Name = "lblOrqRGB";
+            this.lblOrqRGB.Size = new System.Drawing.Size(36, 13);
+            this.lblOrqRGB.TabIndex = 29;
+            this.lblOrqRGB.Text = "R,G,B";
             // 
             // MediaInfoSettings
             // 
@@ -376,9 +678,13 @@
             this.Controls.Add(this.panel1);
             this.Name = "MediaInfoSettings";
             this.Text = "Media Info Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MediaInfoSettings_FormClosing);
+            this.Load += new System.EventHandler(this.MediaInfoSettings_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabControl.ResumeLayout(false);
+            this.tabPageDesign.ResumeLayout(false);
+            this.tabPageDesign.PerformLayout();
             this.tabPageCurrentSong.ResumeLayout(false);
             this.groupBoxSongArtist.ResumeLayout(false);
             this.groupBoxSongArtist.PerformLayout();
@@ -419,7 +725,34 @@
         private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxArtistAlignment;
         private System.Windows.Forms.Label lblArtistAlignment;
+        private System.Windows.Forms.Label lblThemeName;
+        private System.Windows.Forms.TextBox textBoxThemeName;
+        private System.Windows.Forms.Label lblFormBGColor;
+        private System.Windows.Forms.Label lblOrqBGColor;
+        private System.Windows.Forms.Label lblSongBGColor;
+        private System.Windows.Forms.Label lblImgPosition;
+        private System.Windows.Forms.Label lblSongNumbersMode;
+        private System.Windows.Forms.Label lblSNModeExplain;
+        private System.Windows.Forms.ComboBox comboBoxSongNumberMode;
+        private System.Windows.Forms.Label lblSongAlbumInfo;
+        private System.Windows.Forms.Label lblSongNumberText;
+        private System.Windows.Forms.Label lblSNText;
+        private System.Windows.Forms.TextBox textBoxSNText;
+        private System.Windows.Forms.TextBox textBoxImagePosition;
+        private System.Windows.Forms.Button btnOrqPanelBGColor;
+        private System.Windows.Forms.Button btnSongPanelBGColor;
+        private System.Windows.Forms.Button btnMaioFormBGColor;
+        private System.Windows.Forms.TextBox textBoxOrqPanelBGColor;
+        private System.Windows.Forms.TextBox textBoxSongPanelBGColor;
+        private System.Windows.Forms.TextBox textBoxMainFormBGColor;
+        private System.Windows.Forms.ComboBox comboBoxAlbumSource;
+        private System.Windows.Forms.CheckBox checkBoxOrqInfo;
+        private System.Windows.Forms.CheckBox checkBoxNextTanda;
+        private System.Windows.Forms.Label lblImagePosition;
+        private System.Windows.Forms.Label lblRGBMain;
+        private System.Windows.Forms.Label lblOrqRGB;
+        private System.Windows.Forms.Label lblSongRDB;
     }
 }

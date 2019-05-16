@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Media002
+namespace MediaInfo
 {
     static class Program
     {

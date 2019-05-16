@@ -7,7 +7,7 @@ using System.Management;
 using Microsoft.Win32;
 using SongsDB;
 
-namespace Media002
+namespace MediaInfo
 {
     class Dig
     {

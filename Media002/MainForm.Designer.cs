@@ -1,4 +1,4 @@
-﻿namespace Media002
+﻿namespace MediaInfo
 {
     partial class MainForm
     {

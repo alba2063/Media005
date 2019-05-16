@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaInfo
 {
-    class OrquestraCollection : List<Orquestra>
+    class CurrentTheme : UISettings
     {
     }
 }

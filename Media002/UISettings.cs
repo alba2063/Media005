@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Media002
+namespace MediaInfo
 {
-    class UISettings
+    public class UISettings
     {
         public string ThemeName { get; set; }       //Name of the theme
         public Color FormBGColor { get; set; }      //Main Form BG Color
@@ -33,7 +33,7 @@ namespace Media002
 
         //Title label
         public Font SongTitleFont { get; set; }
-        public FontStyle songTitleFontStyle { get; set; }
+        public FontStyle SongTitleFontStyle { get; set; }
         public Color SongTitleColor { get; set; }
         public double FontSizeTitle { get; set; }               //FONT SIZE multiplyer Current song Title
         public double VerticalLocationTitle { get; set; }       //Vertical Location multiplyer Current song Title label
@@ -43,7 +43,7 @@ namespace Media002
 
         //Album (Singer) label
         public Font SongAlbumFont { get; set; }
-        public FontStyle songAlbumFontStyle { get; set; }
+        public FontStyle SongAlbumFontStyle { get; set; }
         public Color SongAlbumColor { get; set; }
         public double FontSizeAlbum { get; set; }               //FONT SIZE multiplyer Current song Album (Singer)
         public double VerticalLocationAlbum { get; set; }       //Vertical Location multiplyer Current song Album label
@@ -53,7 +53,8 @@ namespace Media002
 
         //Next Tanda label
         public Font NextFont { get; set; }
-        public FontStyle nextFontStyle { get; set; }
+        public FontStyle NextFontStyle { get; set; }
+        public Color NextTandaColor { get; set; }
         public double FontSizeNext { get; set; }                //FONT SIZE multiplyer Next Tanda
         public double VerticalLocationNext { get; set; }        //Vertical Location multiplyer Next Tanda label
         public double WidthNext { get; set; }                   //WIDTH multiplyer Next Tanda label
@@ -64,9 +65,9 @@ namespace Media002
         //**************************** Orquestra ***********************************
         #region
         //Orquestra Info 1 (Top label)
-        public Font orqInfoFont1 { get; set; }
-        public FontStyle orqInfoFontStyle1 { get; set; }
-        public Color orqInfoColor1 { get; set; }
+        public Font OrqInfoFont1 { get; set; }
+        public FontStyle OrqInfoFontStyle1 { get; set; }
+        public Color OrqInfoColor1 { get; set; }
         public double FontSizeOrq1 { get; set; }                //FONT SIZE multiplyer Orq Info 1
         public double VerticalLocationOrq1 { get; set; }        //Vertical Location multiplyer Orq Info 1 label 
         public double WidthOrq1 { get; set; }                   //WIDTH multiplyer Orq Info 1 label
@@ -74,9 +75,9 @@ namespace Media002
         public ContentAlignment OrqInfoAlignment1 { get; set; }
 
         //Orquestra Info 2 (Middle label)
-        public Font orqInfoFont2 { get; set; }
-        public FontStyle orqInfoFontStyle2 { get; set; }
-        public Color orqInfoColor2 { get; set; }
+        public Font OrqInfoFont2 { get; set; }
+        public FontStyle OrqInfoFontStyle2 { get; set; }
+        public Color OrqInfoColor2 { get; set; }
         public double FontSizeOrq2 { get; set; }                //FONT SIZE multiplyer Orq Info 2
         public double VerticalLocationOrq2 { get; set; }        //Vertical Location multiplyer Orq Info 2 label
         public double WidthOrq2 { get; set; }                   //WIDTH multiplyer Orq Info 1 label
@@ -84,9 +85,9 @@ namespace Media002
         public ContentAlignment OrqInfoAlignment2 { get; set; }
 
         //Orquestra Info 3 (Bottom label)
-        public Font orqInfoFont3 { get; set; }
-        public FontStyle orqInfoFontStyle3 { get; set; }
-        public Color orqInfoColor3 { get; set; }
+        public Font OrqInfoFont3 { get; set; }
+        public FontStyle OrqInfoFontStyle3 { get; set; }
+        public Color OrqInfoColor3 { get; set; }
         public double FontSizeOrq3 { get; set; }                //FONT SIZE multiplyer Orq Info 3
         public double VerticalLocationOrq3 { get; set; }        //Vertical Location multiplyer Orq Info 3 label
         public double WidthOrq3 { get; set; }                   //WIDTH multiplyer Orq Info 1 label
@@ -98,6 +99,7 @@ namespace Media002
 
         //************************** Song Numbers **********************************
         #region
+        //Song Numbers 1 (Top label)
         public Font SongNumbFont1 { get; set; }
         public FontStyle SongNumbFontStyle1 { get; set; }
         public Color SongNumbColor1 { get; set; }
@@ -107,6 +109,7 @@ namespace Media002
         public double HeightNumb1 { get; set; }                 //HEIGHT multiplyer Song Numb 1 label
         public ContentAlignment SongNumberAlignment1 { get; set; }
 
+        //Song Numbers 2 (Middle label)
         public Font SongNumbFont2 { get; set; }
         public FontStyle SongNumbFontStyle2 { get; set; }
         public Color SongNumbColor2 { get; set; }
@@ -116,6 +119,7 @@ namespace Media002
         public double HeightNumb2 { get; set; }                 //HEIGHT multiplyer Song Numb 2 label
         public ContentAlignment SongNumberAlignment2 { get; set; }
 
+        //Song Numbers 3 (Bottom label)
         public Font SongNumbFont3 { get; set; }
         public FontStyle SongNumbFontStyle3 { get; set; }
         public Color SongNumbColor3 { get; set; }

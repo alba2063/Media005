@@ -34,5 +34,17 @@ namespace MediaInfo.Properties {
                 this["ThemeName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UICollection {
+            get {
+                return ((string)(this["UICollection"]));
+            }
+            set {
+                this["UICollection"] = value;
+            }
+        }
     }
 }

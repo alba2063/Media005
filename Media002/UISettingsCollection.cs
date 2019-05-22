@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaInfo
 {
-    class UISettingsCollection : List<UISettings>
+    public class UISettingsCollection : List<UISettings>
     {
     }
 }

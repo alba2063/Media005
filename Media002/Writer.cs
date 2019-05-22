@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace MediaInfo
 {
@@ -22,7 +24,6 @@ namespace MediaInfo
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Settings");
                 //writer.WriteElementString("ConnectionString", "Data Source=validatordb.sqlite;Version=3;");
-                //writer.WriteElementString("SnLength", "7");
 
                 writer.WriteStartElement("Orquectras");
 
@@ -65,6 +66,44 @@ namespace MediaInfo
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }
+        }
+
+        public static string CreateXML(UISettingsCollection ui)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+
+            // Initializes a new instance of the XmlDocument class.          
+            XmlSerializer xmlSerializer = new XmlSerializer(ui.GetType());
+            // Creates a stream whose backing store is memory. 
+            using (MemoryStream xmlStream = new MemoryStream())
+            {
+                xmlSerializer.Serialize(xmlStream, ui);
+                xmlStream.Position = 0;
+                //Loads the XML document from the specified string.
+                xmlDoc.Load(xmlStream);
+                return xmlDoc.InnerXml;
+            }
+        }
+
+        public static UISettingsCollection CreateObject(string XMLString, UISettingsCollection ui)
+        {
+            
+
+            if (!XMLString.Equals(""))
+            {           
+                XmlSerializer xmlSerializer = new XmlSerializer(ui.GetType());
+                //The StringReader will be the stream holder for the existing XML file 
+                byte[] bytes = Convert.FromBase64String(XMLString);
+                MemoryStream stream = new MemoryStream(bytes);
+                var ui1 = xmlSerializer.Deserialize(stream);
+                //initially deserialized, the data is represented by an object without a defined type 
+                return (UISettingsCollection)ui1;
+            }
+            else
+            {
+                return ui;
+            }
+            
         }
     }
 }

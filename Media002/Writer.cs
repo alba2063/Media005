@@ -15,11 +15,11 @@ namespace MediaInfo
         {
             //fileName = "MediaInfo_ini.xml";
 
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-            settings.IndentChars = "\t";
+            XmlWriterSettings o_settings = new XmlWriterSettings();
+            o_settings.Indent = true;
+            o_settings.IndentChars = "\t";
 
-            using (XmlWriter writer = XmlWriter.Create(fileName, settings))
+            using (XmlWriter writer = XmlWriter.Create(fileName, o_settings))
             {
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Settings");
@@ -81,28 +81,75 @@ namespace MediaInfo
                 xmlStream.Position = 0;
                 //Loads the XML document from the specified string.
                 xmlDoc.Load(xmlStream);
+
+                using (FileStream fs = new FileStream("E:\\Temp\\1\\settings.xml", FileMode.OpenOrCreate))
+                {
+                    XmlSerializer serializer = new XmlSerializer(ui.GetType());
+                    serializer.Serialize(fs, ui);
+                }
+
                 return xmlDoc.InnerXml;
             }
         }
 
+        public static byte[] DecodeUrlBase64(string s)
+        {
+            s = s.Replace('-', '+').Replace('_', '/').PadRight(4 * ((s.Length + 3) / 4), '=');
+            return Convert.FromBase64String(s);
+        }
+
         public static UISettingsCollection CreateObject(string XMLString, UISettingsCollection ui)
         {
-            
 
-            if (!XMLString.Equals(""))
-            {           
-                XmlSerializer xmlSerializer = new XmlSerializer(ui.GetType());
-                //The StringReader will be the stream holder for the existing XML file 
-                byte[] bytes = Convert.FromBase64String(XMLString);
-                MemoryStream stream = new MemoryStream(bytes);
-                var ui1 = xmlSerializer.Deserialize(stream);
-                //initially deserialized, the data is represented by an object without a defined type 
-                return (UISettingsCollection)ui1;
+            UISettingsCollection ui1 = new UISettingsCollection();
+
+            if (File.Exists("E:\\Temp\\1\\settings.xml"))
+            {
+
+                using (FileStream fs2 = new FileStream("E:\\Temp\\1\\settings.xml", FileMode.Open))
+                {
+                    XmlSerializer serializer = new XmlSerializer(ui.GetType());
+                    ui1 = serializer.Deserialize(fs2) as UISettingsCollection;
+                }
+                return ui1;
             }
             else
             {
                 return ui;
             }
+
+
+            //if (!XMLString.Equals(""))
+            //{
+            //    //XmlSerializer xmlSerializer = new XmlSerializer(ui.GetType());
+            //    //The StringReader will be the stream holder for the existing XML file 
+
+
+            //    //byte[] bytes = Convert.FromBase64String(XMLString);
+
+            //    //byte[] bytes = DecodeUrlBase64(XMLString);
+            //    //MemoryStream stream = new MemoryStream(bytes);
+            //    //var ui1 = xmlSerializer.Deserialize(stream);
+            //    //initially deserialized, the data is represented by an object without a defined type 
+
+            //    //XmlSerializer serializer = new XmlSerializer(ui.GetType());
+            //    //UISettingsCollection ui1 = serializer.Deserialize(stream) as UISettingsCollection;
+
+            //    if (!File.Exists("E:\\Temp\\1\\settings.xml"))
+
+            //        using (FileStream fs2 = new FileStream("E:\\Temp\\1\\settings.xml", FileMode.Open))
+            //    {
+            //        XmlSerializer serializer = new XmlSerializer(ui.GetType());
+            //        ui1 = serializer.Deserialize(fs2) as UISettingsCollection;
+            //    }
+
+
+            //    return ui1;
+            //}
+            //else
+            //{
+            //    return ui;
+            //}
             
         }
     }

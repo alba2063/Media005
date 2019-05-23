@@ -212,9 +212,9 @@ namespace MediaInfo
         {
             //************************ Genetal settings *********************************
             #region
-            formBGColor = ui.FormBGColor;
-            songBGColor = ui.SongBGColor;
-            orqBGColor = ui.OrqBGColor;
+            formBGColor = Color.FromArgb(ui.FormBGColor[0], ui.FormBGColor[1], ui.FormBGColor[2]);
+            songBGColor = Color.FromArgb(ui.SongBGColor[0], ui.SongBGColor[1], ui.SongBGColor[2]);
+            orqBGColor = Color.FromArgb(ui.OrqBGColor[0], ui.OrqBGColor[1], ui.OrqBGColor[2]);
             imgPosition = ui.ImgPosition;               //Image position (.5 - middle)
             orqInfoVisible = ui.OrqInfoVisible;         //Orquestra Info visability
             nextTandaVisible = ui.NextTandaVisible;     //Next Tanda Visability
@@ -224,53 +224,53 @@ namespace MediaInfo
 
             //*********************** Current Song Info ********************************       
             #region
-            //Artist (Orquestra) label
+            //Artist label
             songArtistFont = ui.SongArtistFont;
-            songArtistFontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), ui.SongArtistFontStyle); //FontStyle.Bold;// GetName(ui.SongArtistFontStyle);   // FontStyle.Bold;
-                songArtistColor = ui.SongArtistColor;           // Color.FromArgb(247, 220, 111);
-                csofm = ui.FontSizeArtist;                      // .045;   //FONT SIZE multiplyer Current song Artist (Orquestra)
-                csovl = ui.VerticalLocationArtist;              // .001;   //Vertical Location multiplyer Current song Artist (Orquestra) label
-                cswm1 = ui.WidthArtist;                         // .1;     //WIDTH multiplyer Current Artist (Orquestra) label
-                cshm1 = ui.HeightArtist;                        // .225;   //HEIGHT multiplyer Current Artist (Orquestra) label
-                songArtistAlignment = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), ui.SongArtistAlignment);   // ContentAlignment.MiddleCenter;
+            songArtistFontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), ui.SongArtistFontStyle);
+            songArtistColor = Color.FromArgb(ui.SongArtistColor[0], ui.SongArtistColor[1], ui.SongArtistColor[2]); // Color.FromArgb(247, 220, 111);
+            csofm = ui.FontSizeArtist;                      // .045;   //FONT SIZE multiplyer Current song Artist (Orquestra)
+            csovl = ui.VerticalLocationArtist;              // .001;   //Vertical Location multiplyer Current song Artist (Orquestra) label
+            cswm1 = ui.WidthArtist;                         // .1;     //WIDTH multiplyer Current Artist (Orquestra) label
+            cshm1 = ui.HeightArtist;                        // .225;   //HEIGHT multiplyer Current Artist (Orquestra) label
+            songArtistAlignment = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), ui.SongArtistAlignment);   // ContentAlignment.MiddleCenter;
 
-                //Title label
-                songTitleFont = ui.SongTitleFont;               // "Arial";
-                songTitleFontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), ui.SongTitleFontStyle);     // FontStyle.Bold;
-                songTitleColor = ui.SongTitleColor;             // Color.FromArgb(253, 243, 207);
-                cstfm = ui.FontSizeTitle;                       // .035;   //FONT SIZE multiplyer Current song Title
-                cstvl = ui.VerticalLocationTitle;               // .28;    //Vertical Location multiplyer Current song Title label
-                cswm2 = ui.WidthTitle;                          // .1;     //WIDTH multiplyer Current song Title label
-                cshm2 = ui.HeightTitle;                         // .225;   //HEIGHT multiplyer Current song Title label
-                songTitleAlignment = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), ui.SongTitleAlignment);     // ContentAlignment.MiddleCenter;
+            //Title label
+            songTitleFont = ui.SongTitleFont;               // "Arial";
+            songTitleFontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), ui.SongTitleFontStyle);     // FontStyle.Bold;
+            songTitleColor = Color.FromArgb(ui.SongTitleColor[0], ui.SongTitleColor[1], ui.SongTitleColor[2]); // Color.FromArgb(253, 243, 207);
+            cstfm = ui.FontSizeTitle;                       // .035;   //FONT SIZE multiplyer Current song Title
+            cstvl = ui.VerticalLocationTitle;               // .28;    //Vertical Location multiplyer Current song Title label
+            cswm2 = ui.WidthTitle;                          // .1;     //WIDTH multiplyer Current song Title label
+            cshm2 = ui.HeightTitle;                         // .225;   //HEIGHT multiplyer Current song Title label
+            songTitleAlignment = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), ui.SongTitleAlignment);     // ContentAlignment.MiddleCenter;
 
-                //Album (Singer) label
-                songAlbumFont = ui.SongAlbumFont;               // "Arial";
-                songAlbumFontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), ui.SongAlbumFontStyle);     // FontStyle.Bold;
-                songAlbumColor = ui.SongAlbumColor;             // Color.FromArgb(253, 243, 207);
-                csafm = ui.FontSizeAlbum;                       // .030;   //FONT SIZE multiplyer Current song Album (Singer)
-                csavl = ui.VerticalLocationAlbum;               // .55;    //Vertical Location multiplyer Current song Album label
-                cswm3 = ui.WidthAlbum;                          // .1;     //WIDTH multiplyer Current song Album label
-                cshm3 = ui.HeightAlbum;                         // .225;   //HEIGHT multiplyer Current song Album label
-                songAlbumAlignment = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), ui.SongAlbumAlignment);     // ContentAlignment.MiddleCenter;
+            //Album (Singer) label
+            songAlbumFont = ui.SongAlbumFont;               // "Arial";
+            songAlbumFontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), ui.SongAlbumFontStyle);     // FontStyle.Bold;
+            songAlbumColor = Color.FromArgb(ui.SongAlbumColor[0], ui.SongAlbumColor[1], ui.SongAlbumColor[2]); // Color.FromArgb(253, 243, 207);
+            csafm = ui.FontSizeAlbum;                       // .030;   //FONT SIZE multiplyer Current song Album (Singer)
+            csavl = ui.VerticalLocationAlbum;               // .55;    //Vertical Location multiplyer Current song Album label
+            cswm3 = ui.WidthAlbum;                          // .1;     //WIDTH multiplyer Current song Album label
+            cshm3 = ui.HeightAlbum;                         // .225;   //HEIGHT multiplyer Current song Album label
+            songAlbumAlignment = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), ui.SongAlbumAlignment);     // ContentAlignment.MiddleCenter;
 
-                //Next Tanda label
-                nextFont = ui.NextFont;                         // "Sitka Text";
-                nextFontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), ui.NextFontStyle);               // FontStyle.Regular;
-                nextTandaColor = ui.NextTandaColor;             // Color.FromArgb(100, 100, 100);
-                ntfm = ui.FontSizeNext;                         // .02;     //FONT SIZE multiplyer Next Tanda
-                ntvl = ui.VerticalLocationNext;                 // .77;     //Vertical Location multiplyer Next Tanda label
-                cswm4 = ui.WidthNext;                           // .1;      //WIDTH multiplyer Next Tanda label
-                cshm4 = ui.HeightNext;                          // .225;   //HEIGHT multiplyer Next Tanda label
-                nextTandaAlignment = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), ui.NextTandaAlignment);     // ContentAlignment.MiddleCenter;
-                #endregion
+            //Next Tanda label
+            nextFont = ui.NextFont;                         // "Sitka Text";
+            nextFontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), ui.NextFontStyle);               // FontStyle.Regular;
+            nextTandaColor = Color.FromArgb(ui.NextTandaColor[0], ui.NextTandaColor[1], ui.NextTandaColor[2]);  // Color.FromArgb(100, 100, 100);
+            ntfm = ui.FontSizeNext;                         // .02;     //FONT SIZE multiplyer Next Tanda
+            ntvl = ui.VerticalLocationNext;                 // .77;     //Vertical Location multiplyer Next Tanda label
+            cswm4 = ui.WidthNext;                           // .1;      //WIDTH multiplyer Next Tanda label
+            cshm4 = ui.HeightNext;                          // .225;   //HEIGHT multiplyer Next Tanda label
+            nextTandaAlignment = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), ui.NextTandaAlignment);     // ContentAlignment.MiddleCenter;
+            #endregion
 
             //**************************** Orquestra ***********************************
             #region
                 //Orquestra Info 1 (Top label)
                 orqInfoFont1 = ui.OrqInfoFont1;                 // "Sitka Text";
                 orqInfoFontStyle1 = (FontStyle)Enum.Parse(typeof(FontStyle), ui.OrqInfoFontStyle1); // FontStyle.Italic;
-                orqInfoColor1 = ui.OrqInfoColor1;               // Color.FromArgb(95, 158, 160);
+                orqInfoColor1 = Color.FromArgb(ui.OrqInfoColor1[0], ui.OrqInfoColor1[1], ui.OrqInfoColor1[2]);  // Color.FromArgb(95, 158, 160);
                 oifm1 = ui.FontSizeOrq1;                        // .04;   //FONT SIZE multiplyer Orq Info 1
                 oi1vl = ui.VerticalLocationOrq1;                // .15;    //Vertical Location multiplyer Orq Info 1 label 
                 orqwm1 = ui.WidthOrq1;                          // .1;     //WIDTH multiplyer Orq Info 1 label
@@ -280,7 +280,7 @@ namespace MediaInfo
                 //Orquestra Info 2 (Middle label)
                 orqInfoFont2 = ui.OrqInfoFont2;                 // "Sitka Text";
                 orqInfoFontStyle2 = (FontStyle)Enum.Parse(typeof(FontStyle), ui.OrqInfoFontStyle2);  // FontStyle.Italic;
-                orqInfoColor2 = ui.OrqInfoColor2;               // Color.FromArgb(95, 158, 160);
+                orqInfoColor2 = Color.FromArgb(ui.OrqInfoColor2[0], ui.OrqInfoColor2[1], ui.OrqInfoColor2[2]);    // Color.FromArgb(95, 158, 160);
                 oifm2 = ui.FontSizeOrq2;                        // .04;   //FONT SIZE multiplyer Orq Info 2
                 oi2vl = ui.VerticalLocationOrq2;                // .38;    //Vertical Location multiplyer Orq Info 2 label
                 orqwm2 = ui.WidthOrq2;                          // .1;     //WIDTH multiplyer Orq Info 1 label
@@ -290,7 +290,7 @@ namespace MediaInfo
                 //Orquestra Info 3 (Bottom label)
                 orqInfoFont3 = ui.OrqInfoFont3;                 // "Sitka Text";
                 orqInfoFontStyle3 = (FontStyle)Enum.Parse(typeof(FontStyle), ui.OrqInfoFontStyle3);  // FontStyle.Italic;
-                orqInfoColor3 = ui.OrqInfoColor3;               // Color.FromArgb(95, 158, 160);
+                orqInfoColor3 = Color.FromArgb(ui.OrqInfoColor3[0], ui.OrqInfoColor3[1], ui.OrqInfoColor3[2]);   // Color.FromArgb(95, 158, 160);
                 oifm3 = ui.FontSizeOrq3;                        // .04;   //FONT SIZE multiplyer Orq Info 3
                 oi3vl = ui.VerticalLocationOrq3;                // .6;     //Vertical Location multiplyer Orq Info 3 label
                 orqwm3 = ui.WidthOrq3;                          // .1;     //WIDTH multiplyer Orq Info 1 label
@@ -298,13 +298,13 @@ namespace MediaInfo
                 orqInfoAlignment3 = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), ui.OrqInfoAlignment3); // ContentAlignment.MiddleLeft;
 
                 oihl = ui.HorizontalLocationOrq;                // .15;     //Horisontal Location multiplyer ORQ Info
-                #endregion
+            #endregion
 
             //************************** Song Numbers **********************************
             #region
                 songNumbFont1 = ui.SongNumbFont1;               // "Arial";
                 songNumbFontStyle1 = (FontStyle)Enum.Parse(typeof(FontStyle), ui.SongNumbFontStyle1); // FontStyle.Bold;
-                songNumbColor1 = ui.SongNumbColor1;             // Color.FromArgb(95, 158, 160);
+                songNumbColor1 = Color.FromArgb(ui.SongNumbColor1[0], ui.SongNumbColor1[1], ui.SongNumbColor1[2]);  // Color.FromArgb(95, 158, 160);
                 snfm1 = ui.FontSizeNumb1;                       // .03;   //FONT SIZE multiplyer Song Numbers 1
                 sncvl = ui.VerticalLocationNumb1;               // .14;   //Vertical Location multiplyer Song Number Current label
                 snwm1 = ui.WidthNumb1;                          // .3;     //WIDTH multiplyer Song Numb 1 label
@@ -313,7 +313,7 @@ namespace MediaInfo
 
                 songNumbFont2 = ui.SongNumbFont2;               // "Arial";
                 songNumbFontStyle2 = (FontStyle)Enum.Parse(typeof(FontStyle), ui.SongNumbFontStyle2); // FontStyle.Bold;
-                songNumbColor2 = ui.SongNumbColor2;             // Color.FromArgb(95, 158, 160);
+                songNumbColor2 = Color.FromArgb(ui.SongNumbColor2[0], ui.SongNumbColor2[1], ui.SongNumbColor2[2]);   // Color.FromArgb(95, 158, 160);
                 snfm2 = ui.FontSizeNumb2;                       // .03;   //FONT SIZE multiplyer Song Numbers 2
                 snmvl = ui.VerticalLocationNumb2;               // .39;    //Vertical Location multiplyer Song Number Middle label
                 snwm2 = ui.WidthNumb2;                          // .3;     //WIDTH multiplyer Song Numb 2 label
@@ -322,7 +322,7 @@ namespace MediaInfo
 
                 songNumbFont3 = ui.SongNumbFont3;               // "Arial";
                 songNumbFontStyle3 = (FontStyle)Enum.Parse(typeof(FontStyle), ui.SongNumbFontStyle3); // FontStyle.Bold;
-                songNumbColor3 = ui.SongNumbColor3;             // Color.FromArgb(95, 158, 160);
+                songNumbColor3 = Color.FromArgb(ui.SongNumbColor3[0], ui.SongNumbColor3[1], ui.SongNumbColor3[2]);  // Color.FromArgb(95, 158, 160);
                 snfm3 = ui.FontSizeNumb3;                       // .03;   //FONT SIZE multiplyer Song Numbers 3
                 sntvl = ui.VerticalLocationNumb3;               // .63;   //Vertical Location multiplyer Song Number Total label
                 snwm3 = ui.WidthNumb3;                          // .3;     //WIDTH multiplyer Song Numb 3 label

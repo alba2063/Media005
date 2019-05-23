@@ -89,16 +89,16 @@ namespace MediaInfo
             //if (li <= themeList.Count)
             //{
             //    li = themeList.Count;
-                //Load last Theme name
-                comboBoxTheme.SelectedItem = Properties.Settings.Default.ThemeName;
+            //Load last Theme name
+            comboBoxTheme.SelectedItem = Properties.Settings.Default.ThemeName;
             //}
             //else
             //{
             //    li = themeList.Count;
-                //Load new Theme name
+            //Load new Theme name
             //   comboBoxTheme.SelectedItem = ui.ThemeName;
             //}
-            
+
             //Set last UI as staring UI
             //foreach (UISettings u in fixedCollection)
             //{
@@ -109,7 +109,7 @@ namespace MediaInfo
             //}
 
             GetCurrentUI();
-           
+
             return ui;
         }
 
@@ -126,6 +126,21 @@ namespace MediaInfo
             SetIni();
         }
 
+        private static List<short> ConvertColor(string colorText)
+        {
+            string[] colorString;
+            List<Int16> colorInt = new List<short>();
+
+            colorString = colorText.Split(',');
+            foreach (string c in colorString)
+            {
+                colorInt.Add(Convert.ToInt16(c));
+            }
+
+            return colorInt;
+        }
+
+
         //Load UI settings to the form
         private void SetIni()
         {
@@ -133,18 +148,18 @@ namespace MediaInfo
             #region
             textBoxThemeName.Text = ui.ThemeName;
 
-            textBoxMainFormBGColor.BackColor = ui.FormBGColor;
-            lblRGBMain.Text = ui.FormBGColor.R + "," + ui.FormBGColor.G + "," + ui.FormBGColor.B;
+            textBoxMainFormBGColor.BackColor = Color.FromArgb(ui.FormBGColor[0], ui.FormBGColor[1], ui.FormBGColor[2]);
+            lblRGBMain.Text = ui.FormBGColor[0] + "," + ui.FormBGColor[1] + "," + ui.FormBGColor[2];
             lblRGBMain.ForeColor = Color.FromArgb(85, 85, 85);
 
 
-            textBoxSongPanelBGColor.BackColor = ui.SongBGColor;
-            lblSongRDB.Text = ui.SongBGColor.R + "," + ui.SongBGColor.G + "," + ui.SongBGColor.B;
+            textBoxSongPanelBGColor.BackColor = Color.FromArgb(ui.SongBGColor[0], ui.SongBGColor[1], ui.SongBGColor[2]);
+            lblSongRDB.Text = ui.SongBGColor[0] + "," + ui.SongBGColor[1] + "," + ui.SongBGColor[2];
             lblSongRDB.ForeColor = Color.FromArgb(85, 85, 85);
 
 
-            textBoxOrqPanelBGColor.BackColor = ui.OrqBGColor;
-            lblOrqRGB.Text = ui.OrqBGColor.R + "," + ui.OrqBGColor.G + "," + ui.OrqBGColor.B;
+            textBoxOrqPanelBGColor.BackColor = Color.FromArgb(ui.OrqBGColor[0], ui.OrqBGColor[1], ui.OrqBGColor[2]);
+            lblOrqRGB.Text = ui.OrqBGColor[0] + "," + ui.OrqBGColor[1] + "," + ui.OrqBGColor[2];
             lblOrqRGB.ForeColor = Color.FromArgb(85, 85, 85);
 
 
@@ -158,27 +173,21 @@ namespace MediaInfo
             comboBoxSongNumberMode.DropDownStyle = ComboBoxStyle.DropDownList;
 
             textBoxSNText.Text = ui.SongNumbOf;
-            textBoxSNText.TextAlign = HorizontalAlignment.Center;          
+            textBoxSNText.TextAlign = HorizontalAlignment.Center;
             #endregion
 
             //Song Artist
             #region
             textBoxArtistFont.Text = ui.SongArtistFont;
             textBoxArtistFont.Font = new Font(ui.SongArtistFont, 8);
-            textBoxArtistColor.BackColor = ui.SongArtistColor;
+
+            textBoxArtistColor.BackColor = Color.FromArgb(ui.SongArtistColor[0], ui.SongArtistColor[1], ui.SongArtistColor[2]);
+            textBoxArtistColor.Text = ui.SongArtistColor[0] + "," + ui.SongArtistColor[1] + "," + ui.SongArtistColor[2];
+            textBoxArtistColor.ForeColor = Color.FromArgb(255 - ui.SongArtistColor[0], 255 - ui.SongArtistColor[1], 255 - ui.SongArtistColor[2]);
+            textBoxArtistColor.TextAlign = HorizontalAlignment.Center;
 
             textBoxArtistFontSize.Text = ui.FontSizeArtist.ToString();
             textBoxArtistFontSize.TextAlign = HorizontalAlignment.Center;
-
-            //********************************************************
-            //var cvt = new FontConverter();
-            //string s = cvt.ConvertToString(this.Font);
-            //Font f = cvt.ConvertFromString(s) as Font;
-
-            //(FontStyle)Enum.Parse(typeof(FontStyle), propertyValue);
-            //(ContentAlignment)Enum.Parse(typeof(ContentAlignment), calStr);
-
-            //********************************************************
 
             lblArtistFontStyleSelected.Text = ui.SongArtistFontStyle;
 
@@ -205,7 +214,11 @@ namespace MediaInfo
             #region
             textBoxTitleFont.Text = ui.SongTitleFont;
             textBoxTitleFont.Font = new Font(ui.SongTitleFont, 8);
-            textBoxTitleColor.BackColor = ui.SongTitleColor;
+
+            textBoxTitleColor.BackColor = Color.FromArgb(ui.SongTitleColor[0], ui.SongTitleColor[1], ui.SongTitleColor[2]);
+            textBoxTitleColor.Text = ui.SongTitleColor[0] + "," + ui.SongTitleColor[1] + "," + ui.SongTitleColor[2];
+
+            textBoxTitleColor.TextAlign = HorizontalAlignment.Center;
 
             textBoxTitleFontSize.Text = ui.FontSizeTitle.ToString();
             textBoxTitleFontSize.TextAlign = HorizontalAlignment.Center;
@@ -234,7 +247,11 @@ namespace MediaInfo
             #region
             textBoxAlbumFont.Text = ui.SongAlbumFont;
             textBoxAlbumFont.Font = new Font(ui.SongAlbumFont, 8);
-            textBoxAlbumColor.BackColor = ui.SongAlbumColor;
+
+            textBoxAlbumColor.BackColor = Color.FromArgb(ui.SongAlbumColor[0], ui.SongAlbumColor[1], ui.SongAlbumColor[2]);
+            textBoxAlbumColor.Text = ui.SongAlbumColor[0] + "," + ui.SongAlbumColor[1] + "," + ui.SongAlbumColor[2];
+
+            textBoxAlbumColor.TextAlign = HorizontalAlignment.Center;
 
             textBoxAlbumFontSize.Text = ui.FontSizeAlbum.ToString();
             textBoxAlbumFontSize.TextAlign = HorizontalAlignment.Center;
@@ -263,7 +280,11 @@ namespace MediaInfo
             #region
             textBoxNextTandaFont.Text = ui.NextFont;
             textBoxNextTandaFont.Font = new Font(ui.NextFont, 8);
-            textBoxNextTandaColor.BackColor = ui.NextTandaColor;
+
+            textBoxNextTandaColor.BackColor = Color.FromArgb(ui.NextTandaColor[0], ui.NextTandaColor[1], ui.NextTandaColor[2]);
+            textBoxNextTandaColor.Text = ui.NextTandaColor[0] + "," + ui.NextTandaColor[1] + "," + ui.NextTandaColor[2];
+
+            textBoxNextTandaColor.TextAlign = HorizontalAlignment.Center;
 
             textBoxNextTandaFontSize.Text = ui.FontSizeNext.ToString();
             textBoxNextTandaFontSize.TextAlign = HorizontalAlignment.Center;
@@ -295,7 +316,11 @@ namespace MediaInfo
 
             textBoxOrq1Font.Text = ui.OrqInfoFont1;
             textBoxOrq1Font.Font = new Font(ui.OrqInfoFont1, 8);
-            textBoxOrq1Color.BackColor = ui.OrqInfoColor1;
+
+            textBoxOrq1Color.BackColor = Color.FromArgb(ui.OrqInfoColor1[0], ui.OrqInfoColor1[1], ui.OrqInfoColor1[2]);
+            textBoxOrq1Color.Text = ui.OrqInfoColor1[0] + "," + ui.OrqInfoColor1[1] + "," + ui.OrqInfoColor1[2];
+
+            textBoxOrq1Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxOrq1FontSize.Text = ui.FontSizeOrq1.ToString();
             textBoxOrq1FontSize.TextAlign = HorizontalAlignment.Center;
@@ -306,7 +331,7 @@ namespace MediaInfo
             comboBoxOrq1Alignment.DropDownStyle = ComboBoxStyle.DropDownList;
 
             textBoxOrq1VLocation.Text = ui.VerticalLocationOrq1.ToString();
-            textBoxOrq1VLocation.TextAlign = HorizontalAlignment.Center;           
+            textBoxOrq1VLocation.TextAlign = HorizontalAlignment.Center;
 
             textBoxOrq1Hight.Text = ui.HeightOrq1.ToString();
             textBoxOrq1Hight.TextAlign = HorizontalAlignment.Center;
@@ -319,7 +344,11 @@ namespace MediaInfo
             #region
             textBoxOrq2Font.Text = ui.OrqInfoFont2;
             textBoxOrq2Font.Font = new Font(ui.OrqInfoFont2, 8);
-            textBoxOrq2Color.BackColor = ui.OrqInfoColor2;
+
+            textBoxOrq2Color.BackColor = Color.FromArgb(ui.OrqInfoColor2[0], ui.OrqInfoColor2[1], ui.OrqInfoColor2[2]);
+            textBoxOrq2Color.Text = ui.OrqInfoColor2[0] + "," + ui.OrqInfoColor2[1] + "," + ui.OrqInfoColor2[2];
+
+            textBoxOrq2Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxOrq2FontSize.Text = ui.FontSizeOrq2.ToString();
             textBoxOrq2FontSize.TextAlign = HorizontalAlignment.Center;
@@ -343,7 +372,11 @@ namespace MediaInfo
             #region
             textBoxOrq3Font.Text = ui.OrqInfoFont3;
             textBoxOrq3Font.Font = new Font(ui.OrqInfoFont3, 8);
-            textBoxOrq3Color.BackColor = ui.OrqInfoColor3;
+
+            textBoxOrq3Color.BackColor = Color.FromArgb(ui.OrqInfoColor3[0], ui.OrqInfoColor3[1], ui.OrqInfoColor3[2]);
+            textBoxOrq3Color.Text = ui.OrqInfoColor3[0] + "," + ui.OrqInfoColor3[1] + "," + ui.OrqInfoColor3[2];
+
+            textBoxOrq3Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxOrq3FontSize.Text = ui.FontSizeOrq3.ToString();
             textBoxOrq3FontSize.TextAlign = HorizontalAlignment.Center;
@@ -370,7 +403,11 @@ namespace MediaInfo
 
             textBoxSN1Font.Text = ui.SongNumbFont1;
             textBoxSN1Font.Font = new Font(ui.SongNumbFont1, 8);
-            textBoxSN1Color.BackColor = ui.SongNumbColor1;
+
+            textBoxSN1Color.BackColor = Color.FromArgb(ui.SongNumbColor1[0], ui.SongNumbColor1[1], ui.SongNumbColor1[2]);
+            textBoxSN1Color.Text = ui.SongNumbColor1[0] + "," + ui.SongNumbColor1[1] + "," + ui.SongNumbColor1[2];
+
+            textBoxSN1Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxSN1FontSize.Text = ui.FontSizeNumb1.ToString();
             textBoxSN1FontSize.TextAlign = HorizontalAlignment.Center;
@@ -394,7 +431,11 @@ namespace MediaInfo
             #region
             textBoxSN2Font.Text = ui.SongNumbFont2;
             textBoxSN2Font.Font = new Font(ui.SongNumbFont2, 8);
-            textBoxSN2Color.BackColor = ui.SongNumbColor2;
+
+            textBoxSN2Color.BackColor = Color.FromArgb(ui.SongNumbColor2[0], ui.SongNumbColor2[1], ui.SongNumbColor2[2]);
+            textBoxSN2Color.Text = ui.SongNumbColor2[0] + "," + ui.SongNumbColor2[1] + "," + ui.SongNumbColor2[2];
+
+            textBoxSN2Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxSN2FontSize.Text = ui.FontSizeNumb2.ToString();
             textBoxSN2FontSize.TextAlign = HorizontalAlignment.Center;
@@ -418,7 +459,11 @@ namespace MediaInfo
             #region
             textBoxSN3Font.Text = ui.SongNumbFont3;
             textBoxSN3Font.Font = new Font(ui.SongNumbFont3, 8);
-            textBoxSN3Color.BackColor = ui.SongNumbColor3;
+
+            textBoxSN3Color.BackColor = Color.FromArgb(ui.SongNumbColor3[0], ui.SongNumbColor3[1], ui.SongNumbColor3[2]);
+            textBoxSN3Color.Text = ui.SongNumbColor3[0] + "," + ui.SongNumbColor3[1] + "," + ui.SongNumbColor3[2];
+
+            textBoxSN3Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxSN3FontSize.Text = ui.FontSizeNumb3.ToString();
             textBoxSN3FontSize.TextAlign = HorizontalAlignment.Center;
@@ -439,6 +484,7 @@ namespace MediaInfo
             #endregion
         }
 
+       
         
         //Save Updated UI to UISettings object
         private void GetUpdatedUI()
@@ -446,10 +492,12 @@ namespace MediaInfo
             UISettings nui = new UISettings();
             //nui = ui;
 
+
+            //colorInt = 
             nui.ThemeName = textBoxThemeName.Text;
-            nui.FormBGColor = textBoxMainFormBGColor.BackColor;                         //Main Form BG Color
-            nui.SongBGColor = textBoxSongPanelBGColor.BackColor;                        //Song Info (Top Panel) BG Color
-            nui.OrqBGColor = textBoxOrqPanelBGColor.BackColor;                          //Orq Info (Bottom Panel) BG Color
+            nui.FormBGColor = ConvertColor(lblRGBMain.Text);                            //Main Form BG Color
+            nui.SongBGColor = ConvertColor(lblSongRDB.Text);                        //Song Info (Top Panel) BG Color
+            nui.OrqBGColor = ConvertColor(lblOrqRGB.Text);                          //Orq Info (Bottom Panel) BG Color
             nui.ImgPosition = Double.Parse(textBoxImagePosition.Text, CultureInfo.InvariantCulture);     //Image position (.5 - middle)
             nui.OrqInfoVisible = checkBoxOrqInfo.Checked;                               //Orquestra Info visability
             nui.NextTandaVisible = checkBoxNextTanda.Checked;                           //Next Tanda Visability
@@ -460,8 +508,8 @@ namespace MediaInfo
             #region
             //Artist (Orquestra) label
             nui.SongArtistFont = textBoxArtistFont.Font.Name;
-            nui.SongArtistFontStyle = lblArtistFontStyleSelected.Text;//FontStyle text
-            nui.SongArtistColor = textBoxArtistColor.BackColor;//.FromArgb(247, 220, 111);
+            nui.SongArtistFontStyle = lblArtistFontStyleSelected.Text;                  //FontStyle text
+            nui.SongArtistColor = ConvertColor(textBoxArtistColor.Text);                //.FromArgb(247, 220, 111);
             nui.FontSizeArtist = Double.Parse(textBoxArtistFontSize.Text, CultureInfo.InvariantCulture); //FONT SIZE multiplyer Current song Artist (Orquestra)
             nui.VerticalLocationArtist = Double.Parse(textBoxArtistVerticalLocation.Text, CultureInfo.InvariantCulture);  //Vertical Location multiplyer Current song Artist (Orquestra) label
             nui.WidthArtist = Double.Parse(textBoxArtistWidth.Text, CultureInfo.InvariantCulture);     //WIDTH multiplyer Current Artist (Orquestra) label
@@ -471,7 +519,7 @@ namespace MediaInfo
             //Title label
             nui.SongTitleFont = textBoxTitleFont.Font.Name;
             nui.SongTitleFontStyle = lblTitleFontStyleSelected.Text;
-            nui.SongTitleColor = textBoxTitleColor.BackColor;
+            nui.SongTitleColor = ConvertColor(textBoxTitleColor.Text);
             nui.FontSizeTitle = Double.Parse(textBoxTitleFontSize.Text, CultureInfo.InvariantCulture);  //FONT SIZE multiplyer Current song Title
             nui.VerticalLocationTitle = Double.Parse(textBoxTitleVerticalLocation.Text, CultureInfo.InvariantCulture);  //Vertical Location multiplyer Current song Title label
             nui.WidthTitle = Double.Parse(textBoxTitleWidth.Text, CultureInfo.InvariantCulture);   //WIDTH multiplyer Current song Title label
@@ -481,7 +529,7 @@ namespace MediaInfo
             //Album (Singer) label
             nui.SongAlbumFont = textBoxAlbumFont.Font.Name;
             nui.SongAlbumFontStyle = lblAlbumFontStyleSelected.Text;
-            nui.SongAlbumColor = textBoxAlbumColor.BackColor;
+            nui.SongAlbumColor = ConvertColor(textBoxAlbumColor.Text);
             nui.FontSizeAlbum = Double.Parse(textBoxAlbumFontSize.Text, CultureInfo.InvariantCulture);  //FONT SIZE multiplyer Current song Album (Singer)
             nui.VerticalLocationAlbum = Double.Parse(textBoxAlbumVerticalLocation.Text, CultureInfo.InvariantCulture);  //Vertical Location multiplyer Current song Album label
             nui.WidthAlbum = Double.Parse(textBoxAlbumWidth.Text, CultureInfo.InvariantCulture);  //WIDTH multiplyer Current song Album label
@@ -491,7 +539,7 @@ namespace MediaInfo
             //Next Tanda label
             nui.NextFont = textBoxNextTandaFont.Font.Name;
             nui.NextFontStyle = lblNextTandaFontStyleSelected.Text;
-            nui.NextTandaColor = textBoxNextTandaColor.BackColor;
+            nui.NextTandaColor = ConvertColor(textBoxNextTandaColor.Text);
             nui.FontSizeNext = Double.Parse(textBoxNextTandaFontSize.Text, CultureInfo.InvariantCulture); //FONT SIZE multiplyer Next Tanda
             nui.VerticalLocationNext = Double.Parse(textBoxNextTandaVerticalLocation.Text, CultureInfo.InvariantCulture);  //Vertical Location multiplyer Next Tanda label
             nui.WidthNext = Double.Parse(textBoxNextTandaWidth.Text, CultureInfo.InvariantCulture);  //WIDTH multiplyer Next Tanda label
@@ -504,7 +552,7 @@ namespace MediaInfo
             //Orquestra Info 1 (Top label)
             nui.OrqInfoFont1 = textBoxOrq1Font.Font.Name;
             nui.OrqInfoFontStyle1 = lblOrq1FontStyleSelected.Text;
-            nui.OrqInfoColor1 = textBoxOrq1Color.BackColor;
+            nui.OrqInfoColor1 = ConvertColor(textBoxOrq1Color.Text);
             nui.FontSizeOrq1 = Double.Parse(textBoxOrq1FontSize.Text, CultureInfo.InvariantCulture);                                 //FONT SIZE multiplyer Orq Info 1
             nui.VerticalLocationOrq1 = Double.Parse(textBoxOrq1VLocation.Text, CultureInfo.InvariantCulture);  //Vertical Location multiplyer Orq Info 1 label 
             nui.WidthOrq1 = Double.Parse(textBoxOrq1Width.Text, CultureInfo.InvariantCulture);                                    //WIDTH multiplyer Orq Info 1 label
@@ -514,7 +562,7 @@ namespace MediaInfo
             ////Orquestra Info 2 (Middle label)
             nui.OrqInfoFont2 = textBoxOrq2Font.Font.Name;
             nui.OrqInfoFontStyle2 = lblOrq2FontStyleSelected.Text;
-            nui.OrqInfoColor2 = textBoxOrq2Color.BackColor;
+            nui.OrqInfoColor2 = ConvertColor(textBoxOrq2Color.Text);
             nui.FontSizeOrq2 = Double.Parse(textBoxOrq1FontSize.Text, CultureInfo.InvariantCulture);                                 //FONT SIZE multiplyer Orq Info 2
             nui.VerticalLocationOrq2 = Double.Parse(textBoxOrq2VLocation.Text, CultureInfo.InvariantCulture);  //Vertical Location multiplyer Orq Info 2 label
             nui.WidthOrq2 = Double.Parse(textBoxOrq2Width.Text, CultureInfo.InvariantCulture);                                    //WIDTH multiplyer Orq Info 1 label
@@ -524,7 +572,7 @@ namespace MediaInfo
             ////Orquestra Info 3 (Bottom label)
             nui.OrqInfoFont3 = textBoxOrq3Font.Font.Name;
             nui.OrqInfoFontStyle3 = lblOrq3FontStyleSelected.Text;
-            nui.OrqInfoColor3 = textBoxOrq3Color.BackColor;
+            nui.OrqInfoColor3 = ConvertColor(textBoxOrq3Color.Text);
             nui.FontSizeOrq3 = Double.Parse(textBoxOrq3FontSize.Text, CultureInfo.InvariantCulture);                                 //FONT SIZE multiplyer Orq Info 3
             nui.VerticalLocationOrq3 = Double.Parse(textBoxOrq3VLocation.Text, CultureInfo.InvariantCulture);   //Vertical Location multiplyer Orq Info 3 label
             nui.WidthOrq3 = Double.Parse(textBoxOrq3Width.Text, CultureInfo.InvariantCulture);                                    //WIDTH multiplyer Orq Info 1 label
@@ -539,7 +587,7 @@ namespace MediaInfo
             //Song Numbers 1 (Top label)
             nui.SongNumbFont1 = textBoxSN1Font.Font.Name;
             nui.SongNumbFontStyle1 = lblSN1FontStyleSelected.Text;
-            nui.SongNumbColor1 = textBoxSN1Color.BackColor;
+            nui.SongNumbColor1 = ConvertColor(textBoxSN1Color.Text);
             nui.FontSizeNumb1 = Double.Parse(textBoxSN1FontSize.Text, CultureInfo.InvariantCulture);  //FONT SIZE multiplyer Song Numbers 1
             nui.VerticalLocationNumb1 = Double.Parse(textBoxSN1VLocation.Text, CultureInfo.InvariantCulture); //Vertical Location multiplyer Song Number Current label
             nui.WidthNumb1 = Double.Parse(textBoxSN1Width.Text, CultureInfo.InvariantCulture); //WIDTH multiplyer Song Numb 1 label
@@ -549,7 +597,7 @@ namespace MediaInfo
             //Song Numbers 2 (Middle label)
             nui.SongNumbFont2 = textBoxSN2Font.Font.Name;
             nui.SongNumbFontStyle2 = lblSN2FontStyleSelected.Text;
-            nui.SongNumbColor2 = textBoxSN2Color.BackColor;
+            nui.SongNumbColor2 = ConvertColor(textBoxSN2Color.Text);
             nui.FontSizeNumb2 = Double.Parse(textBoxSN1FontSize.Text, CultureInfo.InvariantCulture);  //FONT SIZE multiplyer Song Numbers 2
             nui.VerticalLocationNumb2 = Double.Parse(textBoxSN2VLocation.Text, CultureInfo.InvariantCulture); //Vertical Location multiplyer Song Number Middle label
             nui.WidthNumb2 = Double.Parse(textBoxSN2Width.Text, CultureInfo.InvariantCulture);  //WIDTH multiplyer Song Numb 2 label
@@ -559,7 +607,7 @@ namespace MediaInfo
             //Song Numbers 3 (Bottom label)
             nui.SongNumbFont3 = textBoxSN3Font.Font.Name;
             nui.SongNumbFontStyle3 = lblSN3FontStyleSelected.Text;
-            nui.SongNumbColor3 = textBoxSN3Color.BackColor;
+            nui.SongNumbColor3 = ConvertColor(textBoxSN3Color.Text);
             nui.FontSizeNumb3 = Double.Parse(textBoxSN1FontSize.Text, CultureInfo.InvariantCulture);  //FONT SIZE multiplyer Song Numbers 3
             nui.VerticalLocationNumb3 = Double.Parse(textBoxSN3VLocation.Text, CultureInfo.InvariantCulture);  //Vertical Location multiplyer Song Number Total label
             nui.WidthNumb3 = Double.Parse(textBoxSN3Width.Text, CultureInfo.InvariantCulture);  //WIDTH multiplyer Song Numb 3 label
@@ -589,15 +637,10 @@ namespace MediaInfo
         #region
         private void BtnApplyTheme_Click(object sender, EventArgs e)
         {
-
             GetUpdatedUI();
 
             textBoxThemeName.Text = ui.ThemeName;
             textBoxThemeName.Focus();
-
-            //Properties.Settings.Default.UICollection = Writer.CreateXML(userCollection);
-            //Properties.Settings.Default.UICollection = userCollection;
-            //Properties.Settings.Default.Save();
 
             mainForm.UpdateIU(ui);
             mainForm.Show();
@@ -614,6 +657,11 @@ namespace MediaInfo
                 fixedCollection.Add(ui);        //Add current settings to current working collection
                 userCollection.Add(ui);         //Add current settings to user defined collection to save
                 themeList.Add(ui.ThemeName);    //Add theme name to the list
+
+                Properties.Settings.Default.UICollection = Writer.CreateXML(userCollection);
+                //Properties.Settings.Default.UICollection = userCollection;
+                Properties.Settings.Default.Save();
+
                 GetIni(themeList);
                 //SetIni();
             }
@@ -698,7 +746,39 @@ namespace MediaInfo
 
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxArtistColor.BackColor = colorDialog.Color;
+                var c = colorDialog.Color;
+                textBoxArtistColor.BackColor = c;
+                textBoxArtistColor.Text = c.R + "," + c.G + "," + c.B;
+                int r;
+                int g;
+                int b;
+                if (c.R > 128)
+                {
+                    r = 0;
+                }
+                else
+                {
+                    r = 255;
+                }
+
+                if (c.G > 128)
+                {
+                    g = 0;
+                }
+                else
+                {
+                    g = 255;
+                }
+
+                if (c.B > 128)
+                {
+                    b = 0;
+                }
+                else
+                {
+                    b = 255;
+                }
+                textBoxArtistColor.ForeColor = Color.FromArgb(r, g, b);
             }
         }
 
@@ -723,7 +803,9 @@ namespace MediaInfo
 
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxTitleColor.BackColor = colorDialog.Color;
+                var c = colorDialog.Color;
+                textBoxTitleColor.BackColor = c;
+                textBoxTitleColor.Text = c.R + "," + c.G + "," + c.B;
             }
         }
 
@@ -748,7 +830,9 @@ namespace MediaInfo
 
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxAlbumColor.BackColor = colorDialog.Color;
+                var c = colorDialog.Color;
+                textBoxAlbumColor.BackColor = c;
+                textBoxAlbumColor.Text = c.R + "," + c.G + "," + c.B;
             }
         }
 
@@ -773,7 +857,9 @@ namespace MediaInfo
 
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxNextTandaColor.BackColor = colorDialog.Color;
+                var c = colorDialog.Color;
+                textBoxNextTandaColor.BackColor = c;
+                textBoxNextTandaColor.Text = c.R + "," + c.G + "," + c.B;
             }
         }
         #endregion
@@ -800,7 +886,9 @@ namespace MediaInfo
 
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxOrq1Color.BackColor = colorDialog.Color;
+                var c = colorDialog.Color;
+                textBoxOrq1Color.BackColor = c;
+                textBoxOrq1Color.Text = c.R + "," + c.G + "," + c.B;
             }
         }
 
@@ -825,7 +913,9 @@ namespace MediaInfo
 
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxOrq2Color.BackColor = colorDialog.Color;
+                var c = colorDialog.Color;
+                textBoxOrq2Color.BackColor = c;
+                textBoxOrq2Color.Text = c.R + "," + c.G + "," + c.B;
             }
         }
 
@@ -850,7 +940,9 @@ namespace MediaInfo
 
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxOrq3Color.BackColor = colorDialog.Color;
+                var c = colorDialog.Color;
+                textBoxOrq3Color.BackColor = c;
+                textBoxOrq3Color.Text = c.R + "," + c.G + "," + c.B;
             }
         }
         #endregion
@@ -877,7 +969,9 @@ namespace MediaInfo
 
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxSN1Color.BackColor = colorDialog.Color;
+                var c = colorDialog.Color;
+                textBoxSN1Color.BackColor = c;
+                textBoxSN1Color.Text = c.R + "," + c.G + "," + c.B;
             }
         }
 
@@ -902,7 +996,9 @@ namespace MediaInfo
 
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxSN2Color.BackColor = colorDialog.Color;
+                var c = colorDialog.Color;
+                textBoxSN2Color.BackColor = c;
+                textBoxSN2Color.Text = c.R + "," + c.G + "," + c.B;
             }
         }
 
@@ -927,7 +1023,9 @@ namespace MediaInfo
 
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxSN3Color.BackColor = colorDialog.Color;
+                var c = colorDialog.Color;
+                textBoxSN3Color.BackColor = c;
+                textBoxSN3Color.Text = c.R + "," + c.G + "," + c.B;
             }
         }
 

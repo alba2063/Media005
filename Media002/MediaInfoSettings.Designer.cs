@@ -1308,9 +1308,9 @@
             this.groupBoxSongArtist.Controls.Add(this.lbllArtistFontSize);
             this.groupBoxSongArtist.Controls.Add(this.lblArtistFontStyle);
             this.groupBoxSongArtist.Controls.Add(this.comboBoxArtistAlignment);
-            this.groupBoxSongArtist.Controls.Add(this.lblArtistAlignment);
             this.groupBoxSongArtist.Controls.Add(this.textBoxArtistWidth);
             this.groupBoxSongArtist.Controls.Add(this.textBoxArtistHight);
+            this.groupBoxSongArtist.Controls.Add(this.lblArtistAlignment);
             this.groupBoxSongArtist.Controls.Add(this.textBoxArtistHorizontalLocation);
             this.groupBoxSongArtist.Controls.Add(this.textBoxArtistVerticalLocation);
             this.groupBoxSongArtist.Controls.Add(this.lblArtistWidth);
@@ -1333,7 +1333,7 @@
             // lblArtistFontStyleSelected
             // 
             this.lblArtistFontStyleSelected.AutoSize = true;
-            this.lblArtistFontStyleSelected.Location = new System.Drawing.Point(45, 81);
+            this.lblArtistFontStyleSelected.Location = new System.Drawing.Point(46, 81);
             this.lblArtistFontStyleSelected.Name = "lblArtistFontStyleSelected";
             this.lblArtistFontStyleSelected.Size = new System.Drawing.Size(19, 13);
             this.lblArtistFontStyleSelected.TabIndex = 21;
@@ -1349,7 +1349,7 @@
             // lbllArtistFontSize
             // 
             this.lbllArtistFontSize.AutoSize = true;
-            this.lbllArtistFontSize.Location = new System.Drawing.Point(175, 81);
+            this.lbllArtistFontSize.Location = new System.Drawing.Point(175, 82);
             this.lbllArtistFontSize.Name = "lbllArtistFontSize";
             this.lbllArtistFontSize.Size = new System.Drawing.Size(30, 13);
             this.lbllArtistFontSize.TabIndex = 4;
@@ -1358,7 +1358,7 @@
             // lblArtistFontStyle
             // 
             this.lblArtistFontStyle.AutoSize = true;
-            this.lblArtistFontStyle.Location = new System.Drawing.Point(6, 81);
+            this.lblArtistFontStyle.Location = new System.Drawing.Point(7, 82);
             this.lblArtistFontStyle.Name = "lblArtistFontStyle";
             this.lblArtistFontStyle.Size = new System.Drawing.Size(33, 13);
             this.lblArtistFontStyle.TabIndex = 20;
@@ -1407,14 +1407,15 @@
             // 
             // textBoxArtistHorizontalLocation
             // 
-            this.textBoxArtistHorizontalLocation.Location = new System.Drawing.Point(465, 78);
+            this.textBoxArtistHorizontalLocation.Location = new System.Drawing.Point(465, 79);
             this.textBoxArtistHorizontalLocation.Name = "textBoxArtistHorizontalLocation";
             this.textBoxArtistHorizontalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxArtistHorizontalLocation.TabIndex = 15;
+            this.textBoxArtistHorizontalLocation.Visible = false;
             // 
             // textBoxArtistVerticalLocation
             // 
-            this.textBoxArtistVerticalLocation.Location = new System.Drawing.Point(465, 53);
+            this.textBoxArtistVerticalLocation.Location = new System.Drawing.Point(465, 52);
             this.textBoxArtistVerticalLocation.Name = "textBoxArtistVerticalLocation";
             this.textBoxArtistVerticalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxArtistVerticalLocation.TabIndex = 14;
@@ -1441,11 +1442,12 @@
             // 
             this.lblArtistHorizontal.AutoSize = true;
             this.lblArtistHorizontal.Enabled = false;
-            this.lblArtistHorizontal.Location = new System.Drawing.Point(347, 81);
+            this.lblArtistHorizontal.Location = new System.Drawing.Point(347, 82);
             this.lblArtistHorizontal.Name = "lblArtistHorizontal";
             this.lblArtistHorizontal.Size = new System.Drawing.Size(101, 13);
             this.lblArtistHorizontal.TabIndex = 11;
             this.lblArtistHorizontal.Text = "Horisontal Location:";
+            this.lblArtistHorizontal.Visible = false;
             // 
             // lblArtistVertical
             // 
@@ -1458,7 +1460,7 @@
             // 
             // btnArtistColor
             // 
-            this.btnArtistColor.Location = new System.Drawing.Point(178, 50);
+            this.btnArtistColor.Location = new System.Drawing.Point(178, 52);
             this.btnArtistColor.Name = "btnArtistColor";
             this.btnArtistColor.Size = new System.Drawing.Size(96, 23);
             this.btnArtistColor.TabIndex = 9;
@@ -1486,7 +1488,7 @@
             // lblArtistColor
             // 
             this.lblArtistColor.AutoSize = true;
-            this.lblArtistColor.Location = new System.Drawing.Point(6, 55);
+            this.lblArtistColor.Location = new System.Drawing.Point(6, 57);
             this.lblArtistColor.Name = "lblArtistColor";
             this.lblArtistColor.Size = new System.Drawing.Size(34, 13);
             this.lblArtistColor.TabIndex = 2;

@@ -28,42 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MediaInfoSettings));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSaveAs = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnApplyTheme = new System.Windows.Forms.Button();
             this.lblComboBoxName = new System.Windows.Forms.Label();
+            this.btnApplyTheme = new System.Windows.Forms.Button();
             this.comboBoxTheme = new System.Windows.Forms.ComboBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageDesign = new System.Windows.Forms.TabPage();
-            this.lblOrqRGB = new System.Windows.Forms.Label();
-            this.lblSongRDB = new System.Windows.Forms.Label();
-            this.lblRGBMain = new System.Windows.Forms.Label();
-            this.comboBoxAlbumSource = new System.Windows.Forms.ComboBox();
-            this.checkBoxOrqInfo = new System.Windows.Forms.CheckBox();
-            this.checkBoxNextTanda = new System.Windows.Forms.CheckBox();
-            this.lblImagePosition = new System.Windows.Forms.Label();
-            this.textBoxImagePosition = new System.Windows.Forms.TextBox();
-            this.btnOrqPanelBGColor = new System.Windows.Forms.Button();
-            this.btnSongPanelBGColor = new System.Windows.Forms.Button();
-            this.btnMaioFormBGColor = new System.Windows.Forms.Button();
-            this.textBoxOrqPanelBGColor = new System.Windows.Forms.TextBox();
-            this.textBoxSongPanelBGColor = new System.Windows.Forms.TextBox();
-            this.textBoxMainFormBGColor = new System.Windows.Forms.TextBox();
-            this.lblSNText = new System.Windows.Forms.Label();
-            this.textBoxSNText = new System.Windows.Forms.TextBox();
-            this.lblSNModeExplain = new System.Windows.Forms.Label();
-            this.comboBoxSongNumberMode = new System.Windows.Forms.ComboBox();
-            this.lblSongAlbumInfo = new System.Windows.Forms.Label();
-            this.lblSongNumberText = new System.Windows.Forms.Label();
-            this.lblSongNumbersMode = new System.Windows.Forms.Label();
-            this.lblImgPosition = new System.Windows.Forms.Label();
-            this.lblOrqBGColor = new System.Windows.Forms.Label();
-            this.lblSongBGColor = new System.Windows.Forms.Label();
-            this.lblFormBGColor = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxThemeName = new System.Windows.Forms.TextBox();
             this.lblThemeName = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.comboBoxSongNumberMode = new System.Windows.Forms.ComboBox();
+            this.lblSongNumbersMode = new System.Windows.Forms.Label();
+            this.comboBoxAlbumSource = new System.Windows.Forms.ComboBox();
+            this.lblSongNumberText = new System.Windows.Forms.Label();
+            this.lblSongAlbumInfo = new System.Windows.Forms.Label();
+            this.lblImagePosition = new System.Windows.Forms.Label();
+            this.checkBoxOrqInfo = new System.Windows.Forms.CheckBox();
+            this.textBoxImagePosition = new System.Windows.Forms.TextBox();
+            this.lblSNModeExplain = new System.Windows.Forms.Label();
+            this.lblImgPosition = new System.Windows.Forms.Label();
+            this.checkBoxNextTanda = new System.Windows.Forms.CheckBox();
+            this.textBoxSNText = new System.Windows.Forms.TextBox();
+            this.lblSNText = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblOrqBGColor = new System.Windows.Forms.Label();
+            this.lblRGBMain = new System.Windows.Forms.Label();
+            this.lblSongRDB = new System.Windows.Forms.Label();
+            this.lblOrqRGB = new System.Windows.Forms.Label();
+            this.textBoxOrqPanelBGColor = new System.Windows.Forms.TextBox();
+            this.btnOrqPanelBGColor = new System.Windows.Forms.Button();
+            this.lblSongBGColor = new System.Windows.Forms.Label();
+            this.textBoxSongPanelBGColor = new System.Windows.Forms.TextBox();
+            this.btnMaioFormBGColor = new System.Windows.Forms.Button();
+            this.btnSongPanelBGColor = new System.Windows.Forms.Button();
+            this.textBoxMainFormBGColor = new System.Windows.Forms.TextBox();
+            this.lblFormBGColor = new System.Windows.Forms.Label();
             this.tabPageCurrentSong = new System.Windows.Forms.TabPage();
             this.groupBoxNextTanda = new System.Windows.Forms.GroupBox();
             this.lblNextTandaFontStyleSelected = new System.Windows.Forms.Label();
@@ -134,9 +138,9 @@
             this.lbllArtistFontSize = new System.Windows.Forms.Label();
             this.lblArtistFontStyle = new System.Windows.Forms.Label();
             this.comboBoxArtistAlignment = new System.Windows.Forms.ComboBox();
-            this.lblArtistAlignment = new System.Windows.Forms.Label();
             this.textBoxArtistWidth = new System.Windows.Forms.TextBox();
             this.textBoxArtistHight = new System.Windows.Forms.TextBox();
+            this.lblArtistAlignment = new System.Windows.Forms.Label();
             this.textBoxArtistHorizontalLocation = new System.Windows.Forms.TextBox();
             this.textBoxArtistVerticalLocation = new System.Windows.Forms.TextBox();
             this.lblArtistWidth = new System.Windows.Forms.Label();
@@ -284,8 +288,12 @@
             this.fontDialog = new System.Windows.Forms.FontDialog();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageDesign.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabPageCurrentSong.SuspendLayout();
             this.groupBoxNextTanda.SuspendLayout();
             this.groupBoxSongAlbum.SuspendLayout();
@@ -307,72 +315,77 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.Controls.Add(this.btnSaveAs);
-            this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Controls.Add(this.btnEdit);
-            this.panel1.Controls.Add(this.btnApplyTheme);
-            this.panel1.Controls.Add(this.lblComboBoxName);
-            this.panel1.Controls.Add(this.comboBoxTheme);
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(117, 486);
             this.panel1.TabIndex = 0;
             // 
-            // btnSaveAs
+            // groupBox1
             // 
-            this.btnSaveAs.Location = new System.Drawing.Point(6, 446);
-            this.btnSaveAs.Name = "btnSaveAs";
-            this.btnSaveAs.Size = new System.Drawing.Size(108, 23);
-            this.btnSaveAs.TabIndex = 1;
-            this.btnSaveAs.Text = "Save As";
-            this.btnSaveAs.UseVisualStyleBackColor = true;
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.btnSave);
+            this.groupBox1.Controls.Add(this.lblComboBoxName);
+            this.groupBox1.Controls.Add(this.btnApplyTheme);
+            this.groupBox1.Controls.Add(this.comboBoxTheme);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(117, 486);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Theme:";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(6, 417);
+            this.btnSave.Location = new System.Drawing.Point(6, 428);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(108, 23);
+            this.btnSave.Size = new System.Drawing.Size(105, 23);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // btnEdit
+            // lblComboBoxName
             // 
-            this.btnEdit.Location = new System.Drawing.Point(6, 386);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(108, 23);
-            this.btnEdit.TabIndex = 1;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.lblComboBoxName.AutoSize = true;
+            this.lblComboBoxName.Location = new System.Drawing.Point(11, 190);
+            this.lblComboBoxName.Name = "lblComboBoxName";
+            this.lblComboBoxName.Size = new System.Drawing.Size(40, 13);
+            this.lblComboBoxName.TabIndex = 0;
+            this.lblComboBoxName.Text = "Select:";
+            this.lblComboBoxName.Visible = false;
             // 
             // btnApplyTheme
             // 
-            this.btnApplyTheme.Location = new System.Drawing.Point(39, 43);
+            this.btnApplyTheme.Location = new System.Drawing.Point(6, 46);
             this.btnApplyTheme.Name = "btnApplyTheme";
-            this.btnApplyTheme.Size = new System.Drawing.Size(75, 23);
+            this.btnApplyTheme.Size = new System.Drawing.Size(105, 23);
             this.btnApplyTheme.TabIndex = 1;
             this.btnApplyTheme.Text = "Apply";
             this.btnApplyTheme.UseVisualStyleBackColor = true;
             this.btnApplyTheme.Click += new System.EventHandler(this.BtnApplyTheme_Click);
             // 
-            // lblComboBoxName
-            // 
-            this.lblComboBoxName.AutoSize = true;
-            this.lblComboBoxName.Location = new System.Drawing.Point(3, 0);
-            this.lblComboBoxName.Name = "lblComboBoxName";
-            this.lblComboBoxName.Size = new System.Drawing.Size(76, 13);
-            this.lblComboBoxName.TabIndex = 0;
-            this.lblComboBoxName.Text = "Select Theme:";
-            // 
             // comboBoxTheme
             // 
             this.comboBoxTheme.FormattingEnabled = true;
-            this.comboBoxTheme.Location = new System.Drawing.Point(3, 16);
+            this.comboBoxTheme.Location = new System.Drawing.Point(6, 19);
             this.comboBoxTheme.Name = "comboBoxTheme";
-            this.comboBoxTheme.Size = new System.Drawing.Size(111, 21);
+            this.comboBoxTheme.Size = new System.Drawing.Size(105, 21);
             this.comboBoxTheme.TabIndex = 0;
             this.comboBoxTheme.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTheme_SelectedIndexChanged);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(6, 457);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(105, 23);
+            this.btnDelete.TabIndex = 1;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // tabControl
             // 
@@ -391,33 +404,9 @@
             // 
             // tabPageDesign
             // 
-            this.tabPageDesign.Controls.Add(this.lblOrqRGB);
-            this.tabPageDesign.Controls.Add(this.lblSongRDB);
-            this.tabPageDesign.Controls.Add(this.lblRGBMain);
-            this.tabPageDesign.Controls.Add(this.comboBoxAlbumSource);
-            this.tabPageDesign.Controls.Add(this.checkBoxOrqInfo);
-            this.tabPageDesign.Controls.Add(this.checkBoxNextTanda);
-            this.tabPageDesign.Controls.Add(this.lblImagePosition);
-            this.tabPageDesign.Controls.Add(this.textBoxImagePosition);
-            this.tabPageDesign.Controls.Add(this.btnOrqPanelBGColor);
-            this.tabPageDesign.Controls.Add(this.btnSongPanelBGColor);
-            this.tabPageDesign.Controls.Add(this.btnMaioFormBGColor);
-            this.tabPageDesign.Controls.Add(this.textBoxOrqPanelBGColor);
-            this.tabPageDesign.Controls.Add(this.textBoxSongPanelBGColor);
-            this.tabPageDesign.Controls.Add(this.textBoxMainFormBGColor);
-            this.tabPageDesign.Controls.Add(this.lblSNText);
-            this.tabPageDesign.Controls.Add(this.textBoxSNText);
-            this.tabPageDesign.Controls.Add(this.lblSNModeExplain);
-            this.tabPageDesign.Controls.Add(this.comboBoxSongNumberMode);
-            this.tabPageDesign.Controls.Add(this.lblSongAlbumInfo);
-            this.tabPageDesign.Controls.Add(this.lblSongNumberText);
-            this.tabPageDesign.Controls.Add(this.lblSongNumbersMode);
-            this.tabPageDesign.Controls.Add(this.lblImgPosition);
-            this.tabPageDesign.Controls.Add(this.lblOrqBGColor);
-            this.tabPageDesign.Controls.Add(this.lblSongBGColor);
-            this.tabPageDesign.Controls.Add(this.lblFormBGColor);
-            this.tabPageDesign.Controls.Add(this.textBoxThemeName);
-            this.tabPageDesign.Controls.Add(this.lblThemeName);
+            this.tabPageDesign.Controls.Add(this.groupBox4);
+            this.tabPageDesign.Controls.Add(this.groupBox3);
+            this.tabPageDesign.Controls.Add(this.groupBox2);
             this.tabPageDesign.Location = new System.Drawing.Point(4, 22);
             this.tabPageDesign.Name = "tabPageDesign";
             this.tabPageDesign.Padding = new System.Windows.Forms.Padding(3);
@@ -426,157 +415,56 @@
             this.tabPageDesign.Text = "Design";
             this.tabPageDesign.UseVisualStyleBackColor = true;
             // 
-            // lblOrqRGB
+            // groupBox4
             // 
-            this.lblOrqRGB.AutoSize = true;
-            this.lblOrqRGB.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblOrqRGB.Location = new System.Drawing.Point(412, 154);
-            this.lblOrqRGB.Name = "lblOrqRGB";
-            this.lblOrqRGB.Size = new System.Drawing.Size(36, 13);
-            this.lblOrqRGB.TabIndex = 29;
-            this.lblOrqRGB.Text = "R,G,B";
+            this.groupBox4.Controls.Add(this.textBoxThemeName);
+            this.groupBox4.Controls.Add(this.lblThemeName);
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox4.Location = new System.Drawing.Point(6, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(653, 60);
+            this.groupBox4.TabIndex = 32;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Theme Name";
             // 
-            // lblSongRDB
+            // textBoxThemeName
             // 
-            this.lblSongRDB.AutoSize = true;
-            this.lblSongRDB.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblSongRDB.Location = new System.Drawing.Point(412, 106);
-            this.lblSongRDB.Name = "lblSongRDB";
-            this.lblSongRDB.Size = new System.Drawing.Size(36, 13);
-            this.lblSongRDB.TabIndex = 28;
-            this.lblSongRDB.Text = "R,G,B";
+            this.textBoxThemeName.Location = new System.Drawing.Point(79, 21);
+            this.textBoxThemeName.Name = "textBoxThemeName";
+            this.textBoxThemeName.Size = new System.Drawing.Size(149, 20);
+            this.textBoxThemeName.TabIndex = 1;
             // 
-            // lblRGBMain
+            // lblThemeName
             // 
-            this.lblRGBMain.AutoSize = true;
-            this.lblRGBMain.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblRGBMain.Location = new System.Drawing.Point(412, 59);
-            this.lblRGBMain.Name = "lblRGBMain";
-            this.lblRGBMain.Size = new System.Drawing.Size(36, 13);
-            this.lblRGBMain.TabIndex = 27;
-            this.lblRGBMain.Text = "R,G,B";
+            this.lblThemeName.AutoSize = true;
+            this.lblThemeName.Location = new System.Drawing.Point(29, 24);
+            this.lblThemeName.Name = "lblThemeName";
+            this.lblThemeName.Size = new System.Drawing.Size(38, 13);
+            this.lblThemeName.TabIndex = 0;
+            this.lblThemeName.Text = "Name:";
             // 
-            // comboBoxAlbumSource
+            // groupBox3
             // 
-            this.comboBoxAlbumSource.FormattingEnabled = true;
-            this.comboBoxAlbumSource.Location = new System.Drawing.Point(415, 18);
-            this.comboBoxAlbumSource.Name = "comboBoxAlbumSource";
-            this.comboBoxAlbumSource.Size = new System.Drawing.Size(164, 21);
-            this.comboBoxAlbumSource.TabIndex = 25;
-            // 
-            // checkBoxOrqInfo
-            // 
-            this.checkBoxOrqInfo.AutoSize = true;
-            this.checkBoxOrqInfo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxOrqInfo.Location = new System.Drawing.Point(39, 308);
-            this.checkBoxOrqInfo.Name = "checkBoxOrqInfo";
-            this.checkBoxOrqInfo.Size = new System.Drawing.Size(129, 17);
-            this.checkBoxOrqInfo.TabIndex = 24;
-            this.checkBoxOrqInfo.Text = "Orquestra Info Visible:";
-            this.checkBoxOrqInfo.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxNextTanda
-            // 
-            this.checkBoxNextTanda.AutoSize = true;
-            this.checkBoxNextTanda.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxNextTanda.Location = new System.Drawing.Point(29, 261);
-            this.checkBoxNextTanda.Name = "checkBoxNextTanda";
-            this.checkBoxNextTanda.Size = new System.Drawing.Size(139, 17);
-            this.checkBoxNextTanda.TabIndex = 23;
-            this.checkBoxNextTanda.Text = "Next Tanda Info Visible:";
-            this.checkBoxNextTanda.UseVisualStyleBackColor = true;
-            // 
-            // lblImagePosition
-            // 
-            this.lblImagePosition.AutoSize = true;
-            this.lblImagePosition.Location = new System.Drawing.Point(171, 207);
-            this.lblImagePosition.Name = "lblImagePosition";
-            this.lblImagePosition.Size = new System.Drawing.Size(177, 13);
-            this.lblImagePosition.TabIndex = 22;
-            this.lblImagePosition.Text = "Value between 0 and 1, 0.5 - middle";
-            // 
-            // textBoxImagePosition
-            // 
-            this.textBoxImagePosition.Location = new System.Drawing.Point(124, 204);
-            this.textBoxImagePosition.Name = "textBoxImagePosition";
-            this.textBoxImagePosition.Size = new System.Drawing.Size(31, 20);
-            this.textBoxImagePosition.TabIndex = 21;
-            // 
-            // btnOrqPanelBGColor
-            // 
-            this.btnOrqPanelBGColor.Location = new System.Drawing.Point(504, 149);
-            this.btnOrqPanelBGColor.Name = "btnOrqPanelBGColor";
-            this.btnOrqPanelBGColor.Size = new System.Drawing.Size(75, 23);
-            this.btnOrqPanelBGColor.TabIndex = 20;
-            this.btnOrqPanelBGColor.Text = "Color";
-            this.btnOrqPanelBGColor.UseVisualStyleBackColor = true;
-            this.btnOrqPanelBGColor.Click += new System.EventHandler(this.BtnOrqPanelBGColor_Click);
-            // 
-            // btnSongPanelBGColor
-            // 
-            this.btnSongPanelBGColor.Location = new System.Drawing.Point(504, 101);
-            this.btnSongPanelBGColor.Name = "btnSongPanelBGColor";
-            this.btnSongPanelBGColor.Size = new System.Drawing.Size(75, 23);
-            this.btnSongPanelBGColor.TabIndex = 19;
-            this.btnSongPanelBGColor.Text = "Color";
-            this.btnSongPanelBGColor.UseVisualStyleBackColor = true;
-            this.btnSongPanelBGColor.Click += new System.EventHandler(this.BtnSongPanelBGColor_Click);
-            // 
-            // btnMaioFormBGColor
-            // 
-            this.btnMaioFormBGColor.Location = new System.Drawing.Point(504, 54);
-            this.btnMaioFormBGColor.Name = "btnMaioFormBGColor";
-            this.btnMaioFormBGColor.Size = new System.Drawing.Size(75, 23);
-            this.btnMaioFormBGColor.TabIndex = 18;
-            this.btnMaioFormBGColor.Text = "Color";
-            this.btnMaioFormBGColor.UseVisualStyleBackColor = true;
-            this.btnMaioFormBGColor.Click += new System.EventHandler(this.BtnMaioFormBGColor_Click);
-            // 
-            // textBoxOrqPanelBGColor
-            // 
-            this.textBoxOrqPanelBGColor.Location = new System.Drawing.Point(214, 151);
-            this.textBoxOrqPanelBGColor.Name = "textBoxOrqPanelBGColor";
-            this.textBoxOrqPanelBGColor.Size = new System.Drawing.Size(181, 20);
-            this.textBoxOrqPanelBGColor.TabIndex = 17;
-            // 
-            // textBoxSongPanelBGColor
-            // 
-            this.textBoxSongPanelBGColor.Location = new System.Drawing.Point(214, 103);
-            this.textBoxSongPanelBGColor.Name = "textBoxSongPanelBGColor";
-            this.textBoxSongPanelBGColor.Size = new System.Drawing.Size(181, 20);
-            this.textBoxSongPanelBGColor.TabIndex = 16;
-            // 
-            // textBoxMainFormBGColor
-            // 
-            this.textBoxMainFormBGColor.Location = new System.Drawing.Point(214, 57);
-            this.textBoxMainFormBGColor.Name = "textBoxMainFormBGColor";
-            this.textBoxMainFormBGColor.Size = new System.Drawing.Size(181, 20);
-            this.textBoxMainFormBGColor.TabIndex = 15;
-            // 
-            // lblSNText
-            // 
-            this.lblSNText.AutoSize = true;
-            this.lblSNText.Location = new System.Drawing.Point(248, 400);
-            this.lblSNText.Name = "lblSNText";
-            this.lblSNText.Size = new System.Drawing.Size(133, 13);
-            this.lblSNText.TabIndex = 14;
-            this.lblSNText.Text = "\"of\", \"out of\", \"/\" or empty";
-            // 
-            // textBoxSNText
-            // 
-            this.textBoxSNText.Location = new System.Drawing.Point(142, 397);
-            this.textBoxSNText.Name = "textBoxSNText";
-            this.textBoxSNText.Size = new System.Drawing.Size(100, 20);
-            this.textBoxSNText.TabIndex = 13;
-            // 
-            // lblSNModeExplain
-            // 
-            this.lblSNModeExplain.AutoSize = true;
-            this.lblSNModeExplain.Location = new System.Drawing.Point(195, 364);
-            this.lblSNModeExplain.Name = "lblSNModeExplain";
-            this.lblSNModeExplain.Size = new System.Drawing.Size(188, 13);
-            this.lblSNModeExplain.TabIndex = 12;
-            this.lblSNModeExplain.Text = "0 - invisible; 1 - three rows; 2 - one row";
+            this.groupBox3.Controls.Add(this.comboBoxSongNumberMode);
+            this.groupBox3.Controls.Add(this.lblSongNumbersMode);
+            this.groupBox3.Controls.Add(this.comboBoxAlbumSource);
+            this.groupBox3.Controls.Add(this.lblSongNumberText);
+            this.groupBox3.Controls.Add(this.lblSongAlbumInfo);
+            this.groupBox3.Controls.Add(this.lblImagePosition);
+            this.groupBox3.Controls.Add(this.checkBoxOrqInfo);
+            this.groupBox3.Controls.Add(this.textBoxImagePosition);
+            this.groupBox3.Controls.Add(this.lblSNModeExplain);
+            this.groupBox3.Controls.Add(this.lblImgPosition);
+            this.groupBox3.Controls.Add(this.checkBoxNextTanda);
+            this.groupBox3.Controls.Add(this.textBoxSNText);
+            this.groupBox3.Controls.Add(this.lblSNText);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox3.Location = new System.Drawing.Point(6, 72);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(653, 235);
+            this.groupBox3.TabIndex = 31;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "General Design and Info";
             // 
             // comboBoxSongNumberMode
             // 
@@ -585,89 +473,253 @@
             "0",
             "1",
             "2"});
-            this.comboBoxSongNumberMode.Location = new System.Drawing.Point(142, 361);
+            this.comboBoxSongNumberMode.Location = new System.Drawing.Point(160, 151);
             this.comboBoxSongNumberMode.Name = "comboBoxSongNumberMode";
             this.comboBoxSongNumberMode.Size = new System.Drawing.Size(47, 21);
             this.comboBoxSongNumberMode.TabIndex = 11;
             // 
-            // lblSongAlbumInfo
-            // 
-            this.lblSongAlbumInfo.AutoSize = true;
-            this.lblSongAlbumInfo.Location = new System.Drawing.Point(284, 21);
-            this.lblSongAlbumInfo.Name = "lblSongAlbumInfo";
-            this.lblSongAlbumInfo.Size = new System.Drawing.Size(125, 13);
-            this.lblSongAlbumInfo.TabIndex = 10;
-            this.lblSongAlbumInfo.Text = "Song Album Info Source:";
-            // 
-            // lblSongNumberText
-            // 
-            this.lblSongNumberText.AutoSize = true;
-            this.lblSongNumberText.Location = new System.Drawing.Point(26, 400);
-            this.lblSongNumberText.Name = "lblSongNumberText";
-            this.lblSongNumberText.Size = new System.Drawing.Size(104, 13);
-            this.lblSongNumberText.TabIndex = 9;
-            this.lblSongNumberText.Text = "Song Numbers Text:";
-            // 
             // lblSongNumbersMode
             // 
             this.lblSongNumbersMode.AutoSize = true;
-            this.lblSongNumbersMode.Location = new System.Drawing.Point(26, 364);
+            this.lblSongNumbersMode.Location = new System.Drawing.Point(29, 154);
             this.lblSongNumbersMode.Name = "lblSongNumbersMode";
             this.lblSongNumbersMode.Size = new System.Drawing.Size(110, 13);
             this.lblSongNumbersMode.TabIndex = 8;
             this.lblSongNumbersMode.Text = "Song Numbers Mode:";
             // 
+            // comboBoxAlbumSource
+            // 
+            this.comboBoxAlbumSource.FormattingEnabled = true;
+            this.comboBoxAlbumSource.Items.AddRange(new object[] {
+            "Album tag",
+            "Conductor tag"});
+            this.comboBoxAlbumSource.Location = new System.Drawing.Point(160, 30);
+            this.comboBoxAlbumSource.Name = "comboBoxAlbumSource";
+            this.comboBoxAlbumSource.Size = new System.Drawing.Size(164, 21);
+            this.comboBoxAlbumSource.TabIndex = 25;
+            // 
+            // lblSongNumberText
+            // 
+            this.lblSongNumberText.AutoSize = true;
+            this.lblSongNumberText.Location = new System.Drawing.Point(29, 193);
+            this.lblSongNumberText.Name = "lblSongNumberText";
+            this.lblSongNumberText.Size = new System.Drawing.Size(104, 13);
+            this.lblSongNumberText.TabIndex = 9;
+            this.lblSongNumberText.Text = "Song Numbers Text:";
+            // 
+            // lblSongAlbumInfo
+            // 
+            this.lblSongAlbumInfo.AutoSize = true;
+            this.lblSongAlbumInfo.Location = new System.Drawing.Point(29, 33);
+            this.lblSongAlbumInfo.Name = "lblSongAlbumInfo";
+            this.lblSongAlbumInfo.Size = new System.Drawing.Size(125, 13);
+            this.lblSongAlbumInfo.TabIndex = 10;
+            this.lblSongAlbumInfo.Text = "Song Album Info Source:";
+            // 
+            // lblImagePosition
+            // 
+            this.lblImagePosition.AutoSize = true;
+            this.lblImagePosition.Location = new System.Drawing.Point(219, 74);
+            this.lblImagePosition.Name = "lblImagePosition";
+            this.lblImagePosition.Size = new System.Drawing.Size(177, 13);
+            this.lblImagePosition.TabIndex = 22;
+            this.lblImagePosition.Text = "Value between 0 and 1, 0.5 - middle";
+            // 
+            // checkBoxOrqInfo
+            // 
+            this.checkBoxOrqInfo.AutoSize = true;
+            this.checkBoxOrqInfo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxOrqInfo.Location = new System.Drawing.Point(222, 112);
+            this.checkBoxOrqInfo.Name = "checkBoxOrqInfo";
+            this.checkBoxOrqInfo.Size = new System.Drawing.Size(129, 17);
+            this.checkBoxOrqInfo.TabIndex = 24;
+            this.checkBoxOrqInfo.Text = "Orquestra Info Visible:";
+            this.checkBoxOrqInfo.UseVisualStyleBackColor = true;
+            // 
+            // textBoxImagePosition
+            // 
+            this.textBoxImagePosition.Location = new System.Drawing.Point(160, 71);
+            this.textBoxImagePosition.Name = "textBoxImagePosition";
+            this.textBoxImagePosition.Size = new System.Drawing.Size(31, 20);
+            this.textBoxImagePosition.TabIndex = 21;
+            // 
+            // lblSNModeExplain
+            // 
+            this.lblSNModeExplain.AutoSize = true;
+            this.lblSNModeExplain.Location = new System.Drawing.Point(219, 154);
+            this.lblSNModeExplain.Name = "lblSNModeExplain";
+            this.lblSNModeExplain.Size = new System.Drawing.Size(188, 13);
+            this.lblSNModeExplain.TabIndex = 12;
+            this.lblSNModeExplain.Text = "0 - invisible; 1 - three rows; 2 - one row";
+            // 
             // lblImgPosition
             // 
             this.lblImgPosition.AutoSize = true;
-            this.lblImgPosition.Location = new System.Drawing.Point(26, 207);
+            this.lblImgPosition.Location = new System.Drawing.Point(29, 74);
             this.lblImgPosition.Name = "lblImgPosition";
             this.lblImgPosition.Size = new System.Drawing.Size(79, 13);
             this.lblImgPosition.TabIndex = 5;
             this.lblImgPosition.Text = "Image Position:";
             // 
+            // checkBoxNextTanda
+            // 
+            this.checkBoxNextTanda.AutoSize = true;
+            this.checkBoxNextTanda.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxNextTanda.Location = new System.Drawing.Point(28, 112);
+            this.checkBoxNextTanda.Name = "checkBoxNextTanda";
+            this.checkBoxNextTanda.Size = new System.Drawing.Size(148, 17);
+            this.checkBoxNextTanda.TabIndex = 23;
+            this.checkBoxNextTanda.Text = "Next Tanda Info Visible:   ";
+            this.checkBoxNextTanda.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSNText
+            // 
+            this.textBoxSNText.Location = new System.Drawing.Point(160, 190);
+            this.textBoxSNText.Name = "textBoxSNText";
+            this.textBoxSNText.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSNText.TabIndex = 13;
+            // 
+            // lblSNText
+            // 
+            this.lblSNText.AutoSize = true;
+            this.lblSNText.Location = new System.Drawing.Point(274, 193);
+            this.lblSNText.Name = "lblSNText";
+            this.lblSNText.Size = new System.Drawing.Size(133, 13);
+            this.lblSNText.TabIndex = 14;
+            this.lblSNText.Text = "\"of\", \"out of\", \"/\" or empty";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblOrqBGColor);
+            this.groupBox2.Controls.Add(this.lblRGBMain);
+            this.groupBox2.Controls.Add(this.lblSongRDB);
+            this.groupBox2.Controls.Add(this.lblOrqRGB);
+            this.groupBox2.Controls.Add(this.textBoxOrqPanelBGColor);
+            this.groupBox2.Controls.Add(this.btnOrqPanelBGColor);
+            this.groupBox2.Controls.Add(this.lblSongBGColor);
+            this.groupBox2.Controls.Add(this.textBoxSongPanelBGColor);
+            this.groupBox2.Controls.Add(this.btnMaioFormBGColor);
+            this.groupBox2.Controls.Add(this.btnSongPanelBGColor);
+            this.groupBox2.Controls.Add(this.textBoxMainFormBGColor);
+            this.groupBox2.Controls.Add(this.lblFormBGColor);
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox2.Location = new System.Drawing.Point(6, 310);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(653, 148);
+            this.groupBox2.TabIndex = 30;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Backgroung Colors";
+            // 
             // lblOrqBGColor
             // 
             this.lblOrqBGColor.AutoSize = true;
-            this.lblOrqBGColor.Location = new System.Drawing.Point(26, 154);
+            this.lblOrqBGColor.Location = new System.Drawing.Point(29, 113);
             this.lblOrqBGColor.Name = "lblOrqBGColor";
             this.lblOrqBGColor.Size = new System.Drawing.Size(173, 13);
             this.lblOrqBGColor.TabIndex = 4;
             this.lblOrqBGColor.Text = "Orquestra (Bottom Panel) BG Color:";
             // 
+            // lblRGBMain
+            // 
+            this.lblRGBMain.AutoSize = true;
+            this.lblRGBMain.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblRGBMain.Location = new System.Drawing.Point(420, 28);
+            this.lblRGBMain.Name = "lblRGBMain";
+            this.lblRGBMain.Size = new System.Drawing.Size(36, 13);
+            this.lblRGBMain.TabIndex = 27;
+            this.lblRGBMain.Text = "R,G,B";
+            // 
+            // lblSongRDB
+            // 
+            this.lblSongRDB.AutoSize = true;
+            this.lblSongRDB.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblSongRDB.Location = new System.Drawing.Point(420, 73);
+            this.lblSongRDB.Name = "lblSongRDB";
+            this.lblSongRDB.Size = new System.Drawing.Size(36, 13);
+            this.lblSongRDB.TabIndex = 28;
+            this.lblSongRDB.Text = "R,G,B";
+            // 
+            // lblOrqRGB
+            // 
+            this.lblOrqRGB.AutoSize = true;
+            this.lblOrqRGB.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblOrqRGB.Location = new System.Drawing.Point(420, 115);
+            this.lblOrqRGB.Name = "lblOrqRGB";
+            this.lblOrqRGB.Size = new System.Drawing.Size(36, 13);
+            this.lblOrqRGB.TabIndex = 29;
+            this.lblOrqRGB.Text = "R,G,B";
+            // 
+            // textBoxOrqPanelBGColor
+            // 
+            this.textBoxOrqPanelBGColor.Enabled = false;
+            this.textBoxOrqPanelBGColor.Location = new System.Drawing.Point(222, 110);
+            this.textBoxOrqPanelBGColor.Name = "textBoxOrqPanelBGColor";
+            this.textBoxOrqPanelBGColor.Size = new System.Drawing.Size(181, 20);
+            this.textBoxOrqPanelBGColor.TabIndex = 17;
+            // 
+            // btnOrqPanelBGColor
+            // 
+            this.btnOrqPanelBGColor.Location = new System.Drawing.Point(512, 110);
+            this.btnOrqPanelBGColor.Name = "btnOrqPanelBGColor";
+            this.btnOrqPanelBGColor.Size = new System.Drawing.Size(75, 23);
+            this.btnOrqPanelBGColor.TabIndex = 20;
+            this.btnOrqPanelBGColor.Text = "Color";
+            this.btnOrqPanelBGColor.UseVisualStyleBackColor = true;
+            this.btnOrqPanelBGColor.Click += new System.EventHandler(this.BtnOrqPanelBGColor_Click);
+            // 
             // lblSongBGColor
             // 
             this.lblSongBGColor.AutoSize = true;
-            this.lblSongBGColor.Location = new System.Drawing.Point(61, 106);
+            this.lblSongBGColor.Location = new System.Drawing.Point(29, 71);
             this.lblSongBGColor.Name = "lblSongBGColor";
             this.lblSongBGColor.Size = new System.Drawing.Size(138, 13);
             this.lblSongBGColor.TabIndex = 3;
             this.lblSongBGColor.Text = "Song (Top Panel) BG Color:";
             // 
+            // textBoxSongPanelBGColor
+            // 
+            this.textBoxSongPanelBGColor.Enabled = false;
+            this.textBoxSongPanelBGColor.Location = new System.Drawing.Point(222, 68);
+            this.textBoxSongPanelBGColor.Name = "textBoxSongPanelBGColor";
+            this.textBoxSongPanelBGColor.Size = new System.Drawing.Size(181, 20);
+            this.textBoxSongPanelBGColor.TabIndex = 16;
+            // 
+            // btnMaioFormBGColor
+            // 
+            this.btnMaioFormBGColor.Location = new System.Drawing.Point(512, 25);
+            this.btnMaioFormBGColor.Name = "btnMaioFormBGColor";
+            this.btnMaioFormBGColor.Size = new System.Drawing.Size(75, 23);
+            this.btnMaioFormBGColor.TabIndex = 18;
+            this.btnMaioFormBGColor.Text = "Color";
+            this.btnMaioFormBGColor.UseVisualStyleBackColor = true;
+            this.btnMaioFormBGColor.Click += new System.EventHandler(this.BtnMaioFormBGColor_Click);
+            // 
+            // btnSongPanelBGColor
+            // 
+            this.btnSongPanelBGColor.Location = new System.Drawing.Point(512, 68);
+            this.btnSongPanelBGColor.Name = "btnSongPanelBGColor";
+            this.btnSongPanelBGColor.Size = new System.Drawing.Size(75, 23);
+            this.btnSongPanelBGColor.TabIndex = 19;
+            this.btnSongPanelBGColor.Text = "Color";
+            this.btnSongPanelBGColor.UseVisualStyleBackColor = true;
+            this.btnSongPanelBGColor.Click += new System.EventHandler(this.BtnSongPanelBGColor_Click);
+            // 
+            // textBoxMainFormBGColor
+            // 
+            this.textBoxMainFormBGColor.Enabled = false;
+            this.textBoxMainFormBGColor.Location = new System.Drawing.Point(222, 25);
+            this.textBoxMainFormBGColor.Name = "textBoxMainFormBGColor";
+            this.textBoxMainFormBGColor.Size = new System.Drawing.Size(181, 20);
+            this.textBoxMainFormBGColor.TabIndex = 15;
+            // 
             // lblFormBGColor
             // 
             this.lblFormBGColor.AutoSize = true;
-            this.lblFormBGColor.Location = new System.Drawing.Point(121, 60);
+            this.lblFormBGColor.Location = new System.Drawing.Point(29, 28);
             this.lblFormBGColor.Name = "lblFormBGColor";
-            this.lblFormBGColor.Size = new System.Drawing.Size(78, 13);
+            this.lblFormBGColor.Size = new System.Drawing.Size(108, 13);
             this.lblFormBGColor.TabIndex = 2;
-            this.lblFormBGColor.Text = "Main BG Color:";
-            // 
-            // textBoxThemeName
-            // 
-            this.textBoxThemeName.Location = new System.Drawing.Point(106, 18);
-            this.textBoxThemeName.Name = "textBoxThemeName";
-            this.textBoxThemeName.Size = new System.Drawing.Size(149, 20);
-            this.textBoxThemeName.TabIndex = 1;
-            // 
-            // lblThemeName
-            // 
-            this.lblThemeName.AutoSize = true;
-            this.lblThemeName.Location = new System.Drawing.Point(26, 21);
-            this.lblThemeName.Name = "lblThemeName";
-            this.lblThemeName.Size = new System.Drawing.Size(74, 13);
-            this.lblThemeName.TabIndex = 0;
-            this.lblThemeName.Text = "Theme Name:";
+            this.lblFormBGColor.Text = "Main Panel BG Color:";
             // 
             // tabPageCurrentSong
             // 
@@ -685,6 +737,7 @@
             // 
             // groupBoxNextTanda
             // 
+            this.groupBoxNextTanda.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxNextTanda.Controls.Add(this.lblNextTandaFontStyleSelected);
             this.groupBoxNextTanda.Controls.Add(this.textBoxNextTandaFontSize);
             this.groupBoxNextTanda.Controls.Add(this.lbllNextTandaFontSize);
@@ -705,6 +758,7 @@
             this.groupBoxNextTanda.Controls.Add(this.lblNettTandaColor);
             this.groupBoxNextTanda.Controls.Add(this.textBoxNextTandaFont);
             this.groupBoxNextTanda.Controls.Add(this.lblNextTandaFontName);
+            this.groupBoxNextTanda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxNextTanda.Location = new System.Drawing.Point(6, 345);
             this.groupBoxNextTanda.Name = "groupBoxNextTanda";
             this.groupBoxNextTanda.Size = new System.Drawing.Size(653, 107);
@@ -793,6 +847,7 @@
             this.textBoxNextTandaHorizontalLocation.Name = "textBoxNextTandaHorizontalLocation";
             this.textBoxNextTandaHorizontalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxNextTandaHorizontalLocation.TabIndex = 15;
+            this.textBoxNextTandaHorizontalLocation.Visible = false;
             // 
             // textBoxNextTandaVerticalLocation
             // 
@@ -827,6 +882,7 @@
             this.lblNextTandaHorizontal.Size = new System.Drawing.Size(101, 13);
             this.lblNextTandaHorizontal.TabIndex = 11;
             this.lblNextTandaHorizontal.Text = "Horisontal Location:";
+            this.lblNextTandaHorizontal.Visible = false;
             // 
             // lblNextTandaVertical
             // 
@@ -891,6 +947,7 @@
             // 
             // groupBoxSongAlbum
             // 
+            this.groupBoxSongAlbum.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxSongAlbum.Controls.Add(this.lblAlbumFontStyleSelected);
             this.groupBoxSongAlbum.Controls.Add(this.textBoxAlbumFontSize);
             this.groupBoxSongAlbum.Controls.Add(this.lbllAlbumFontSize);
@@ -911,6 +968,7 @@
             this.groupBoxSongAlbum.Controls.Add(this.lblAlbumColor);
             this.groupBoxSongAlbum.Controls.Add(this.textBoxAlbumFont);
             this.groupBoxSongAlbum.Controls.Add(this.lblAlbumFontName);
+            this.groupBoxSongAlbum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxSongAlbum.Location = new System.Drawing.Point(6, 232);
             this.groupBoxSongAlbum.Name = "groupBoxSongAlbum";
             this.groupBoxSongAlbum.Size = new System.Drawing.Size(653, 107);
@@ -999,6 +1057,7 @@
             this.textBoxAlbumHorizontalLocation.Name = "textBoxAlbumHorizontalLocation";
             this.textBoxAlbumHorizontalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxAlbumHorizontalLocation.TabIndex = 15;
+            this.textBoxAlbumHorizontalLocation.Visible = false;
             // 
             // textBoxAlbumVerticalLocation
             // 
@@ -1033,6 +1092,7 @@
             this.lblAlbumHorizontal.Size = new System.Drawing.Size(101, 13);
             this.lblAlbumHorizontal.TabIndex = 11;
             this.lblAlbumHorizontal.Text = "Horisontal Location:";
+            this.lblAlbumHorizontal.Visible = false;
             // 
             // lblAlbumVertical
             // 
@@ -1097,6 +1157,7 @@
             // 
             // groupBoxSongTitle
             // 
+            this.groupBoxSongTitle.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxSongTitle.Controls.Add(this.lblTitleFontStyleSelected);
             this.groupBoxSongTitle.Controls.Add(this.textBoxTitleFontSize);
             this.groupBoxSongTitle.Controls.Add(this.lbllTitleFontSize);
@@ -1117,6 +1178,7 @@
             this.groupBoxSongTitle.Controls.Add(this.lblTitleColor);
             this.groupBoxSongTitle.Controls.Add(this.textBoxTitleFont);
             this.groupBoxSongTitle.Controls.Add(this.lblTitleFontName);
+            this.groupBoxSongTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxSongTitle.Location = new System.Drawing.Point(6, 119);
             this.groupBoxSongTitle.Name = "groupBoxSongTitle";
             this.groupBoxSongTitle.Size = new System.Drawing.Size(653, 107);
@@ -1205,6 +1267,7 @@
             this.textBoxTitleHorizontalLocation.Name = "textBoxTitleHorizontalLocation";
             this.textBoxTitleHorizontalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxTitleHorizontalLocation.TabIndex = 15;
+            this.textBoxTitleHorizontalLocation.Visible = false;
             // 
             // textBoxTitleVerticalLocation
             // 
@@ -1239,6 +1302,7 @@
             this.lblTitleHorizontal.Size = new System.Drawing.Size(101, 13);
             this.lblTitleHorizontal.TabIndex = 11;
             this.lblTitleHorizontal.Text = "Horisontal Location:";
+            this.lblTitleHorizontal.Visible = false;
             // 
             // lblTandaVertical
             // 
@@ -1303,6 +1367,7 @@
             // 
             // groupBoxSongArtist
             // 
+            this.groupBoxSongArtist.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxSongArtist.Controls.Add(this.lblArtistFontStyleSelected);
             this.groupBoxSongArtist.Controls.Add(this.textBoxArtistFontSize);
             this.groupBoxSongArtist.Controls.Add(this.lbllArtistFontSize);
@@ -1323,6 +1388,7 @@
             this.groupBoxSongArtist.Controls.Add(this.lblArtistColor);
             this.groupBoxSongArtist.Controls.Add(this.textBoxArtistFont);
             this.groupBoxSongArtist.Controls.Add(this.lblArtistFontName);
+            this.groupBoxSongArtist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxSongArtist.Location = new System.Drawing.Point(6, 6);
             this.groupBoxSongArtist.Name = "groupBoxSongArtist";
             this.groupBoxSongArtist.Size = new System.Drawing.Size(653, 107);
@@ -1382,15 +1448,6 @@
             this.comboBoxArtistAlignment.Size = new System.Drawing.Size(182, 21);
             this.comboBoxArtistAlignment.TabIndex = 19;
             // 
-            // lblArtistAlignment
-            // 
-            this.lblArtistAlignment.AutoSize = true;
-            this.lblArtistAlignment.Location = new System.Drawing.Point(347, 29);
-            this.lblArtistAlignment.Name = "lblArtistAlignment";
-            this.lblArtistAlignment.Size = new System.Drawing.Size(96, 13);
-            this.lblArtistAlignment.TabIndex = 18;
-            this.lblArtistAlignment.Text = "Content Alignment:";
-            // 
             // textBoxArtistWidth
             // 
             this.textBoxArtistWidth.Location = new System.Drawing.Point(606, 79);
@@ -1404,6 +1461,15 @@
             this.textBoxArtistHight.Name = "textBoxArtistHight";
             this.textBoxArtistHight.Size = new System.Drawing.Size(41, 20);
             this.textBoxArtistHight.TabIndex = 16;
+            // 
+            // lblArtistAlignment
+            // 
+            this.lblArtistAlignment.AutoSize = true;
+            this.lblArtistAlignment.Location = new System.Drawing.Point(347, 29);
+            this.lblArtistAlignment.Name = "lblArtistAlignment";
+            this.lblArtistAlignment.Size = new System.Drawing.Size(96, 13);
+            this.lblArtistAlignment.TabIndex = 18;
+            this.lblArtistAlignment.Text = "Content Alignment:";
             // 
             // textBoxArtistHorizontalLocation
             // 
@@ -1460,7 +1526,7 @@
             // 
             // btnArtistColor
             // 
-            this.btnArtistColor.Location = new System.Drawing.Point(178, 52);
+            this.btnArtistColor.Location = new System.Drawing.Point(178, 50);
             this.btnArtistColor.Name = "btnArtistColor";
             this.btnArtistColor.Size = new System.Drawing.Size(96, 23);
             this.btnArtistColor.TabIndex = 9;
@@ -1526,9 +1592,11 @@
             // 
             // groupBoxOrqHLocation
             // 
+            this.groupBoxOrqHLocation.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxOrqHLocation.Controls.Add(this.lblOrqHlocationExplanation);
             this.groupBoxOrqHLocation.Controls.Add(this.lblOrq1Horizontal);
             this.groupBoxOrqHLocation.Controls.Add(this.textBoxOrq1HLocation);
+            this.groupBoxOrqHLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxOrqHLocation.Location = new System.Drawing.Point(6, 405);
             this.groupBoxOrqHLocation.Name = "groupBoxOrqHLocation";
             this.groupBoxOrqHLocation.Size = new System.Drawing.Size(653, 53);
@@ -1564,6 +1632,7 @@
             // 
             // groupBoxOrq3
             // 
+            this.groupBoxOrq3.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxOrq3.Controls.Add(this.lblOrq3FontStyleSelected);
             this.groupBoxOrq3.Controls.Add(this.textBoxOrq3FontSize);
             this.groupBoxOrq3.Controls.Add(this.lblOrq3FontSize);
@@ -1584,6 +1653,7 @@
             this.groupBoxOrq3.Controls.Add(this.lblOrq3Color);
             this.groupBoxOrq3.Controls.Add(this.textBoxOrq3Font);
             this.groupBoxOrq3.Controls.Add(this.lblOrq3Font);
+            this.groupBoxOrq3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxOrq3.Location = new System.Drawing.Point(6, 272);
             this.groupBoxOrq3.Name = "groupBoxOrq3";
             this.groupBoxOrq3.Size = new System.Drawing.Size(653, 127);
@@ -1773,6 +1843,7 @@
             // 
             // groupBoxOrq2
             // 
+            this.groupBoxOrq2.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxOrq2.Controls.Add(this.lblOrq2FontStyleSelected);
             this.groupBoxOrq2.Controls.Add(this.textBoxOrq2FontSize);
             this.groupBoxOrq2.Controls.Add(this.lblOrq2FontSize);
@@ -1793,6 +1864,7 @@
             this.groupBoxOrq2.Controls.Add(this.lblOrq2Color);
             this.groupBoxOrq2.Controls.Add(this.textBoxOrq2Font);
             this.groupBoxOrq2.Controls.Add(this.lblOrq2Font);
+            this.groupBoxOrq2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxOrq2.Location = new System.Drawing.Point(6, 139);
             this.groupBoxOrq2.Name = "groupBoxOrq2";
             this.groupBoxOrq2.Size = new System.Drawing.Size(653, 127);
@@ -1982,6 +2054,7 @@
             // 
             // groupBoxOrq1
             // 
+            this.groupBoxOrq1.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxOrq1.Controls.Add(this.lblOrq1FontStyleSelected);
             this.groupBoxOrq1.Controls.Add(this.textBoxOrq1FontSize);
             this.groupBoxOrq1.Controls.Add(this.lblOrq1FontSize);
@@ -2000,6 +2073,7 @@
             this.groupBoxOrq1.Controls.Add(this.lblOrq1Color);
             this.groupBoxOrq1.Controls.Add(this.textBoxOrq1Font);
             this.groupBoxOrq1.Controls.Add(this.lblOrq1Font);
+            this.groupBoxOrq1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxOrq1.Location = new System.Drawing.Point(6, 6);
             this.groupBoxOrq1.Name = "groupBoxOrq1";
             this.groupBoxOrq1.Size = new System.Drawing.Size(653, 127);
@@ -2184,9 +2258,11 @@
             // 
             // groupBoxSNHLocation
             // 
+            this.groupBoxSNHLocation.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxSNHLocation.Controls.Add(this.label1);
             this.groupBoxSNHLocation.Controls.Add(this.textBoxSN1HLocation);
             this.groupBoxSNHLocation.Controls.Add(this.lblSN1Horizontal);
+            this.groupBoxSNHLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxSNHLocation.Location = new System.Drawing.Point(6, 407);
             this.groupBoxSNHLocation.Name = "groupBoxSNHLocation";
             this.groupBoxSNHLocation.Size = new System.Drawing.Size(653, 51);
@@ -2223,6 +2299,7 @@
             // 
             // groupBoxSongNumber3
             // 
+            this.groupBoxSongNumber3.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxSongNumber3.Controls.Add(this.lblSN3FontStyleSelected);
             this.groupBoxSongNumber3.Controls.Add(this.textBoxSN3FontSize);
             this.groupBoxSongNumber3.Controls.Add(this.lblSN3FontSize);
@@ -2243,6 +2320,7 @@
             this.groupBoxSongNumber3.Controls.Add(this.lblSN3Color);
             this.groupBoxSongNumber3.Controls.Add(this.textBoxSN3Font);
             this.groupBoxSongNumber3.Controls.Add(this.lblSN3Font);
+            this.groupBoxSongNumber3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxSongNumber3.Location = new System.Drawing.Point(6, 272);
             this.groupBoxSongNumber3.Name = "groupBoxSongNumber3";
             this.groupBoxSongNumber3.Size = new System.Drawing.Size(653, 127);
@@ -2432,6 +2510,7 @@
             // 
             // groupBoxSongNumber2
             // 
+            this.groupBoxSongNumber2.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxSongNumber2.Controls.Add(this.lblSN2FontStyleSelected);
             this.groupBoxSongNumber2.Controls.Add(this.textBoxSN2FontSize);
             this.groupBoxSongNumber2.Controls.Add(this.lblSN2FontSize);
@@ -2452,6 +2531,7 @@
             this.groupBoxSongNumber2.Controls.Add(this.lblSN2Color);
             this.groupBoxSongNumber2.Controls.Add(this.textBoxSN2Font);
             this.groupBoxSongNumber2.Controls.Add(this.lblSN2Font);
+            this.groupBoxSongNumber2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxSongNumber2.Location = new System.Drawing.Point(6, 139);
             this.groupBoxSongNumber2.Name = "groupBoxSongNumber2";
             this.groupBoxSongNumber2.Size = new System.Drawing.Size(653, 127);
@@ -2641,6 +2721,7 @@
             // 
             // groupBoxSongNumber1
             // 
+            this.groupBoxSongNumber1.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxSongNumber1.Controls.Add(this.lblSN1FontStyleSelected);
             this.groupBoxSongNumber1.Controls.Add(this.textBoxSN1FontSize);
             this.groupBoxSongNumber1.Controls.Add(this.lblSN1FontSize);
@@ -2659,6 +2740,7 @@
             this.groupBoxSongNumber1.Controls.Add(this.lblSN1Color);
             this.groupBoxSongNumber1.Controls.Add(this.textBoxSN1Font);
             this.groupBoxSongNumber1.Controls.Add(this.lblSN1Font);
+            this.groupBoxSongNumber1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxSongNumber1.Location = new System.Drawing.Point(6, 6);
             this.groupBoxSongNumber1.Name = "groupBoxSongNumber1";
             this.groupBoxSongNumber1.Size = new System.Drawing.Size(653, 127);
@@ -2835,16 +2917,23 @@
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MediaInfoSettings";
             this.Text = "Media Info Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MediaInfoSettings_FormClosing);
             this.Load += new System.EventHandler(this.MediaInfoSettings_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabPageDesign.ResumeLayout(false);
-            this.tabPageDesign.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabPageCurrentSong.ResumeLayout(false);
             this.groupBoxNextTanda.ResumeLayout(false);
             this.groupBoxNextTanda.PerformLayout();
@@ -2906,9 +2995,8 @@
         private System.Windows.Forms.Button btnApplyTheme;
         private System.Windows.Forms.TabPage tabPageOrquestra;
         private System.Windows.Forms.TabPage tabPageSongNumbers;
-        private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ComboBox comboBoxArtistAlignment;
         private System.Windows.Forms.Label lblArtistAlignment;
         private System.Windows.Forms.Label lblThemeName;
@@ -3133,5 +3221,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxSN1HLocation;
         private System.Windows.Forms.Label lblSN1Horizontal;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

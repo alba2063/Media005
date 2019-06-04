@@ -13,6 +13,7 @@ namespace MediaInfo
         public BlackTheme()
         {
             base.ThemeName              = "Black";                              //Name of the theme
+            base.AlbumSource            = 0;                                    //Source of Album label (0 - Album tag, 1 - Conductor Tag)
             base.FormBGColor            = new List<Int16> { 64, 64, 64 };       //Main Form BG Color
             base.SongBGColor            = new List<Int16> { 15, 15, 15 };       //Song Info (Top Panel) BG Color
             base.OrqBGColor             = new List<Int16> { 50, 50, 50 };       //Orq Info (Bottom Panel) BG Color

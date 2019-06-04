@@ -12,13 +12,15 @@ namespace MediaInfo
     class Dig
     {
         SDBApplicationClass SDB = new SDBApplicationClass();
+        Int16 albumSource;      //indicator of a source for Album label
 
-        public Song CurrentSong()
+        public Song CurrentSong(Int16 albumSource)
         {
             Song info = new Song();
             //SDB.ShutdownAfterDisconnect = false;
 
             int songIndex = SDB.Player.CurrentSongIndex;
+            this.albumSource = albumSource;
 
             info = GetSongInfo(songIndex);
             return info;
@@ -33,15 +35,11 @@ namespace MediaInfo
             int allSongCount = SDB.Player.CurrentSongList.Count;
             int songIndex = SDB.Player.CurrentSongIndex;
 
-            //int i = 0;
-            //int k = 0;
-
+            //Scan playlist to find cartina (genre is not tango, vals or milonga)
             while (songIndex < allSongCount)
             {
-                if (songIndex == allSongCount - 1)
+                if (songIndex == allSongCount - 1) //Last song in playlist
                 {
-                    //songIndex = 0; //Start from first song
-
                     info.Artist = "";
                     info.Genre = "";
 
@@ -49,31 +47,36 @@ namespace MediaInfo
                 }
                 else
                 {
+                    //read current song 
                     info = GetSongInfo(songIndex);
                     var genre = info.Genre.ToLowerInvariant();
 
+                    //If current song is cartina
                     if (!genre.Equals("tango") && !genre.Equals("vals") && !genre.Equals("milonga"))
                     {
+                        //read next song
                         songIndex += 1;
-
                         info = GetSongInfo(songIndex);
 
                         break;
                     }
 
-                    songIndex += 1;
+                    //Move to the next song in a playlist
+                    songIndex += 1; 
                 }
             }
 
             return info;
         }
 
+        //Load song info from Media Monkey API
         private Song GetSongInfo(int songIndex)
         {
             Song info = new Song();
 
             var song = SDB.Player.CurrentSongList.Item[songIndex];
             var songID = song.ID;
+            string source = "";  //Info of Album label
 
             // Title
             if (song.Title == null)
@@ -95,14 +98,23 @@ namespace MediaInfo
                 info.Artist = (song.ArtistName.ToString());
             }
 
-            // Singer
-            if (song.AlbumName == null)
+            // Album/Singer source depends on UISettings
+            if (albumSource == 0)
             {
-                info.Album = "Instrumental";
+                source = song.AlbumName;
+            }
+            else if (albumSource == 1)
+            {
+                source = song.Conductor;
+            }
+
+            if (source == string.Empty)
+            {
+                info.Album = "";
             }
             else
             {
-                info.Album = song.AlbumName.ToString();
+                info.Album = source;
             }
 
             // Genre
@@ -159,45 +171,43 @@ namespace MediaInfo
             //
             int songIndex = SDB.Player.CurrentSongIndex;
 
-            if (songIndex < SDB.Player.CurrentSongList.Count - 1)
+
+            if (songIndex >= 0)
             {
-                if (songIndex >= 0)
+                curGenre = SDB.Player.CurrentPlaylist.Item[songIndex].Genre;
+
+                if (curGenre != null)
                 {
-                    curGenre = SDB.Player.CurrentPlaylist.Item[songIndex].Genre;
+                    tot += 1;
+                    cur += 1;
 
-                    if (curGenre != null)
+                    if (songIndex >= 1)
                     {
-                        tot += 1;
-                        cur += 1;
-
-                        if (songIndex >= 1)
+                        if (SDB.Player.CurrentPlaylist.Item[songIndex - 1].Genre.Equals(curGenre))
                         {
-                            if (SDB.Player.CurrentPlaylist.Item[songIndex - 1].Genre.Equals(curGenre))
+                            tot += 1;
+                            cur += 1;
+
+                            if (songIndex >= 2)
                             {
-                                tot += 1;
-                                cur += 1;
-
-                                if (songIndex >= 2)
+                                if (SDB.Player.CurrentPlaylist.Item[songIndex - 2].Genre.Equals(curGenre))
                                 {
-                                    if (SDB.Player.CurrentPlaylist.Item[songIndex - 2].Genre.Equals(curGenre))
+                                    tot += 1;
+                                    cur += 1;
+
+                                    if (songIndex >= 3)
                                     {
-                                        tot += 1;
-                                        cur += 1;
-
-                                        if (songIndex >= 3)
+                                        if (SDB.Player.CurrentPlaylist.Item[songIndex - 3].Genre.Equals(curGenre))
                                         {
-                                            if (SDB.Player.CurrentPlaylist.Item[songIndex - 3].Genre.Equals(curGenre))
-                                            {
-                                                tot += 1;
-                                                cur += 1;
+                                            tot += 1;
+                                            cur += 1;
 
-                                                if (songIndex >= 4)
+                                            if (songIndex >= 4)
+                                            {
+                                                if (SDB.Player.CurrentPlaylist.Item[songIndex - 4].Genre.Equals(curGenre))
                                                 {
-                                                    if (SDB.Player.CurrentPlaylist.Item[songIndex - 4].Genre.Equals(curGenre))
-                                                    {
-                                                        tot += 1;
-                                                        cur += 1;
-                                                    }
+                                                    tot += 1;
+                                                    cur += 1;
                                                 }
                                             }
                                         }
@@ -205,7 +215,10 @@ namespace MediaInfo
                                 }
                             }
                         }
+                    }
 
+                    if (songIndex < SDB.Player.CurrentSongList.Count - 1)
+                    {
 
                         if (SDB.Player.CurrentPlaylist.Item[songIndex + 1].Genre.Equals(curGenre))
                         {
@@ -236,12 +249,12 @@ namespace MediaInfo
                             }
                         }
                     }
-                }   
+                }
             }
             else
             {
-                
-                
+
+
             }
 
             songC[0] = cur;

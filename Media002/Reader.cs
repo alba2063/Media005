@@ -34,25 +34,11 @@ namespace MediaInfo
                     doc.Load(setFile);
 
 					XmlNodeList nodes = doc.DocumentElement.SelectNodes("/Settings/Orquectras/Orquectra");
-                    //conString = doc.DocumentElement.SelectSingleNode("/Settings/ConnectionString").InnerText;
-					//snLength = doc.DocumentElement.SelectSingleNode("/Settings/SnLength").InnerText;
 
 					foreach (XmlNode node in nodes)
 					{
 						Orquestra orq = new Orquestra();
 
-                        //var index = node.SelectSingleNode("Index").InnerText;
-                        //int k;
-
-						//if (Int32.TryParse(index, out k))
-						//{
-						//	cell.Index = k;
-						//}
-						//else
-						//{
-						//	cell.Index = 100;
-						//	MessageBox.Show("Validator_ini.xml wrong Index value");
-						//}
 						orq.OrqName = node.SelectSingleNode("Orq_name").InnerText;
 						orq.ImageFile = node.SelectSingleNode("Image_file").InnerText;
                         orq.Info_1 = node.SelectSingleNode("Info_1").InnerText;

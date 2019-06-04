@@ -12,6 +12,7 @@ namespace MediaInfo
         public RetroTheme()
         {
             base.ThemeName = "Retro";                                   //Name of the theme
+            base.AlbumSource = 0;                                       //Source of Album label (0 - Album tag, 1 - Conductor Tag)
             base.FormBGColor = new List<Int16> { 238, 232, 170};        //Main Form BG Color
             base.SongBGColor = new List<Int16> { 250, 250, 210 };       //Song Info (Top Panel) BG Color
             base.OrqBGColor = new List<Int16> { 255, 255, 224 };        //Orq Info (Bottom Panel) BG Color

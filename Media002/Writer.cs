@@ -70,6 +70,11 @@ namespace MediaInfo
 
         public static string CreateXML(UISettingsCollection ui)
         {
+            //if (File.Exists("settings.xml"))
+            //{
+            //    File.Delete("settings.xml");
+            //}
+
             XmlDocument xmlDoc = new XmlDocument();
 
             // Initializes a new instance of the XmlDocument class.          
@@ -81,12 +86,14 @@ namespace MediaInfo
                 xmlStream.Position = 0;
                 //Loads the XML document from the specified string.
                 xmlDoc.Load(xmlStream);
+                //xmlDoc.Save("settings.xml");
+                xmlStream.Close();
 
-                using (FileStream fs = new FileStream("E:\\Temp\\1\\settings.xml", FileMode.OpenOrCreate))
-                {
-                    XmlSerializer serializer = new XmlSerializer(ui.GetType());
-                    serializer.Serialize(fs, ui);
-                }
+                //using (FileStream fs = new FileStream("settings.xml", FileMode.OpenOrCreate))
+                //{
+                //    XmlSerializer serializer = new XmlSerializer(ui.GetType());
+                //    serializer.Serialize(fs, ui);
+                //}
 
                 return xmlDoc.InnerXml;
             }
@@ -103,54 +110,21 @@ namespace MediaInfo
 
             UISettingsCollection ui1 = new UISettingsCollection();
 
-            if (File.Exists("E:\\Temp\\1\\settings.xml"))
+            if (!XMLString.Equals(""))
             {
 
-                using (FileStream fs2 = new FileStream("E:\\Temp\\1\\settings.xml", FileMode.Open))
-                {
-                    XmlSerializer serializer = new XmlSerializer(ui.GetType());
-                    ui1 = serializer.Deserialize(fs2) as UISettingsCollection;
-                }
-                return ui1;
+            XmlSerializer oXmlSerializer = new XmlSerializer(ui.GetType());
+            //The StringReader will be the stream holder for the existing XML file 
+            ui1 = oXmlSerializer.Deserialize(new StringReader(XMLString)) as UISettingsCollection;
+            //initially deserialized, the data is represented by an object without a defined type 
+            return ui1;
+            
             }
             else
             {
-                return ui;
+            return ui;
             }
 
-
-            //if (!XMLString.Equals(""))
-            //{
-            //    //XmlSerializer xmlSerializer = new XmlSerializer(ui.GetType());
-            //    //The StringReader will be the stream holder for the existing XML file 
-
-
-            //    //byte[] bytes = Convert.FromBase64String(XMLString);
-
-            //    //byte[] bytes = DecodeUrlBase64(XMLString);
-            //    //MemoryStream stream = new MemoryStream(bytes);
-            //    //var ui1 = xmlSerializer.Deserialize(stream);
-            //    //initially deserialized, the data is represented by an object without a defined type 
-
-            //    //XmlSerializer serializer = new XmlSerializer(ui.GetType());
-            //    //UISettingsCollection ui1 = serializer.Deserialize(stream) as UISettingsCollection;
-
-            //    if (!File.Exists("E:\\Temp\\1\\settings.xml"))
-
-            //        using (FileStream fs2 = new FileStream("E:\\Temp\\1\\settings.xml", FileMode.Open))
-            //    {
-            //        XmlSerializer serializer = new XmlSerializer(ui.GetType());
-            //        ui1 = serializer.Deserialize(fs2) as UISettingsCollection;
-            //    }
-
-
-            //    return ui1;
-            //}
-            //else
-            //{
-            //    return ui;
-            //}
-            
         }
     }
 }

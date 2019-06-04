@@ -8,18 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace MediaInfo
 {
     public partial class MediaInfoSettings : Form
     {
         public UISettings ui;
-        private static UISettingsCollection fixedCollection;
-        private UISettingsCollection userCollection;
-        //private UISettingsCollection workingCollection;
-        List<string> themeList;
+        private static UISettingsCollection fixedCollection;    //working collection (fixed themes + user's themes)
+        private UISettingsCollection userCollection;            //collection for user's themes only
+        List<string> themeList;                                 //List of theme names
         MainForm mainForm;
-        //Control control;
 
         public MediaInfoSettings()
         {
@@ -33,15 +32,12 @@ namespace MediaInfo
             mainForm = main;
 
             GetUI();
-            //GetIni();
-
         }
 
         private void MediaInfoSettings_Load(object sender, EventArgs e)
         {
             //GetUI();
             SetIni();
-
         }
 
         private void GetUI()
@@ -50,18 +46,22 @@ namespace MediaInfo
             UISettings uiBlack = new BlackTheme();
             UISettings uiRetro = new RetroTheme();
 
-            string uiXML = Properties.Settings.Default.UICollection;
-
             //Collection with all available Themes
             fixedCollection = new UISettingsCollection();
             userCollection = new UISettingsCollection();
-            //workingCollection = new UISettingsCollection();
 
-            userCollection = Writer.CreateObject(uiXML, userCollection);
+            //Get XML string from application settings
+            XmlDocument uiXML1 = Properties.Settings.Default.UIXMLCollection;
+            //Create object (UISettingsCollection) from XML
+            userCollection = Serialization.CreateObject(uiXML1, userCollection);
 
+            
+
+            //Add predefined themes to fixedCollection (working collection)
             fixedCollection.Add(uiBlack);
             fixedCollection.Add(uiRetro);
 
+            //Add user's themes to working collection (fixedCollection)
             foreach (UISettings u in userCollection)
             {
                 fixedCollection.Add(u);
@@ -69,7 +69,7 @@ namespace MediaInfo
 
             themeList = new List<string>();
 
-            //Get list of all available Themes
+            //Get list of all available Theme names
             foreach (UISettings u in fixedCollection)
             {
                 themeList.Add(u.ThemeName);
@@ -78,39 +78,27 @@ namespace MediaInfo
             GetIni(themeList);
         }
 
-        public UISettings GetIni(List<string> themeNames)
+        public void GetIni(List<string> themeNames)
         {
+            //initialize comboBox with theme names
             BindingSource bs = new BindingSource();
             bs.DataSource = themeNames;
             comboBoxTheme.DataSource = bs;
             comboBoxTheme.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            //MessageBox.Show(themeNames[themeNames.Count() - 1] + "," + themeNames.Count());
-            //if (li <= themeList.Count)
-            //{
-            //    li = themeList.Count;
-            //Load last Theme name
-            comboBoxTheme.SelectedItem = Properties.Settings.Default.ThemeName;
-            //}
-            //else
-            //{
-            //    li = themeList.Count;
-            //Load new Theme name
-            //   comboBoxTheme.SelectedItem = ui.ThemeName;
-            //}
-
-            //Set last UI as staring UI
-            //foreach (UISettings u in fixedCollection)
-            //{
-            //    if (u.ThemeName.Equals(comboBoxTheme.SelectedItem))
-            //    {
-            //        ui = u;
-            //    }         
-            //}
+            //If form first time or already open
+            if(!this.Visible)
+            {
+                //Load last Theme name from application settings
+                comboBoxTheme.SelectedItem = Properties.Settings.Default.ThemeName;
+            }
+            else
+            {
+                //Load with current UI
+                comboBoxTheme.SelectedItem = ui.ThemeName;
+            }
 
             GetCurrentUI();
-
-            return ui;
         }
 
         private void GetCurrentUI()
@@ -140,6 +128,22 @@ namespace MediaInfo
             return colorInt;
         }
 
+        private static Color GetTextColor(int r, int g, int b)
+        {
+            Color color;
+
+            if ((r + g + b) / 3 > 128)
+            {
+                color = Color.Black;
+            }
+            else
+            {
+                color = Color.White;
+            }
+
+            return color;
+        }
+
 
         //Load UI settings to the form
         private void SetIni()
@@ -147,6 +151,9 @@ namespace MediaInfo
             //Design
             #region
             textBoxThemeName.Text = ui.ThemeName;
+
+            comboBoxAlbumSource.SelectedIndex = ui.AlbumSource;
+            comboBoxAlbumSource.DropDownStyle = ComboBoxStyle.DropDownList;
 
             textBoxMainFormBGColor.BackColor = Color.FromArgb(ui.FormBGColor[0], ui.FormBGColor[1], ui.FormBGColor[2]);
             lblRGBMain.Text = ui.FormBGColor[0] + "," + ui.FormBGColor[1] + "," + ui.FormBGColor[2];
@@ -183,7 +190,7 @@ namespace MediaInfo
 
             textBoxArtistColor.BackColor = Color.FromArgb(ui.SongArtistColor[0], ui.SongArtistColor[1], ui.SongArtistColor[2]);
             textBoxArtistColor.Text = ui.SongArtistColor[0] + "," + ui.SongArtistColor[1] + "," + ui.SongArtistColor[2];
-            textBoxArtistColor.ForeColor = Color.FromArgb(255 - ui.SongArtistColor[0], 255 - ui.SongArtistColor[1], 255 - ui.SongArtistColor[2]);
+            textBoxArtistColor.ForeColor = GetTextColor(ui.SongArtistColor[0], ui.SongArtistColor[1], ui.SongArtistColor[2]);
             textBoxArtistColor.TextAlign = HorizontalAlignment.Center;
 
             textBoxArtistFontSize.Text = ui.FontSizeArtist.ToString();
@@ -217,7 +224,7 @@ namespace MediaInfo
 
             textBoxTitleColor.BackColor = Color.FromArgb(ui.SongTitleColor[0], ui.SongTitleColor[1], ui.SongTitleColor[2]);
             textBoxTitleColor.Text = ui.SongTitleColor[0] + "," + ui.SongTitleColor[1] + "," + ui.SongTitleColor[2];
-
+            textBoxTitleColor.ForeColor = GetTextColor(ui.SongTitleColor[0], ui.SongTitleColor[1], ui.SongTitleColor[2]);
             textBoxTitleColor.TextAlign = HorizontalAlignment.Center;
 
             textBoxTitleFontSize.Text = ui.FontSizeTitle.ToString();
@@ -250,7 +257,7 @@ namespace MediaInfo
 
             textBoxAlbumColor.BackColor = Color.FromArgb(ui.SongAlbumColor[0], ui.SongAlbumColor[1], ui.SongAlbumColor[2]);
             textBoxAlbumColor.Text = ui.SongAlbumColor[0] + "," + ui.SongAlbumColor[1] + "," + ui.SongAlbumColor[2];
-
+            textBoxAlbumColor.ForeColor = GetTextColor(ui.SongAlbumColor[0], ui.SongAlbumColor[1], ui.SongAlbumColor[2]);
             textBoxAlbumColor.TextAlign = HorizontalAlignment.Center;
 
             textBoxAlbumFontSize.Text = ui.FontSizeAlbum.ToString();
@@ -283,7 +290,7 @@ namespace MediaInfo
 
             textBoxNextTandaColor.BackColor = Color.FromArgb(ui.NextTandaColor[0], ui.NextTandaColor[1], ui.NextTandaColor[2]);
             textBoxNextTandaColor.Text = ui.NextTandaColor[0] + "," + ui.NextTandaColor[1] + "," + ui.NextTandaColor[2];
-
+            textBoxNextTandaColor.ForeColor = GetTextColor(ui.NextTandaColor[0], ui.NextTandaColor[1], ui.NextTandaColor[2]);
             textBoxNextTandaColor.TextAlign = HorizontalAlignment.Center;
 
             textBoxNextTandaFontSize.Text = ui.FontSizeNext.ToString();
@@ -319,7 +326,7 @@ namespace MediaInfo
 
             textBoxOrq1Color.BackColor = Color.FromArgb(ui.OrqInfoColor1[0], ui.OrqInfoColor1[1], ui.OrqInfoColor1[2]);
             textBoxOrq1Color.Text = ui.OrqInfoColor1[0] + "," + ui.OrqInfoColor1[1] + "," + ui.OrqInfoColor1[2];
-
+            textBoxOrq1Color.ForeColor = GetTextColor(ui.OrqInfoColor1[0], ui.OrqInfoColor1[1], ui.OrqInfoColor1[2]);
             textBoxOrq1Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxOrq1FontSize.Text = ui.FontSizeOrq1.ToString();
@@ -347,7 +354,7 @@ namespace MediaInfo
 
             textBoxOrq2Color.BackColor = Color.FromArgb(ui.OrqInfoColor2[0], ui.OrqInfoColor2[1], ui.OrqInfoColor2[2]);
             textBoxOrq2Color.Text = ui.OrqInfoColor2[0] + "," + ui.OrqInfoColor2[1] + "," + ui.OrqInfoColor2[2];
-
+            textBoxOrq2Color.ForeColor = GetTextColor(ui.OrqInfoColor2[0], ui.OrqInfoColor2[1], ui.OrqInfoColor2[2]);
             textBoxOrq2Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxOrq2FontSize.Text = ui.FontSizeOrq2.ToString();
@@ -375,7 +382,7 @@ namespace MediaInfo
 
             textBoxOrq3Color.BackColor = Color.FromArgb(ui.OrqInfoColor3[0], ui.OrqInfoColor3[1], ui.OrqInfoColor3[2]);
             textBoxOrq3Color.Text = ui.OrqInfoColor3[0] + "," + ui.OrqInfoColor3[1] + "," + ui.OrqInfoColor3[2];
-
+            textBoxOrq3Color.ForeColor = GetTextColor(ui.OrqInfoColor3[0], ui.OrqInfoColor3[1], ui.OrqInfoColor3[2]);
             textBoxOrq3Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxOrq3FontSize.Text = ui.FontSizeOrq3.ToString();
@@ -406,7 +413,7 @@ namespace MediaInfo
 
             textBoxSN1Color.BackColor = Color.FromArgb(ui.SongNumbColor1[0], ui.SongNumbColor1[1], ui.SongNumbColor1[2]);
             textBoxSN1Color.Text = ui.SongNumbColor1[0] + "," + ui.SongNumbColor1[1] + "," + ui.SongNumbColor1[2];
-
+            textBoxSN1Color.ForeColor = GetTextColor(ui.SongNumbColor1[0], ui.SongNumbColor1[1], ui.SongNumbColor1[2]);
             textBoxSN1Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxSN1FontSize.Text = ui.FontSizeNumb1.ToString();
@@ -434,7 +441,7 @@ namespace MediaInfo
 
             textBoxSN2Color.BackColor = Color.FromArgb(ui.SongNumbColor2[0], ui.SongNumbColor2[1], ui.SongNumbColor2[2]);
             textBoxSN2Color.Text = ui.SongNumbColor2[0] + "," + ui.SongNumbColor2[1] + "," + ui.SongNumbColor2[2];
-
+            textBoxSN2Color.ForeColor = GetTextColor(ui.SongNumbColor2[0], ui.SongNumbColor2[1], ui.SongNumbColor2[2]);
             textBoxSN2Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxSN2FontSize.Text = ui.FontSizeNumb2.ToString();
@@ -462,7 +469,7 @@ namespace MediaInfo
 
             textBoxSN3Color.BackColor = Color.FromArgb(ui.SongNumbColor3[0], ui.SongNumbColor3[1], ui.SongNumbColor3[2]);
             textBoxSN3Color.Text = ui.SongNumbColor3[0] + "," + ui.SongNumbColor3[1] + "," + ui.SongNumbColor3[2];
-
+            textBoxSN3Color.ForeColor = GetTextColor(ui.SongNumbColor3[0], ui.SongNumbColor3[1], ui.SongNumbColor3[2]);
             textBoxSN3Color.TextAlign = HorizontalAlignment.Center;
 
             textBoxSN3FontSize.Text = ui.FontSizeNumb3.ToString();
@@ -484,8 +491,8 @@ namespace MediaInfo
             #endregion
         }
 
-       
-        
+
+
         //Save Updated UI to UISettings object
         private void GetUpdatedUI()
         {
@@ -495,6 +502,7 @@ namespace MediaInfo
 
             //colorInt = 
             nui.ThemeName = textBoxThemeName.Text;
+            nui.AlbumSource = (Int16)comboBoxAlbumSource.SelectedIndex;
             nui.FormBGColor = ConvertColor(lblRGBMain.Text);                            //Main Form BG Color
             nui.SongBGColor = ConvertColor(lblSongRDB.Text);                        //Song Info (Top Panel) BG Color
             nui.OrqBGColor = ConvertColor(lblOrqRGB.Text);                          //Orq Info (Bottom Panel) BG Color
@@ -563,7 +571,7 @@ namespace MediaInfo
             nui.OrqInfoFont2 = textBoxOrq2Font.Font.Name;
             nui.OrqInfoFontStyle2 = lblOrq2FontStyleSelected.Text;
             nui.OrqInfoColor2 = ConvertColor(textBoxOrq2Color.Text);
-            nui.FontSizeOrq2 = Double.Parse(textBoxOrq1FontSize.Text, CultureInfo.InvariantCulture);                                 //FONT SIZE multiplyer Orq Info 2
+            nui.FontSizeOrq2 = Double.Parse(textBoxOrq2FontSize.Text, CultureInfo.InvariantCulture);                                 //FONT SIZE multiplyer Orq Info 2
             nui.VerticalLocationOrq2 = Double.Parse(textBoxOrq2VLocation.Text, CultureInfo.InvariantCulture);  //Vertical Location multiplyer Orq Info 2 label
             nui.WidthOrq2 = Double.Parse(textBoxOrq2Width.Text, CultureInfo.InvariantCulture);                                    //WIDTH multiplyer Orq Info 1 label
             nui.HeightOrq2 = Double.Parse(textBoxOrq2Hight.Text, CultureInfo.InvariantCulture);                                 //HEIGHT multiplyer Orq Info 1 label
@@ -598,7 +606,7 @@ namespace MediaInfo
             nui.SongNumbFont2 = textBoxSN2Font.Font.Name;
             nui.SongNumbFontStyle2 = lblSN2FontStyleSelected.Text;
             nui.SongNumbColor2 = ConvertColor(textBoxSN2Color.Text);
-            nui.FontSizeNumb2 = Double.Parse(textBoxSN1FontSize.Text, CultureInfo.InvariantCulture);  //FONT SIZE multiplyer Song Numbers 2
+            nui.FontSizeNumb2 = Double.Parse(textBoxSN2FontSize.Text, CultureInfo.InvariantCulture);  //FONT SIZE multiplyer Song Numbers 2
             nui.VerticalLocationNumb2 = Double.Parse(textBoxSN2VLocation.Text, CultureInfo.InvariantCulture); //Vertical Location multiplyer Song Number Middle label
             nui.WidthNumb2 = Double.Parse(textBoxSN2Width.Text, CultureInfo.InvariantCulture);  //WIDTH multiplyer Song Numb 2 label
             nui.HeightNumb2 = Double.Parse(textBoxSN2Hight.Text, CultureInfo.InvariantCulture);  //HEIGHT multiplyer Song Numb 2 label
@@ -608,7 +616,7 @@ namespace MediaInfo
             nui.SongNumbFont3 = textBoxSN3Font.Font.Name;
             nui.SongNumbFontStyle3 = lblSN3FontStyleSelected.Text;
             nui.SongNumbColor3 = ConvertColor(textBoxSN3Color.Text);
-            nui.FontSizeNumb3 = Double.Parse(textBoxSN1FontSize.Text, CultureInfo.InvariantCulture);  //FONT SIZE multiplyer Song Numbers 3
+            nui.FontSizeNumb3 = Double.Parse(textBoxSN3FontSize.Text, CultureInfo.InvariantCulture);  //FONT SIZE multiplyer Song Numbers 3
             nui.VerticalLocationNumb3 = Double.Parse(textBoxSN3VLocation.Text, CultureInfo.InvariantCulture);  //Vertical Location multiplyer Song Number Total label
             nui.WidthNumb3 = Double.Parse(textBoxSN3Width.Text, CultureInfo.InvariantCulture);  //WIDTH multiplyer Song Numb 3 label
             nui.HeightNumb3 = Double.Parse(textBoxSN3Hight.Text, CultureInfo.InvariantCulture);  //HEIGHT multiplyer Song Numb 3 label
@@ -620,10 +628,22 @@ namespace MediaInfo
             ui = nui;
         }
 
+        private void UpdateMainForm()
+        {
+            GetUpdatedUI();
+
+            textBoxThemeName.Text = ui.ThemeName;
+            textBoxThemeName.Focus();
+
+            mainForm.UpdateIU(ui);
+            mainForm.Show();
+        }
+
         //****************************   Buttons & Events  *********************************
 
         private void MediaInfoSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //save last theme name in application settings
             Properties.Settings.Default.ThemeName = comboBoxTheme.Text;
             Properties.Settings.Default.Save();
         }
@@ -637,37 +657,107 @@ namespace MediaInfo
         #region
         private void BtnApplyTheme_Click(object sender, EventArgs e)
         {
-            GetUpdatedUI();
-
-            textBoxThemeName.Text = ui.ThemeName;
-            textBoxThemeName.Focus();
-
-            mainForm.UpdateIU(ui);
-            mainForm.Show();
+            UpdateMainForm();
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            if (!themeList.Contains(textBoxThemeName.Text))
+            string currentTheme = textBoxThemeName.Text;
+
+            if (currentTheme.Equals("Black") || currentTheme.Equals("Retro"))
             {
-                ui.ThemeName = textBoxThemeName.Text;
-
-                comboBoxTheme.SelectedItem = textBoxThemeName.Text;
-
-                fixedCollection.Add(ui);        //Add current settings to current working collection
-                userCollection.Add(ui);         //Add current settings to user defined collection to save
-                themeList.Add(ui.ThemeName);    //Add theme name to the list
-
-                Properties.Settings.Default.UICollection = Writer.CreateXML(userCollection);
-                //Properties.Settings.Default.UICollection = userCollection;
-                Properties.Settings.Default.Save();
-
-                GetIni(themeList);
-                //SetIni();
+                MessageBox.Show("Theme Black and Retro cannot be changed! Save current theme with different name.", "Save Theme!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show("Name " + "'" + textBoxThemeName.Text +"'" + " exists in the list of Themes. Please, get another name.");
+                if (!themeList.Contains(textBoxThemeName.Text))
+                {
+                    ui.ThemeName = textBoxThemeName.Text;
+
+                    comboBoxTheme.SelectedItem = textBoxThemeName.Text;
+
+                    fixedCollection.Add(ui);        //Add current settings to current working collection
+                    userCollection.Add(ui);         //Add current settings to user defined collection to save
+                    themeList.Add(ui.ThemeName);    //Add theme name to the list
+
+                    //Save serialized userCollection in "settings"
+                    Properties.Settings.Default.UIXMLCollection = Serialization.CreateXML(userCollection);
+                    Properties.Settings.Default.Save();
+
+                    GetIni(themeList);
+                    //GetCurrentUI();
+                }
+                else
+                {
+                    ui.ThemeName = textBoxThemeName.Text;
+
+                    comboBoxTheme.SelectedItem = textBoxThemeName.Text;
+
+                    UISettings tempUc = new UISettings();
+
+                    foreach (UISettings uc in userCollection)
+                    {
+                        if (uc.ThemeName.Equals(currentTheme))
+                        {
+                            tempUc = uc;
+                        }
+
+                    }
+
+                    fixedCollection.Remove(tempUc);
+                    fixedCollection.Add(ui);
+
+                    userCollection.Remove(tempUc);
+                    userCollection.Add(ui);
+
+                    //Save serialized userCollection in "settings"
+                    Properties.Settings.Default.UIXMLCollection = Serialization.CreateXML(userCollection);
+                    Properties.Settings.Default.Save();
+
+                    GetIni(themeList);
+                    //GetCurrentUI();
+                }
+            }
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            string currentTheme = comboBoxTheme.Text;
+
+            UISettings uiToRemove = new UISettings();
+
+            if (currentTheme.Equals("Black")|| currentTheme.Equals("Retro"))
+            {
+                MessageBox.Show("Only user defined theme can be deleted!", "Delete Theme Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show(("Delete '" + currentTheme + "' theme?"), "Delete Theme?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+
+                    foreach (UISettings u in userCollection)
+                    {
+                        if (u.ThemeName.Equals(currentTheme))
+                        {
+                            uiToRemove = u;
+                            themeList.Remove(currentTheme);
+                        }
+                    }
+
+                    
+                    fixedCollection.Remove(uiToRemove);
+                    userCollection.Remove(uiToRemove);
+
+                    //Save serialized userCollection in "settings"
+                    Properties.Settings.Default.UIXMLCollection = Serialization.CreateXML(userCollection);
+                    Properties.Settings.Default.Save();
+
+                    GetIni(themeList);
+                    UpdateMainForm();
+                    MessageBox.Show(currentTheme + " Deleted!", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -749,36 +839,7 @@ namespace MediaInfo
                 var c = colorDialog.Color;
                 textBoxArtistColor.BackColor = c;
                 textBoxArtistColor.Text = c.R + "," + c.G + "," + c.B;
-                int r;
-                int g;
-                int b;
-                if (c.R > 128)
-                {
-                    r = 0;
-                }
-                else
-                {
-                    r = 255;
-                }
-
-                if (c.G > 128)
-                {
-                    g = 0;
-                }
-                else
-                {
-                    g = 255;
-                }
-
-                if (c.B > 128)
-                {
-                    b = 0;
-                }
-                else
-                {
-                    b = 255;
-                }
-                textBoxArtistColor.ForeColor = Color.FromArgb(r, g, b);
+                textBoxArtistColor.ForeColor = GetTextColor(c.R, c.G, c.B);
             }
         }
 
@@ -806,6 +867,7 @@ namespace MediaInfo
                 var c = colorDialog.Color;
                 textBoxTitleColor.BackColor = c;
                 textBoxTitleColor.Text = c.R + "," + c.G + "," + c.B;
+                textBoxTitleColor.ForeColor = GetTextColor(c.R, c.G, c.B);
             }
         }
 
@@ -833,6 +895,7 @@ namespace MediaInfo
                 var c = colorDialog.Color;
                 textBoxAlbumColor.BackColor = c;
                 textBoxAlbumColor.Text = c.R + "," + c.G + "," + c.B;
+                textBoxAlbumColor.ForeColor = GetTextColor(c.R, c.G, c.B);
             }
         }
 
@@ -860,6 +923,7 @@ namespace MediaInfo
                 var c = colorDialog.Color;
                 textBoxNextTandaColor.BackColor = c;
                 textBoxNextTandaColor.Text = c.R + "," + c.G + "," + c.B;
+                textBoxNextTandaColor.ForeColor = GetTextColor(c.R, c.G, c.B);
             }
         }
         #endregion
@@ -889,6 +953,7 @@ namespace MediaInfo
                 var c = colorDialog.Color;
                 textBoxOrq1Color.BackColor = c;
                 textBoxOrq1Color.Text = c.R + "," + c.G + "," + c.B;
+                textBoxOrq1Color.ForeColor = GetTextColor(c.R, c.G, c.B);
             }
         }
 
@@ -916,6 +981,7 @@ namespace MediaInfo
                 var c = colorDialog.Color;
                 textBoxOrq2Color.BackColor = c;
                 textBoxOrq2Color.Text = c.R + "," + c.G + "," + c.B;
+                textBoxOrq2Color.ForeColor = GetTextColor(c.R, c.G, c.B);
             }
         }
 
@@ -943,6 +1009,7 @@ namespace MediaInfo
                 var c = colorDialog.Color;
                 textBoxOrq3Color.BackColor = c;
                 textBoxOrq3Color.Text = c.R + "," + c.G + "," + c.B;
+                textBoxOrq3Color.ForeColor = GetTextColor(c.R, c.G, c.B);
             }
         }
         #endregion
@@ -972,6 +1039,7 @@ namespace MediaInfo
                 var c = colorDialog.Color;
                 textBoxSN1Color.BackColor = c;
                 textBoxSN1Color.Text = c.R + "," + c.G + "," + c.B;
+                textBoxSN1Color.ForeColor = GetTextColor(c.R, c.G, c.B);
             }
         }
 
@@ -999,6 +1067,7 @@ namespace MediaInfo
                 var c = colorDialog.Color;
                 textBoxSN2Color.BackColor = c;
                 textBoxSN2Color.Text = c.R + "," + c.G + "," + c.B;
+                textBoxSN2Color.ForeColor = GetTextColor(c.R, c.G, c.B);
             }
         }
 
@@ -1026,8 +1095,10 @@ namespace MediaInfo
                 var c = colorDialog.Color;
                 textBoxSN3Color.BackColor = c;
                 textBoxSN3Color.Text = c.R + "," + c.G + "," + c.B;
+                textBoxSN3Color.ForeColor = GetTextColor(c.R, c.G, c.B);
             }
         }
+
 
         #endregion
 

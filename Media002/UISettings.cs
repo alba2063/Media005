@@ -4,21 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Configuration;
 
 namespace MediaInfo
 {
     [Serializable]
+    [SettingsSerializeAs(SettingsSerializeAs.Xml)]
     public class UISettings
     {
-        public string ThemeName { get; set; }       //Name of the theme
-        public List<Int16> FormBGColor { get; set; }      //Main Form BG Color
-        public List<Int16> SongBGColor { get; set; }      //Song Info (Top Panel) BG Color
-        public List<Int16> OrqBGColor { get; set; }       //Orq Info (Bottom Panel) BG Color
-        public double ImgPosition { get; set; }     //Image position (.5 - middle)
-        public bool OrqInfoVisible { get; set; }    //Orquestra Info visability
-        public bool NextTandaVisible { get; set; }  //Next Tanda Visability
-        public int SongCountMode { get; set;}       //0 - invisible; 1 - three rows; 2 - one row;
-        public string SongNumbOf { get; set; }      //of, out of, empty, "/"
+        public string ThemeName { get; set; }               //Name of the theme
+        public Int16 AlbumSource { get; set; }             //Source of Album label
+        public List<Int16> FormBGColor { get; set; }        //Main Form BG Color
+        public List<Int16> SongBGColor { get; set; }        //Song Info (Top Panel) BG Color
+        public List<Int16> OrqBGColor { get; set; }         //Orq Info (Bottom Panel) BG Color
+        public double ImgPosition { get; set; }             //Image position (.5 - middle)
+        public bool OrqInfoVisible { get; set; }            //Orquestra Info visability
+        public bool NextTandaVisible { get; set; }          //Next Tanda Visability
+        public int SongCountMode { get; set;}               //0 - invisible; 1 - three rows; 2 - one row;
+        public string SongNumbOf { get; set; }              //of, out of, empty, "/"
 
         //************************* Current Song Info ********************************       
         #region

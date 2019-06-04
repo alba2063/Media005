@@ -179,17 +179,6 @@ namespace MediaInfo
 
         public void GetStarted()
         {
-            
-
-            //ui = new BlackTheme();
-            //ui = new RetroTheme();
-
-            //Get UI from Settings Form
-            //if (mi == null)
-            //{
-            //    mi = new MediaInfoSettings();
-            //}
-            //ui = mi.ui;
 
             InitializeUI();
 
@@ -208,7 +197,7 @@ namespace MediaInfo
             ShowInfo();
         }
 
-        void InitializeUI()
+        private void InitializeUI()
         {
             //************************ Genetal settings *********************************
             #region
@@ -342,7 +331,7 @@ namespace MediaInfo
 
             Song curSong = new Song();
             Song nextTandaSong = new Song();
-            curSong = dig.CurrentSong();    //Current Song
+            curSong = dig.CurrentSong(ui.AlbumSource);    //Current Song (passing Album label source)
 
             //Required to resize labels
             lblCurSongTitle.AutoSize = false;
@@ -367,6 +356,7 @@ namespace MediaInfo
             string songTotal;
             string songNumbers;
 
+            //If all songs in Tanda > 4
             if (songOrder[1] > 4)
             {
                 songCurrent = "";
@@ -410,7 +400,7 @@ namespace MediaInfo
             lblCurSongArtist.Text = curSong.Artist;// + " " + curSong.Year;
             lblCurSongTitle.Text = curSong.Title;// + " " + songNumbers;
             lblCurSongAlbum.Text = curSong.Album;
-            lblNext.Text = " Next Tanda: " + nextTandaSong.Genre + " -- " + nextTandaSong.Artist;
+            lblNext.Text = "Next Tanda:   " + nextTandaSong.Genre + " -- " + nextTandaSong.Artist;
 
             //Load and format song numbers
             lblSongInTanda.Text = songCurrent;
@@ -424,8 +414,10 @@ namespace MediaInfo
             //Load Orq Info
             ShowOrqInfo(curSong.Artist);
             ResizeOrqSplitPanel();
-            FormatOrqInfo();           
-          
+            FormatOrqInfo();
+
+            FormatSongNumbers();
+
         }
 
         private void SetSongNumbVisability()
@@ -687,8 +679,8 @@ namespace MediaInfo
             if (e.Button == MouseButtons.Right)
             {
                 MediaInfoSettings settingsForm = new MediaInfoSettings(this);
-                settingsForm.Show();
-                //MessageBox.Show("Hi there this is my Tango contribution for DJ", "Programed by AlexB");
+                settingsForm.ShowDialog();
+                //MessageBox.Show("Hi, there this is my contribution for Tango DJ", "Programed by AlexB");
             }
         }
     }

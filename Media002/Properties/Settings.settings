@@ -5,7 +5,7 @@
     <Setting Name="ThemeName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Black</Value>
     </Setting>
-    <Setting Name="UICollection" Type="System.String" Scope="User">
+    <Setting Name="UIXMLCollection" Type="System.Xml.XmlDocument" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

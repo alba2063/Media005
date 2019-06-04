@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cup.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlackTheme.cs" />
-    <Compile Include="CurrentTheme.cs" />
+    <Compile Include="Serialization.cs" />
     <Compile Include="Dig.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -119,6 +122,9 @@
   <ItemGroup>
     <Folder Include="bin\Debug\Images\" />
     <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cup.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

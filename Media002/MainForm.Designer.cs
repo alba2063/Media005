@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.lblOrqInfo1 = new System.Windows.Forms.Label();
             this.lblOrqInfo3 = new System.Windows.Forms.Label();
@@ -286,11 +287,11 @@
             this.ClientSize = new System.Drawing.Size(1024, 576);
             this.Controls.Add(this.splitContainerBig);
             this.ForeColor = System.Drawing.Color.Gray;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1024, 576);
             this.Name = "MainForm";
-            this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Media Info by Alex Baliasnikau - v1.0";
+            this.Text = "Media Info by Alex Baliasnikau - v2.0";
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

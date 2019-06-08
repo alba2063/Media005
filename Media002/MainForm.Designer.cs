@@ -291,7 +291,7 @@
             this.MinimumSize = new System.Drawing.Size(1024, 576);
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Media Info by Alex Baliasnikau - v2.0";
+            this.Text = "Media Info by Alex Baliasnikau - v2.2";
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -491,7 +492,609 @@ namespace MediaInfo
             #endregion
         }
 
+        private bool IsValidToDouble(string s)
+        {
+            bool v;
 
+            try
+            {
+                var n = Double.Parse(s, CultureInfo.InvariantCulture);
+                v = true;
+            }
+            catch (Exception e)
+            {
+                v = false;
+            }
+            return v;
+        }
+
+        //Validate fields for correct input values
+        private bool ValidateUI()
+        {
+            bool valid = true;
+            //Current song validation
+            #region
+
+            //Theme Name
+            if (textBoxThemeName.Text.Equals(string.Empty))
+            {
+                valid = false;
+                lblEmptyNameMsg.Visible = true;
+            }
+            else
+            {
+
+                lblEmptyNameMsg.Visible = false;
+            }
+
+            //Picture position
+            if (IsValidToDouble(textBoxImagePosition.Text))
+            {
+                textBoxImagePosition.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxImagePosition.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Artist font size
+            if (IsValidToDouble(textBoxArtistFontSize.Text))
+            {
+                textBoxArtistFontSize.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxArtistFontSize.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Artist Vertical location
+            if (IsValidToDouble(textBoxArtistVerticalLocation.Text))
+            {
+                textBoxArtistVerticalLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxArtistVerticalLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Artist Horizontal location
+            if (IsValidToDouble(textBoxArtistHorizontalLocation.Text))
+            {
+                textBoxArtistHorizontalLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxArtistHorizontalLocation.ForeColor = Color.Red;
+                //valid = false;
+            }
+
+            //Artist Hight
+            if (IsValidToDouble(textBoxArtistHight.Text))
+            {
+                textBoxArtistHight.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxArtistHight.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Artist Width
+            if (IsValidToDouble(textBoxArtistWidth.Text))
+            {
+                textBoxArtistWidth.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxArtistWidth.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Title font size
+            if (IsValidToDouble(textBoxTitleFontSize.Text))
+            {
+                textBoxTitleFontSize.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxTitleFontSize.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Title Vertical location
+            if (IsValidToDouble(textBoxTitleVerticalLocation.Text))
+            {
+                textBoxTitleVerticalLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxTitleVerticalLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Title Horizontal location
+            if (IsValidToDouble(textBoxTitleHorizontalLocation.Text))
+            {
+                textBoxTitleHorizontalLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxTitleHorizontalLocation.ForeColor = Color.Red;
+                //valid = false;
+            }
+
+            //Title Hight
+            if (IsValidToDouble(textBoxTitleHight.Text))
+            {
+                textBoxTitleHight.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxTitleHight.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Title Width
+            if (IsValidToDouble(textBoxTitleWidth.Text))
+            {
+                textBoxTitleWidth.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxTitleWidth.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Album font size
+            if (IsValidToDouble(textBoxAlbumFontSize.Text))
+            {
+                textBoxAlbumFontSize.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxAlbumFontSize.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Album Vertical location
+            if (IsValidToDouble(textBoxAlbumVerticalLocation.Text))
+            {
+                textBoxAlbumVerticalLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxAlbumVerticalLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Album Horizontal location
+            if (IsValidToDouble(textBoxAlbumHorizontalLocation.Text))
+            {
+                textBoxAlbumHorizontalLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxAlbumHorizontalLocation.ForeColor = Color.Red;
+                //valid = false;
+            }
+
+            //Album Hight
+            if (IsValidToDouble(textBoxAlbumHight.Text))
+            {
+                textBoxAlbumHight.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxAlbumHight.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Album Width
+            if (IsValidToDouble(textBoxAlbumWidth.Text))
+            {
+                textBoxAlbumWidth.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxAlbumWidth.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Tanda font size
+            if (IsValidToDouble(textBoxNextTandaFontSize.Text))
+            {
+                textBoxNextTandaFontSize.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxNextTandaFontSize.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Tanda Vertical location
+            if (IsValidToDouble(textBoxNextTandaVerticalLocation.Text))
+            {
+                textBoxNextTandaVerticalLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxNextTandaVerticalLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Tanda Horizontal location
+            if (IsValidToDouble(textBoxNextTandaHorizontalLocation.Text))
+            {
+                textBoxNextTandaHorizontalLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxNextTandaHorizontalLocation.ForeColor = Color.Red;
+                //valid = false;
+            }
+
+            //Tanda Hight
+            if (IsValidToDouble(textBoxNextTandaHight.Text))
+            {
+                textBoxNextTandaHight.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxNextTandaHight.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Tanda Width
+            if (IsValidToDouble(textBoxNextTandaWidth.Text))
+            {
+                textBoxNextTandaWidth.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxNextTandaWidth.ForeColor = Color.Red;
+                valid = false;
+            }
+            #endregion
+            //Orq validation
+            #region
+            //Orq1 font size
+            if (IsValidToDouble(textBoxOrq1FontSize.Text))
+            {
+                textBoxOrq1FontSize.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq1FontSize.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq1 Vertical location
+            if (IsValidToDouble(textBoxOrq1VLocation.Text))
+            {
+                textBoxOrq1VLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq1VLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq1 Hight
+            if (IsValidToDouble(textBoxOrq1Hight.Text))
+            {
+                textBoxOrq1Hight.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq1Hight.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq1 Width
+            if (IsValidToDouble(textBoxOrq1Width.Text))
+            {
+                textBoxOrq1Width.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq1Width.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq2 font size
+            if (IsValidToDouble(textBoxOrq2FontSize.Text))
+            {
+                textBoxOrq2FontSize.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq2FontSize.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq2 Vertical location
+            if (IsValidToDouble(textBoxOrq2VLocation.Text))
+            {
+                textBoxOrq2VLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq2VLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq2 Horizontal location
+            if (IsValidToDouble(textBoxOrq2HLocation.Text))
+            {
+                textBoxOrq2HLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq2HLocation.ForeColor = Color.Red;
+                //valid = false;
+            }
+
+            //Orq2 Hight
+            if (IsValidToDouble(textBoxOrq2Hight.Text))
+            {
+                textBoxOrq2Hight.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq2Hight.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq2 Width
+            if (IsValidToDouble(textBoxOrq2Width.Text))
+            {
+                textBoxOrq2Width.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq2Width.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq3 font size
+            if (IsValidToDouble(textBoxOrq3FontSize.Text))
+            {
+                textBoxOrq3FontSize.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq3FontSize.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq3 Vertical location
+            if (IsValidToDouble(textBoxOrq3VLocation.Text))
+            {
+                textBoxOrq3VLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq3VLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq3 Horizontal location
+            if (IsValidToDouble(textBoxOrq3HLocation.Text))
+            {
+                textBoxOrq3HLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq3HLocation.ForeColor = Color.Red;
+                //valid = false;
+            }
+
+            //Orq3 Hight
+            if (IsValidToDouble(textBoxOrq3Hight.Text))
+            {
+                textBoxOrq3Hight.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq3Hight.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq3 Width
+            if (IsValidToDouble(textBoxOrq3Width.Text))
+            {
+                textBoxOrq3Width.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq3Width.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Orq Horizontal location
+            if (IsValidToDouble(textBoxOrq1HLocation.Text))
+            {
+                textBoxOrq1HLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxOrq1HLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+            #endregion
+            //Song numbers validation
+            #region
+            //Song Number1 font size
+            if (IsValidToDouble(textBoxSN1FontSize.Text))
+            {
+                textBoxSN1FontSize.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN1FontSize.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number1 Vertical location
+            if (IsValidToDouble(textBoxSN1VLocation.Text))
+            {
+                textBoxSN1VLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN1VLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number1 Hight
+            if (IsValidToDouble(textBoxSN1Hight.Text))
+            {
+                textBoxSN1Hight.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN1Hight.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number1 Width
+            if (IsValidToDouble(textBoxSN1Width.Text))
+            {
+                textBoxSN1Width.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN1Width.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number2 font size
+            if (IsValidToDouble(textBoxSN2FontSize.Text))
+            {
+                textBoxSN2FontSize.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN2FontSize.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number2 Vertical location
+            if (IsValidToDouble(textBoxSN2VLocation.Text))
+            {
+                textBoxSN2VLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN2VLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number2 Horizontal location
+            if (IsValidToDouble(textBoxSN2HLocation.Text))
+            {
+                textBoxSN2HLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN2HLocation.ForeColor = Color.Red;
+                //valid = false;
+            }
+
+            //Song Number2 Hight
+            if (IsValidToDouble(textBoxSN2Hight.Text))
+            {
+                textBoxSN2Hight.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN2Hight.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number2 Width
+            if (IsValidToDouble(textBoxSN2Width.Text))
+            {
+                textBoxSN2Width.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN2Width.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number3 font size
+            if (IsValidToDouble(textBoxSN3FontSize.Text))
+            {
+                textBoxSN3FontSize.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN3FontSize.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number3 Vertical location
+            if (IsValidToDouble(textBoxSN3VLocation.Text))
+            {
+                textBoxSN3VLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN3VLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number3 Horizontal location
+            if (IsValidToDouble(textBoxSN3HLocation.Text))
+            {
+                textBoxSN3HLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN3HLocation.ForeColor = Color.Red;
+                //valid = false;
+            }
+
+            //Song Number3 Hight
+            if (IsValidToDouble(textBoxSN3Hight.Text))
+            {
+                textBoxSN3Hight.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN3Hight.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number3 Width
+            if (IsValidToDouble(textBoxSN3Width.Text))
+            {
+                textBoxSN3Width.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN3Width.ForeColor = Color.Red;
+                valid = false;
+            }
+
+            //Song Number Horizontal location
+            if (IsValidToDouble(textBoxSN1HLocation.Text))
+            {
+                textBoxSN1HLocation.ForeColor = Color.Black;
+            }
+            else
+            {
+                textBoxSN1HLocation.ForeColor = Color.Red;
+                valid = false;
+            }
+            #endregion
+
+            return valid;
+        }
 
         //Save Updated UI to UISettings object
         private void GetUpdatedUI()
@@ -504,8 +1107,10 @@ namespace MediaInfo
             nui.ThemeName = textBoxThemeName.Text;
             nui.AlbumSource = (Int16)comboBoxAlbumSource.SelectedIndex;
             nui.FormBGColor = ConvertColor(lblRGBMain.Text);                            //Main Form BG Color
-            nui.SongBGColor = ConvertColor(lblSongRDB.Text);                        //Song Info (Top Panel) BG Color
-            nui.OrqBGColor = ConvertColor(lblOrqRGB.Text);                          //Orq Info (Bottom Panel) BG Color
+            nui.SongBGColor = ConvertColor(lblSongRDB.Text);                            //Song Info (Top Panel) BG Color
+            nui.OrqBGColor = ConvertColor(lblOrqRGB.Text);                              //Orq Info (Bottom Panel) BG Color
+            
+            //nui.ImgPosition = ConvertStringToDouble(textBoxImagePosition.Text);
             nui.ImgPosition = Double.Parse(textBoxImagePosition.Text, CultureInfo.InvariantCulture);     //Image position (.5 - middle)
             nui.OrqInfoVisible = checkBoxOrqInfo.Checked;                               //Orquestra Info visability
             nui.NextTandaVisible = checkBoxNextTanda.Checked;                           //Next Tanda Visability
@@ -630,13 +1235,28 @@ namespace MediaInfo
 
         private void UpdateMainForm()
         {
-            GetUpdatedUI();
+            if (!ValidateUI())
+            {
+                MessageBox.Show("Please, correct errors 'Values in Red or empty'!");
+            }
+            else
+            {
+                GetUpdatedUI();
 
-            textBoxThemeName.Text = ui.ThemeName;
-            textBoxThemeName.Focus();
+                textBoxThemeName.Text = ui.ThemeName;
+                textBoxThemeName.Focus();
 
-            mainForm.UpdateIU(ui);
-            mainForm.Show();
+                mainForm.UpdateIU(ui);
+                mainForm.Show();
+            }
+        }
+
+        private string GetDigital(string s)
+        {
+            var allowedChars = "01234567890.";
+            var k = new string(s.Where(c => allowedChars.Contains(c)).ToArray());
+
+            return k;
         }
 
         //****************************   Buttons & Events  *********************************
@@ -662,60 +1282,67 @@ namespace MediaInfo
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            string currentTheme = textBoxThemeName.Text;
-
-            if (currentTheme.Equals("Black") || currentTheme.Equals("Retro"))
+            if (!ValidateUI())
             {
-                MessageBox.Show("Theme Black and Retro cannot be changed! Save current theme with different name.", "Save Theme!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please, correct errors 'Values in Red or empty'!");
             }
             else
             {
-                if (!themeList.Contains(textBoxThemeName.Text))
+                string currentTheme = textBoxThemeName.Text;
+
+                if (currentTheme.Equals("Black") || currentTheme.Equals("Retro"))
                 {
-                    ui.ThemeName = textBoxThemeName.Text;
-
-                    comboBoxTheme.SelectedItem = textBoxThemeName.Text;
-
-                    fixedCollection.Add(ui);        //Add current settings to current working collection
-                    userCollection.Add(ui);         //Add current settings to user defined collection to save
-                    themeList.Add(ui.ThemeName);    //Add theme name to the list
-
-                    //Save serialized userCollection in "settings"
-                    Properties.Settings.Default.UIXMLCollection = Serialization.CreateXML(userCollection);
-                    Properties.Settings.Default.Save();
-
-                    GetIni(themeList);
-                    //GetCurrentUI();
+                    MessageBox.Show("Theme Black and Retro cannot be changed! Save current theme with different name.", "Save Theme!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    ui.ThemeName = textBoxThemeName.Text;
-
-                    comboBoxTheme.SelectedItem = textBoxThemeName.Text;
-
-                    UISettings tempUc = new UISettings();
-
-                    foreach (UISettings uc in userCollection)
+                    if (!themeList.Contains(textBoxThemeName.Text))
                     {
-                        if (uc.ThemeName.Equals(currentTheme))
+                        ui.ThemeName = textBoxThemeName.Text;
+
+                        comboBoxTheme.SelectedItem = textBoxThemeName.Text;
+
+                        fixedCollection.Add(ui);        //Add current settings to current working collection
+                        userCollection.Add(ui);         //Add current settings to user defined collection to save
+                        themeList.Add(ui.ThemeName);    //Add theme name to the list
+
+                        //Save serialized userCollection in "settings"
+                        Properties.Settings.Default.UIXMLCollection = Serialization.CreateXML(userCollection);
+                        Properties.Settings.Default.Save();
+
+                        GetIni(themeList);
+                        //GetCurrentUI();
+                    }
+                    else
+                    {
+                        ui.ThemeName = textBoxThemeName.Text;
+
+                        comboBoxTheme.SelectedItem = textBoxThemeName.Text;
+
+                        UISettings tempUc = new UISettings();
+
+                        foreach (UISettings uc in userCollection)
                         {
-                            tempUc = uc;
+                            if (uc.ThemeName.Equals(currentTheme))
+                            {
+                                tempUc = uc;
+                            }
+
                         }
 
+                        fixedCollection.Remove(tempUc);
+                        fixedCollection.Add(ui);
+
+                        userCollection.Remove(tempUc);
+                        userCollection.Add(ui);
+
+                        //Save serialized userCollection in "settings"
+                        Properties.Settings.Default.UIXMLCollection = Serialization.CreateXML(userCollection);
+                        Properties.Settings.Default.Save();
+
+                        GetIni(themeList);
+                        //GetCurrentUI();
                     }
-
-                    fixedCollection.Remove(tempUc);
-                    fixedCollection.Add(ui);
-
-                    userCollection.Remove(tempUc);
-                    userCollection.Add(ui);
-
-                    //Save serialized userCollection in "settings"
-                    Properties.Settings.Default.UIXMLCollection = Serialization.CreateXML(userCollection);
-                    Properties.Settings.Default.Save();
-
-                    GetIni(themeList);
-                    //GetCurrentUI();
                 }
             }
         }
@@ -1100,8 +1727,278 @@ namespace MediaInfo
         }
 
 
-        #endregion
 
-       
+        #endregion
+        //Textbox change Song 
+        #region
+        private void TextBoxImagePosition_TextChanged(object sender, EventArgs e)
+        {
+            textBoxImagePosition.Text = GetDigital(textBoxImagePosition.Text);
+        }
+
+        //Artist
+        private void TextBoxArtistFontSize_TextChanged(object sender, EventArgs e)
+        {
+            textBoxArtistFontSize.Text = GetDigital(textBoxArtistFontSize.Text);
+        }
+
+        private void TextBoxArtistVerticalLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxArtistVerticalLocation.Text = GetDigital(textBoxArtistVerticalLocation.Text);
+        }
+
+        private void TextBoxArtistHorizontalLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxArtistHorizontalLocation.Text = GetDigital(textBoxArtistHorizontalLocation.Text);
+        }
+
+        private void TextBoxArtistHight_TextChanged(object sender, EventArgs e)
+        {
+            textBoxArtistHight.Text = GetDigital(textBoxArtistHight.Text);
+        }
+
+        private void TextBoxArtistWidth_TextChanged(object sender, EventArgs e)
+        {
+            textBoxArtistWidth.Text = GetDigital(textBoxArtistWidth.Text);
+        }
+
+        //Title
+        private void TextBoxTitleFontSize_TextChanged(object sender, EventArgs e)
+        {
+            textBoxTitleFontSize.Text = GetDigital(textBoxTitleFontSize.Text);
+        }
+
+        private void TextBoxTitleVerticalLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxTitleVerticalLocation.Text = GetDigital(textBoxTitleVerticalLocation.Text);
+        }
+
+        private void TextBoxTitleHorizontalLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxTitleHorizontalLocation.Text = GetDigital(textBoxTitleHorizontalLocation.Text);
+        }
+
+        private void TextBoxTitleHight_TextChanged(object sender, EventArgs e)
+        {
+            textBoxTitleHight.Text = GetDigital(textBoxTitleHight.Text);
+        }
+
+        private void TextBoxTitleWidth_TextChanged(object sender, EventArgs e)
+        {
+            textBoxTitleWidth.Text = GetDigital(textBoxTitleWidth.Text);
+        }
+
+        //Album
+        private void TextBoxAlbumFontSize_TextChanged(object sender, EventArgs e)
+        {
+            textBoxAlbumFontSize.Text = GetDigital(textBoxAlbumFontSize.Text);
+        }
+
+        private void TextBoxAlbumVerticalLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxAlbumVerticalLocation.Text = GetDigital(textBoxAlbumVerticalLocation.Text);
+        }
+
+        private void TextBoxAlbumHorizontalLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxAlbumHorizontalLocation.Text = GetDigital(textBoxAlbumHorizontalLocation.Text);
+        }
+
+        private void TextBoxAlbumHight_TextChanged(object sender, EventArgs e)
+        {
+            textBoxAlbumHight.Text = GetDigital(textBoxAlbumHight.Text);
+        }
+
+        private void TextBoxAlbumWidth_TextChanged(object sender, EventArgs e)
+        {
+            textBoxAlbumWidth.Text = GetDigital(textBoxAlbumWidth.Text);
+        }
+
+        //Tanda
+        private void TextBoxNextTandaFontSize_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNextTandaFontSize.Text = GetDigital(textBoxNextTandaFontSize.Text);
+        }
+
+        private void TextBoxNextTandaVerticalLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNextTandaVerticalLocation.Text = GetDigital(textBoxNextTandaVerticalLocation.Text);
+        }
+
+        private void TextBoxNextTandaHorizontalLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNextTandaHorizontalLocation.Text = GetDigital(textBoxNextTandaHorizontalLocation.Text);
+        }
+
+        private void TextBoxNextTandaHight_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNextTandaHight.Text = GetDigital(textBoxNextTandaHight.Text);
+        }
+
+        private void TextBoxNextTandaWidth_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNextTandaWidth.Text = GetDigital(textBoxNextTandaWidth.Text);
+        }
+        #endregion
+        //Textbox change Orq
+        #region
+        //Orq1
+        private void TextBoxOrq1FontSize_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq1FontSize.Text = GetDigital(textBoxOrq1FontSize.Text);
+        }
+
+        private void TextBoxOrq1VLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq1VLocation.Text = GetDigital(textBoxOrq1VLocation.Text);
+        }
+
+        private void TextBoxOrq1Hight_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq1Hight.Text = GetDigital(textBoxOrq1Hight.Text);
+        }
+
+        private void TextBoxOrq1Width_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq1Width.Text = GetDigital(textBoxOrq1Width.Text);
+        }
+
+        //Orq2
+        private void TextBoxOrq2FontSize_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq2FontSize.Text = GetDigital(textBoxOrq2FontSize.Text);
+        }
+
+        private void TextBoxOrq2VLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq2VLocation.Text = GetDigital(textBoxOrq2VLocation.Text);
+        }
+
+        private void TextBoxOrq2HLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq2HLocation.Text = GetDigital(textBoxOrq2HLocation.Text);
+        }
+
+        private void TextBoxOrq2Hight_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq2Hight.Text = GetDigital(textBoxOrq2Hight.Text);
+        }
+
+        private void TextBoxOrq2Width_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq2Width.Text = GetDigital(textBoxOrq2Width.Text);
+        }
+
+        //Orq3
+        private void TextBoxOrq3FontSize_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq3FontSize.Text = GetDigital(textBoxOrq3FontSize.Text);
+        }
+
+        private void TextBoxOrq3VLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq3VLocation.Text = GetDigital(textBoxOrq3VLocation.Text);
+        }
+
+        private void TextBoxOrq3HLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq3HLocation.Text = GetDigital(textBoxOrq3HLocation.Text);
+        }
+
+        private void TextBoxOrq3Hight_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq3Hight.Text = GetDigital(textBoxOrq3Hight.Text);
+        }
+
+        private void TextBoxOrq3Width_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq3Width.Text = GetDigital(textBoxOrq3Width.Text);
+        }
+        //Orq Horizontal location
+        private void TextBoxOrq1HLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrq1HLocation.Text = GetDigital(textBoxOrq1HLocation.Text);
+        }
+        #endregion
+        //Textbox change Numbers
+        #region
+        //Song Numbers 1
+        private void TextBoxSN1FontSize_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN1FontSize.Text = GetDigital(textBoxSN1FontSize.Text);
+        }
+
+        private void TextBoxSN1VLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN1VLocation.Text = GetDigital(textBoxSN1VLocation.Text);
+        }
+
+        private void TextBoxSN1Hight_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN1Hight.Text = GetDigital(textBoxSN1Hight.Text);
+        }
+
+        private void TextBoxSN1Width_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN1Width.Text = GetDigital(textBoxSN1Width.Text);
+        }
+
+        //Song Numbers 2
+        private void TextBoxSN2FontSize_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN2FontSize.Text = GetDigital(textBoxSN2FontSize.Text);
+        }
+
+        private void TextBoxSN2VLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN2VLocation.Text = GetDigital(textBoxSN2VLocation.Text);
+        }
+
+        private void TextBoxSN2HLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN2HLocation.Text = GetDigital(textBoxSN2HLocation.Text);
+        }
+
+        private void TextBoxSN2Hight_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN2Hight.Text = GetDigital(textBoxSN2Hight.Text);
+        }
+
+        private void TextBoxSN2Width_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN2Width.Text = GetDigital(textBoxSN2Width.Text);
+        }
+
+        //Song Numbers 3
+        private void TextBoxSN3FontSize_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN3FontSize.Text = GetDigital(textBoxSN3FontSize.Text);
+        }
+
+        private void TextBoxSN3VLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN3VLocation.Text = GetDigital(textBoxSN3VLocation.Text);
+        }
+
+        private void TextBoxSN3HLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN3HLocation.Text = GetDigital(textBoxSN3HLocation.Text);
+        }
+
+        private void TextBoxSN3Hight_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN3Hight.Text = GetDigital(textBoxSN3Hight.Text);
+        }
+
+        private void TextBoxSN3Width_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN3Width.Text = GetDigital(textBoxSN3Width.Text);
+        }
+        //Song numbers Horizontal Location
+        private void TextBoxSN1HLocation_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSN1HLocation.Text = GetDigital(textBoxSN1HLocation.Text);
+        }
+        #endregion
     }
 }

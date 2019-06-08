@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lblComboBoxName = new System.Windows.Forms.Label();
+            this.lblEmptyNameMsg = new System.Windows.Forms.Label();
             this.btnApplyTheme = new System.Windows.Forms.Button();
             this.comboBoxTheme = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -325,7 +325,6 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.btnSave);
-            this.groupBox1.Controls.Add(this.lblComboBoxName);
             this.groupBox1.Controls.Add(this.btnApplyTheme);
             this.groupBox1.Controls.Add(this.comboBoxTheme);
             this.groupBox1.Controls.Add(this.btnDelete);
@@ -348,15 +347,16 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // lblComboBoxName
+            // lblEmptyNameMsg
             // 
-            this.lblComboBoxName.AutoSize = true;
-            this.lblComboBoxName.Location = new System.Drawing.Point(11, 190);
-            this.lblComboBoxName.Name = "lblComboBoxName";
-            this.lblComboBoxName.Size = new System.Drawing.Size(40, 13);
-            this.lblComboBoxName.TabIndex = 0;
-            this.lblComboBoxName.Text = "Select:";
-            this.lblComboBoxName.Visible = false;
+            this.lblEmptyNameMsg.AutoSize = true;
+            this.lblEmptyNameMsg.ForeColor = System.Drawing.Color.Red;
+            this.lblEmptyNameMsg.Location = new System.Drawing.Point(243, 24);
+            this.lblEmptyNameMsg.Name = "lblEmptyNameMsg";
+            this.lblEmptyNameMsg.Size = new System.Drawing.Size(164, 13);
+            this.lblEmptyNameMsg.TabIndex = 0;
+            this.lblEmptyNameMsg.Text = "Theme name sould not be empty!";
+            this.lblEmptyNameMsg.Visible = false;
             // 
             // btnApplyTheme
             // 
@@ -418,6 +418,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.textBoxThemeName);
+            this.groupBox4.Controls.Add(this.lblEmptyNameMsg);
             this.groupBox4.Controls.Add(this.lblThemeName);
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBox4.Location = new System.Drawing.Point(6, 6);
@@ -542,6 +543,7 @@
             this.textBoxImagePosition.Name = "textBoxImagePosition";
             this.textBoxImagePosition.Size = new System.Drawing.Size(31, 20);
             this.textBoxImagePosition.TabIndex = 21;
+            this.textBoxImagePosition.TextChanged += new System.EventHandler(this.TextBoxImagePosition_TextChanged);
             // 
             // lblSNModeExplain
             // 
@@ -781,6 +783,7 @@
             this.textBoxNextTandaFontSize.Name = "textBoxNextTandaFontSize";
             this.textBoxNextTandaFontSize.Size = new System.Drawing.Size(36, 20);
             this.textBoxNextTandaFontSize.TabIndex = 5;
+            this.textBoxNextTandaFontSize.TextChanged += new System.EventHandler(this.TextBoxNextTandaFontSize_TextChanged);
             // 
             // lbllNextTandaFontSize
             // 
@@ -833,6 +836,7 @@
             this.textBoxNextTandaWidth.Name = "textBoxNextTandaWidth";
             this.textBoxNextTandaWidth.Size = new System.Drawing.Size(41, 20);
             this.textBoxNextTandaWidth.TabIndex = 17;
+            this.textBoxNextTandaWidth.TextChanged += new System.EventHandler(this.TextBoxNextTandaWidth_TextChanged);
             // 
             // textBoxNextTandaHight
             // 
@@ -840,6 +844,7 @@
             this.textBoxNextTandaHight.Name = "textBoxNextTandaHight";
             this.textBoxNextTandaHight.Size = new System.Drawing.Size(41, 20);
             this.textBoxNextTandaHight.TabIndex = 16;
+            this.textBoxNextTandaHight.TextChanged += new System.EventHandler(this.TextBoxNextTandaHight_TextChanged);
             // 
             // textBoxNextTandaHorizontalLocation
             // 
@@ -848,6 +853,7 @@
             this.textBoxNextTandaHorizontalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxNextTandaHorizontalLocation.TabIndex = 15;
             this.textBoxNextTandaHorizontalLocation.Visible = false;
+            this.textBoxNextTandaHorizontalLocation.TextChanged += new System.EventHandler(this.TextBoxNextTandaHorizontalLocation_TextChanged);
             // 
             // textBoxNextTandaVerticalLocation
             // 
@@ -855,6 +861,7 @@
             this.textBoxNextTandaVerticalLocation.Name = "textBoxNextTandaVerticalLocation";
             this.textBoxNextTandaVerticalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxNextTandaVerticalLocation.TabIndex = 14;
+            this.textBoxNextTandaVerticalLocation.TextChanged += new System.EventHandler(this.TextBoxNextTandaVerticalLocation_TextChanged);
             // 
             // lblNextTandaWidth
             // 
@@ -991,6 +998,7 @@
             this.textBoxAlbumFontSize.Name = "textBoxAlbumFontSize";
             this.textBoxAlbumFontSize.Size = new System.Drawing.Size(36, 20);
             this.textBoxAlbumFontSize.TabIndex = 5;
+            this.textBoxAlbumFontSize.TextChanged += new System.EventHandler(this.TextBoxAlbumFontSize_TextChanged);
             // 
             // lbllAlbumFontSize
             // 
@@ -1043,6 +1051,7 @@
             this.textBoxAlbumWidth.Name = "textBoxAlbumWidth";
             this.textBoxAlbumWidth.Size = new System.Drawing.Size(41, 20);
             this.textBoxAlbumWidth.TabIndex = 17;
+            this.textBoxAlbumWidth.TextChanged += new System.EventHandler(this.TextBoxAlbumWidth_TextChanged);
             // 
             // textBoxAlbumHight
             // 
@@ -1050,6 +1059,7 @@
             this.textBoxAlbumHight.Name = "textBoxAlbumHight";
             this.textBoxAlbumHight.Size = new System.Drawing.Size(41, 20);
             this.textBoxAlbumHight.TabIndex = 16;
+            this.textBoxAlbumHight.TextChanged += new System.EventHandler(this.TextBoxAlbumHight_TextChanged);
             // 
             // textBoxAlbumHorizontalLocation
             // 
@@ -1058,6 +1068,7 @@
             this.textBoxAlbumHorizontalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxAlbumHorizontalLocation.TabIndex = 15;
             this.textBoxAlbumHorizontalLocation.Visible = false;
+            this.textBoxAlbumHorizontalLocation.TextChanged += new System.EventHandler(this.TextBoxAlbumHorizontalLocation_TextChanged);
             // 
             // textBoxAlbumVerticalLocation
             // 
@@ -1065,6 +1076,7 @@
             this.textBoxAlbumVerticalLocation.Name = "textBoxAlbumVerticalLocation";
             this.textBoxAlbumVerticalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxAlbumVerticalLocation.TabIndex = 14;
+            this.textBoxAlbumVerticalLocation.TextChanged += new System.EventHandler(this.TextBoxAlbumVerticalLocation_TextChanged);
             // 
             // lblAlbumWidth
             // 
@@ -1201,6 +1213,7 @@
             this.textBoxTitleFontSize.Name = "textBoxTitleFontSize";
             this.textBoxTitleFontSize.Size = new System.Drawing.Size(36, 20);
             this.textBoxTitleFontSize.TabIndex = 5;
+            this.textBoxTitleFontSize.TextChanged += new System.EventHandler(this.TextBoxTitleFontSize_TextChanged);
             // 
             // lbllTitleFontSize
             // 
@@ -1253,6 +1266,7 @@
             this.textBoxTitleWidth.Name = "textBoxTitleWidth";
             this.textBoxTitleWidth.Size = new System.Drawing.Size(41, 20);
             this.textBoxTitleWidth.TabIndex = 17;
+            this.textBoxTitleWidth.TextChanged += new System.EventHandler(this.TextBoxTitleWidth_TextChanged);
             // 
             // textBoxTitleHight
             // 
@@ -1260,6 +1274,7 @@
             this.textBoxTitleHight.Name = "textBoxTitleHight";
             this.textBoxTitleHight.Size = new System.Drawing.Size(41, 20);
             this.textBoxTitleHight.TabIndex = 16;
+            this.textBoxTitleHight.TextChanged += new System.EventHandler(this.TextBoxTitleHight_TextChanged);
             // 
             // textBoxTitleHorizontalLocation
             // 
@@ -1268,6 +1283,7 @@
             this.textBoxTitleHorizontalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxTitleHorizontalLocation.TabIndex = 15;
             this.textBoxTitleHorizontalLocation.Visible = false;
+            this.textBoxTitleHorizontalLocation.TextChanged += new System.EventHandler(this.TextBoxTitleHorizontalLocation_TextChanged);
             // 
             // textBoxTitleVerticalLocation
             // 
@@ -1275,6 +1291,7 @@
             this.textBoxTitleVerticalLocation.Name = "textBoxTitleVerticalLocation";
             this.textBoxTitleVerticalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxTitleVerticalLocation.TabIndex = 14;
+            this.textBoxTitleVerticalLocation.TextChanged += new System.EventHandler(this.TextBoxTitleVerticalLocation_TextChanged);
             // 
             // lblTitleWidth
             // 
@@ -1411,6 +1428,7 @@
             this.textBoxArtistFontSize.Name = "textBoxArtistFontSize";
             this.textBoxArtistFontSize.Size = new System.Drawing.Size(36, 20);
             this.textBoxArtistFontSize.TabIndex = 5;
+            this.textBoxArtistFontSize.TextChanged += new System.EventHandler(this.TextBoxArtistFontSize_TextChanged);
             // 
             // lbllArtistFontSize
             // 
@@ -1454,6 +1472,7 @@
             this.textBoxArtistWidth.Name = "textBoxArtistWidth";
             this.textBoxArtistWidth.Size = new System.Drawing.Size(41, 20);
             this.textBoxArtistWidth.TabIndex = 17;
+            this.textBoxArtistWidth.TextChanged += new System.EventHandler(this.TextBoxArtistWidth_TextChanged);
             // 
             // textBoxArtistHight
             // 
@@ -1461,6 +1480,7 @@
             this.textBoxArtistHight.Name = "textBoxArtistHight";
             this.textBoxArtistHight.Size = new System.Drawing.Size(41, 20);
             this.textBoxArtistHight.TabIndex = 16;
+            this.textBoxArtistHight.TextChanged += new System.EventHandler(this.TextBoxArtistHight_TextChanged);
             // 
             // lblArtistAlignment
             // 
@@ -1478,6 +1498,7 @@
             this.textBoxArtistHorizontalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxArtistHorizontalLocation.TabIndex = 15;
             this.textBoxArtistHorizontalLocation.Visible = false;
+            this.textBoxArtistHorizontalLocation.TextChanged += new System.EventHandler(this.TextBoxArtistHorizontalLocation_TextChanged);
             // 
             // textBoxArtistVerticalLocation
             // 
@@ -1485,6 +1506,7 @@
             this.textBoxArtistVerticalLocation.Name = "textBoxArtistVerticalLocation";
             this.textBoxArtistVerticalLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxArtistVerticalLocation.TabIndex = 14;
+            this.textBoxArtistVerticalLocation.TextChanged += new System.EventHandler(this.TextBoxArtistVerticalLocation_TextChanged);
             // 
             // lblArtistWidth
             // 
@@ -1629,6 +1651,7 @@
             this.textBoxOrq1HLocation.Name = "textBoxOrq1HLocation";
             this.textBoxOrq1HLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq1HLocation.TabIndex = 15;
+            this.textBoxOrq1HLocation.TextChanged += new System.EventHandler(this.TextBoxOrq1HLocation_TextChanged);
             // 
             // groupBoxOrq3
             // 
@@ -1676,6 +1699,7 @@
             this.textBoxOrq3FontSize.Name = "textBoxOrq3FontSize";
             this.textBoxOrq3FontSize.Size = new System.Drawing.Size(36, 20);
             this.textBoxOrq3FontSize.TabIndex = 5;
+            this.textBoxOrq3FontSize.TextChanged += new System.EventHandler(this.TextBoxOrq3FontSize_TextChanged);
             // 
             // lblOrq3FontSize
             // 
@@ -1728,6 +1752,7 @@
             this.textBoxOrq3Width.Name = "textBoxOrq3Width";
             this.textBoxOrq3Width.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq3Width.TabIndex = 17;
+            this.textBoxOrq3Width.TextChanged += new System.EventHandler(this.TextBoxOrq3Width_TextChanged);
             // 
             // textBoxOrq3Hight
             // 
@@ -1735,6 +1760,7 @@
             this.textBoxOrq3Hight.Name = "textBoxOrq3Hight";
             this.textBoxOrq3Hight.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq3Hight.TabIndex = 16;
+            this.textBoxOrq3Hight.TextChanged += new System.EventHandler(this.TextBoxOrq3Hight_TextChanged);
             // 
             // textBoxOrq3HLocation
             // 
@@ -1743,6 +1769,7 @@
             this.textBoxOrq3HLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq3HLocation.TabIndex = 15;
             this.textBoxOrq3HLocation.Visible = false;
+            this.textBoxOrq3HLocation.TextChanged += new System.EventHandler(this.TextBoxOrq3HLocation_TextChanged);
             // 
             // textBoxOrq3VLocation
             // 
@@ -1750,6 +1777,7 @@
             this.textBoxOrq3VLocation.Name = "textBoxOrq3VLocation";
             this.textBoxOrq3VLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq3VLocation.TabIndex = 14;
+            this.textBoxOrq3VLocation.TextChanged += new System.EventHandler(this.TextBoxOrq3VLocation_TextChanged);
             // 
             // lblOrq3Width
             // 
@@ -1887,6 +1915,7 @@
             this.textBoxOrq2FontSize.Name = "textBoxOrq2FontSize";
             this.textBoxOrq2FontSize.Size = new System.Drawing.Size(36, 20);
             this.textBoxOrq2FontSize.TabIndex = 5;
+            this.textBoxOrq2FontSize.TextChanged += new System.EventHandler(this.TextBoxOrq2FontSize_TextChanged);
             // 
             // lblOrq2FontSize
             // 
@@ -1939,6 +1968,7 @@
             this.textBoxOrq2Width.Name = "textBoxOrq2Width";
             this.textBoxOrq2Width.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq2Width.TabIndex = 17;
+            this.textBoxOrq2Width.TextChanged += new System.EventHandler(this.TextBoxOrq2Width_TextChanged);
             // 
             // textBoxOrq2Hight
             // 
@@ -1946,6 +1976,7 @@
             this.textBoxOrq2Hight.Name = "textBoxOrq2Hight";
             this.textBoxOrq2Hight.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq2Hight.TabIndex = 16;
+            this.textBoxOrq2Hight.TextChanged += new System.EventHandler(this.TextBoxOrq2Hight_TextChanged);
             // 
             // textBoxOrq2HLocation
             // 
@@ -1954,6 +1985,7 @@
             this.textBoxOrq2HLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq2HLocation.TabIndex = 15;
             this.textBoxOrq2HLocation.Visible = false;
+            this.textBoxOrq2HLocation.TextChanged += new System.EventHandler(this.TextBoxOrq2HLocation_TextChanged);
             // 
             // textBoxOrq2VLocation
             // 
@@ -1961,6 +1993,7 @@
             this.textBoxOrq2VLocation.Name = "textBoxOrq2VLocation";
             this.textBoxOrq2VLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq2VLocation.TabIndex = 14;
+            this.textBoxOrq2VLocation.TextChanged += new System.EventHandler(this.TextBoxOrq2VLocation_TextChanged);
             // 
             // lblOrq2Width
             // 
@@ -2096,6 +2129,7 @@
             this.textBoxOrq1FontSize.Name = "textBoxOrq1FontSize";
             this.textBoxOrq1FontSize.Size = new System.Drawing.Size(36, 20);
             this.textBoxOrq1FontSize.TabIndex = 5;
+            this.textBoxOrq1FontSize.TextChanged += new System.EventHandler(this.TextBoxOrq1FontSize_TextChanged);
             // 
             // lblOrq1FontSize
             // 
@@ -2148,6 +2182,7 @@
             this.textBoxOrq1Width.Name = "textBoxOrq1Width";
             this.textBoxOrq1Width.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq1Width.TabIndex = 17;
+            this.textBoxOrq1Width.TextChanged += new System.EventHandler(this.TextBoxOrq1Width_TextChanged);
             // 
             // textBoxOrq1Hight
             // 
@@ -2155,6 +2190,7 @@
             this.textBoxOrq1Hight.Name = "textBoxOrq1Hight";
             this.textBoxOrq1Hight.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq1Hight.TabIndex = 16;
+            this.textBoxOrq1Hight.TextChanged += new System.EventHandler(this.TextBoxOrq1Hight_TextChanged);
             // 
             // textBoxOrq1VLocation
             // 
@@ -2162,6 +2198,7 @@
             this.textBoxOrq1VLocation.Name = "textBoxOrq1VLocation";
             this.textBoxOrq1VLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxOrq1VLocation.TabIndex = 14;
+            this.textBoxOrq1VLocation.TextChanged += new System.EventHandler(this.TextBoxOrq1VLocation_TextChanged);
             // 
             // lblOrq1Width
             // 
@@ -2286,6 +2323,7 @@
             this.textBoxSN1HLocation.Name = "textBoxSN1HLocation";
             this.textBoxSN1HLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN1HLocation.TabIndex = 17;
+            this.textBoxSN1HLocation.TextChanged += new System.EventHandler(this.TextBoxSN1HLocation_TextChanged);
             // 
             // lblSN1Horizontal
             // 
@@ -2343,6 +2381,7 @@
             this.textBoxSN3FontSize.Name = "textBoxSN3FontSize";
             this.textBoxSN3FontSize.Size = new System.Drawing.Size(36, 20);
             this.textBoxSN3FontSize.TabIndex = 5;
+            this.textBoxSN3FontSize.TextChanged += new System.EventHandler(this.TextBoxSN3FontSize_TextChanged);
             // 
             // lblSN3FontSize
             // 
@@ -2395,6 +2434,7 @@
             this.textBoxSN3Width.Name = "textBoxSN3Width";
             this.textBoxSN3Width.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN3Width.TabIndex = 17;
+            this.textBoxSN3Width.TextChanged += new System.EventHandler(this.TextBoxSN3Width_TextChanged);
             // 
             // textBoxSN3Hight
             // 
@@ -2402,6 +2442,7 @@
             this.textBoxSN3Hight.Name = "textBoxSN3Hight";
             this.textBoxSN3Hight.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN3Hight.TabIndex = 16;
+            this.textBoxSN3Hight.TextChanged += new System.EventHandler(this.TextBoxSN3Hight_TextChanged);
             // 
             // textBoxSN3HLocation
             // 
@@ -2410,6 +2451,7 @@
             this.textBoxSN3HLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN3HLocation.TabIndex = 15;
             this.textBoxSN3HLocation.Visible = false;
+            this.textBoxSN3HLocation.TextChanged += new System.EventHandler(this.TextBoxSN3HLocation_TextChanged);
             // 
             // textBoxSN3VLocation
             // 
@@ -2417,6 +2459,7 @@
             this.textBoxSN3VLocation.Name = "textBoxSN3VLocation";
             this.textBoxSN3VLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN3VLocation.TabIndex = 14;
+            this.textBoxSN3VLocation.TextChanged += new System.EventHandler(this.TextBoxSN3VLocation_TextChanged);
             // 
             // lblSN3Width
             // 
@@ -2554,6 +2597,7 @@
             this.textBoxSN2FontSize.Name = "textBoxSN2FontSize";
             this.textBoxSN2FontSize.Size = new System.Drawing.Size(36, 20);
             this.textBoxSN2FontSize.TabIndex = 5;
+            this.textBoxSN2FontSize.TextChanged += new System.EventHandler(this.TextBoxSN2FontSize_TextChanged);
             // 
             // lblSN2FontSize
             // 
@@ -2606,6 +2650,7 @@
             this.textBoxSN2Width.Name = "textBoxSN2Width";
             this.textBoxSN2Width.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN2Width.TabIndex = 17;
+            this.textBoxSN2Width.TextChanged += new System.EventHandler(this.TextBoxSN2Width_TextChanged);
             // 
             // textBoxSN2Hight
             // 
@@ -2613,6 +2658,7 @@
             this.textBoxSN2Hight.Name = "textBoxSN2Hight";
             this.textBoxSN2Hight.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN2Hight.TabIndex = 16;
+            this.textBoxSN2Hight.TextChanged += new System.EventHandler(this.TextBoxSN2Hight_TextChanged);
             // 
             // textBoxSN2HLocation
             // 
@@ -2621,6 +2667,7 @@
             this.textBoxSN2HLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN2HLocation.TabIndex = 15;
             this.textBoxSN2HLocation.Visible = false;
+            this.textBoxSN2HLocation.TextChanged += new System.EventHandler(this.TextBoxSN2HLocation_TextChanged);
             // 
             // textBoxSN2VLocation
             // 
@@ -2628,6 +2675,7 @@
             this.textBoxSN2VLocation.Name = "textBoxSN2VLocation";
             this.textBoxSN2VLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN2VLocation.TabIndex = 14;
+            this.textBoxSN2VLocation.TextChanged += new System.EventHandler(this.TextBoxSN2VLocation_TextChanged);
             // 
             // lblSN2Width
             // 
@@ -2763,6 +2811,7 @@
             this.textBoxSN1FontSize.Name = "textBoxSN1FontSize";
             this.textBoxSN1FontSize.Size = new System.Drawing.Size(36, 20);
             this.textBoxSN1FontSize.TabIndex = 5;
+            this.textBoxSN1FontSize.TextChanged += new System.EventHandler(this.TextBoxSN1FontSize_TextChanged);
             // 
             // lblSN1FontSize
             // 
@@ -2815,6 +2864,7 @@
             this.textBoxSN1Width.Name = "textBoxSN1Width";
             this.textBoxSN1Width.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN1Width.TabIndex = 17;
+            this.textBoxSN1Width.TextChanged += new System.EventHandler(this.TextBoxSN1Width_TextChanged);
             // 
             // textBoxSN1Hight
             // 
@@ -2822,6 +2872,7 @@
             this.textBoxSN1Hight.Name = "textBoxSN1Hight";
             this.textBoxSN1Hight.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN1Hight.TabIndex = 16;
+            this.textBoxSN1Hight.TextChanged += new System.EventHandler(this.TextBoxSN1Hight_TextChanged);
             // 
             // textBoxSN1VLocation
             // 
@@ -2829,6 +2880,7 @@
             this.textBoxSN1VLocation.Name = "textBoxSN1VLocation";
             this.textBoxSN1VLocation.Size = new System.Drawing.Size(41, 20);
             this.textBoxSN1VLocation.TabIndex = 14;
+            this.textBoxSN1VLocation.TextChanged += new System.EventHandler(this.TextBoxSN1VLocation_TextChanged);
             // 
             // lblSN1Width
             // 
@@ -2925,7 +2977,6 @@
             this.Load += new System.EventHandler(this.MediaInfoSettings_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabPageDesign.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -2971,7 +3022,7 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageDesign;
         private System.Windows.Forms.TabPage tabPageCurrentSong;
-        private System.Windows.Forms.Label lblComboBoxName;
+        private System.Windows.Forms.Label lblEmptyNameMsg;
         private System.Windows.Forms.ComboBox comboBoxTheme;
         private System.Windows.Forms.GroupBox groupBoxSongArtist;
         private System.Windows.Forms.Button btnArtistFont;

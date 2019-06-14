@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Management;
 using Microsoft.Win32;
 using SongsDB;
+using NLog;
 
 namespace MediaInfo
 {
@@ -13,11 +14,22 @@ namespace MediaInfo
     {
         SDBApplicationClass SDB = new SDBApplicationClass();
         Int16 albumSource;      //indicator of a source for Album label
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
+        //private readonly ILogger logger;
+        //public Dig(ILogger logger)
+        //{
+        //    this.logger = logger;
+        //}
+
+        //public Dig() { }
 
         public Song CurrentSong(Int16 albumSource)
         {
             Song info = new Song();
             //SDB.ShutdownAfterDisconnect = false;
+
+            logger.Log(LogLevel.Info, "Reading SongDB ...");
 
             int songIndex = SDB.Player.CurrentSongIndex;
             this.albumSource = albumSource;
@@ -66,6 +78,7 @@ namespace MediaInfo
                 }
             }
 
+            logger.Log(LogLevel.Info, "Next Tanda has calculated ...");
             return info;
         }
 
@@ -141,6 +154,7 @@ namespace MediaInfo
             info.Index = "Index: " + songIndex.ToString();
             info.SongID = "Song ID: " + songID.ToString();
 
+            logger.Log(LogLevel.Info, "Song: " + info.Title + " has defined ...");
             return info;
         }
 
@@ -183,28 +197,40 @@ namespace MediaInfo
 
                     if (songIndex >= 1)
                     {
-                        if (SDB.Player.CurrentPlaylist.Item[songIndex - 1].Genre.Equals(curGenre))
+                        if(string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex - 1].Genre))
+                        {
+                        }
+                        else if (SDB.Player.CurrentPlaylist.Item[songIndex - 1].Genre.Equals(curGenre))
                         {
                             tot += 1;
                             cur += 1;
 
                             if (songIndex >= 2)
                             {
-                                if (SDB.Player.CurrentPlaylist.Item[songIndex - 2].Genre.Equals(curGenre))
+                                if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex - 2].Genre))
+                                {
+                                }
+                                else if (SDB.Player.CurrentPlaylist.Item[songIndex - 2].Genre.Equals(curGenre))
                                 {
                                     tot += 1;
                                     cur += 1;
 
                                     if (songIndex >= 3)
                                     {
-                                        if (SDB.Player.CurrentPlaylist.Item[songIndex - 3].Genre.Equals(curGenre))
+                                        if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex - 3].Genre))
+                                        {
+                                        }
+                                        else if (SDB.Player.CurrentPlaylist.Item[songIndex - 3].Genre.Equals(curGenre))
                                         {
                                             tot += 1;
                                             cur += 1;
 
                                             if (songIndex >= 4)
                                             {
-                                                if (SDB.Player.CurrentPlaylist.Item[songIndex - 4].Genre.Equals(curGenre))
+                                                if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex - 4].Genre))
+                                                {
+                                                }
+                                                else if (SDB.Player.CurrentPlaylist.Item[songIndex - 4].Genre.Equals(curGenre))
                                                 {
                                                     tot += 1;
                                                     cur += 1;
@@ -219,26 +245,37 @@ namespace MediaInfo
 
                     if (songIndex < SDB.Player.CurrentSongList.Count - 1)
                     {
-
-                        if (SDB.Player.CurrentPlaylist.Item[songIndex + 1].Genre.Equals(curGenre))
+                        if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex + 1].Genre))
+                        {
+                        }
+                        else if (SDB.Player.CurrentPlaylist.Item[songIndex + 1].Genre.Equals(curGenre))
                         {
                             tot += 1;
 
                             if (songIndex + 2 < SDB.Player.CurrentSongList.Count)
                             {
-                                if (SDB.Player.CurrentPlaylist.Item[songIndex + 2].Genre.Equals(curGenre))
+                                if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex + 2].Genre))
+                                {
+                                }
+                                else if (SDB.Player.CurrentPlaylist.Item[songIndex + 2].Genre.Equals(curGenre))
                                 {
                                     tot += 1;
 
                                     if (songIndex + 3 < SDB.Player.CurrentSongList.Count)
                                     {
-                                        if (SDB.Player.CurrentPlaylist.Item[songIndex + 3].Genre.Equals(curGenre))
+                                        if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex + 3].Genre))
+                                        {
+                                        }
+                                        else if (SDB.Player.CurrentPlaylist.Item[songIndex + 3].Genre.Equals(curGenre))
                                         {
                                             tot += 1;
 
                                             if (songIndex + 4 < SDB.Player.CurrentSongList.Count)
                                             {
-                                                if (SDB.Player.CurrentPlaylist.Item[songIndex + 4].Genre.Equals(curGenre))
+                                                if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex + 4].Genre))
+                                                {
+                                                }
+                                                else if (SDB.Player.CurrentPlaylist.Item[songIndex + 4].Genre.Equals(curGenre))
                                                 {
                                                     tot += 1;
                                                 }
@@ -253,12 +290,12 @@ namespace MediaInfo
             }
             else
             {
-
-
             }
 
             songC[0] = cur;
             songC[1] = tot;
+
+            logger.Log(LogLevel.Info, "Song Numbers have calculated ...");
             return songC;
         }
     }

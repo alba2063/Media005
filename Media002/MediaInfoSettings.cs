@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,7 @@ namespace MediaInfo
         private UISettingsCollection userCollection;            //collection for user's themes only
         List<string> themeList;                                 //List of theme names
         MainForm mainForm;
+        //private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         public MediaInfoSettings()
         {
@@ -37,7 +39,7 @@ namespace MediaInfo
 
         private void MediaInfoSettings_Load(object sender, EventArgs e)
         {
-            //GetUI();
+            //logger.Log(LogLevel.Info, "Settings Form is opened ...");
             SetIni();
         }
 
@@ -501,7 +503,7 @@ namespace MediaInfo
                 var n = Double.Parse(s, CultureInfo.InvariantCulture);
                 v = true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 v = false;
             }
@@ -516,7 +518,7 @@ namespace MediaInfo
             #region
 
             //Theme Name
-            if (textBoxThemeName.Text.Equals(string.Empty))
+            if (string.IsNullOrWhiteSpace(textBoxThemeName.Text))
             {
                 valid = false;
                 lblEmptyNameMsg.Visible = true;
@@ -1237,7 +1239,7 @@ namespace MediaInfo
         {
             if (!ValidateUI())
             {
-                MessageBox.Show("Please, correct errors 'Values in Red or empty'!");
+                MessageBox.Show("Please, correct errors: 'Values in Red or empty'!");
             }
             else
             {
@@ -1263,6 +1265,7 @@ namespace MediaInfo
 
         private void MediaInfoSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //logger.Log(LogLevel.Info, "The form is closing ...");
             //save last theme name in application settings
             Properties.Settings.Default.ThemeName = comboBoxTheme.Text;
             Properties.Settings.Default.Save();
@@ -1277,11 +1280,14 @@ namespace MediaInfo
         #region
         private void BtnApplyTheme_Click(object sender, EventArgs e)
         {
+            //logger.Log(LogLevel.Info, "Apply button has clicked ...");
             UpdateMainForm();
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
+            //logger.Log(LogLevel.Info, "Save button has clicked ...");
+
             if (!ValidateUI())
             {
                 MessageBox.Show("Please, correct errors 'Values in Red or empty'!");
@@ -1349,6 +1355,8 @@ namespace MediaInfo
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
+            //logger.Log(LogLevel.Info, "Delete button has clicked ...");
+
             string currentTheme = comboBoxTheme.Text;
 
             UISettings uiToRemove = new UISettings();

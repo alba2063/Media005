@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
 using SongsDB;
 
 namespace MediaInfo
@@ -24,6 +25,7 @@ namespace MediaInfo
         private OrquestraCollection orqs;
         private UISettings ui;
         MediaInfoSettings mi;
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
 
         //************************ Genetal settings *********************************
@@ -155,6 +157,11 @@ namespace MediaInfo
             NewSongDel newSong = new NewSongDel(onNewSongStarted);         
 
             sDB = new SDBApplicationClass();
+
+
+            logger.Log(LogLevel.Info, "MediaInfo has started. MediaMonkey Version: " + sDB.VersionString);
+            
+
             sDB.OnPlay += newSong.Invoke;   //OnPlay event from MediaMonkey API
 
             Reader reader = new Reader();
@@ -194,6 +201,7 @@ namespace MediaInfo
 
         protected virtual void onNewSongStarted()
         {
+            logger.Log(LogLevel.Info, "OnPlay event has happend ...");
             ShowInfo();
         }
 
@@ -682,6 +690,11 @@ namespace MediaInfo
                 settingsForm.ShowDialog();
                 //MessageBox.Show("Hi, there this is my contribution for Tango DJ", "Programed by AlexB");
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            logger.Log(LogLevel.Info, "Form is closing ...");
         }
     }
 }

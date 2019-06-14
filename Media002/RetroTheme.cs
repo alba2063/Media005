@@ -55,7 +55,7 @@ namespace MediaInfo
             base.SongAlbumAlignment = "MiddleCenter";
 
             //Next Tanda label
-            base.NextFont = "Sitka Text";
+            base.NextFont = "Arial";
             base.NextFontStyle = "Regular";
             base.NextTandaColor = new List<Int16> { 140, 140, 150 };
             base.FontSizeNext = .02;                                    //FONT SIZE multiplyer Next Tanda

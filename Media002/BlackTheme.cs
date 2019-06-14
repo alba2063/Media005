@@ -26,7 +26,7 @@ namespace MediaInfo
             //*********************** Current Song Info ********************************  
             #region
             //Artist (Orquestra) label
-            base.SongArtistFont             = "Courier";
+            base.SongArtistFont             = "Arial";
             base.SongArtistFontStyle        = "Bold";
             base.SongArtistColor            = new List<Int16> { 247, 220, 111 };
             base.FontSizeArtist             = .045;                                //FONT SIZE multiplyer Current song Artist (Orquestra)
@@ -56,7 +56,7 @@ namespace MediaInfo
             base.SongAlbumAlignment         = "MiddleCenter";
 
             //Next Tanda label
-            base.NextFont                   = "Sitka Text";
+            base.NextFont                   = "Arial";
             base.NextFontStyle              = "Regular";
             base.NextTandaColor             = new List<Int16> { 100, 100, 100 };
             base.FontSizeNext               = .02;                                  //FONT SIZE multiplyer Next Tanda

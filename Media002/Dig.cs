@@ -11,7 +11,7 @@ namespace MediaInfo
 {
     class Dig
     {
-        SDBApplicationClass SDB = new SDBApplicationClass();
+        readonly SDBApplicationClass SDB = new SDBApplicationClass();
         Int16 albumSource;      //indicator of a source for Album label
 
         public Song CurrentSong(Int16 albumSource)
@@ -183,28 +183,40 @@ namespace MediaInfo
 
                     if (songIndex >= 1)
                     {
-                        if (SDB.Player.CurrentPlaylist.Item[songIndex - 1].Genre.Equals(curGenre))
+                        if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex - 1].Genre))
+                        {
+                        }
+                        else if (SDB.Player.CurrentPlaylist.Item[songIndex - 1].Genre.Equals(curGenre))
                         {
                             tot += 1;
                             cur += 1;
 
                             if (songIndex >= 2)
                             {
-                                if (SDB.Player.CurrentPlaylist.Item[songIndex - 2].Genre.Equals(curGenre))
+                                if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex - 2].Genre))
+                                {
+                                }
+                                else if (SDB.Player.CurrentPlaylist.Item[songIndex - 2].Genre.Equals(curGenre))
                                 {
                                     tot += 1;
                                     cur += 1;
 
                                     if (songIndex >= 3)
                                     {
-                                        if (SDB.Player.CurrentPlaylist.Item[songIndex - 3].Genre.Equals(curGenre))
+                                        if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex - 3].Genre))
+                                        {
+                                        }
+                                        else if (SDB.Player.CurrentPlaylist.Item[songIndex - 3].Genre.Equals(curGenre))
                                         {
                                             tot += 1;
                                             cur += 1;
 
                                             if (songIndex >= 4)
                                             {
-                                                if (SDB.Player.CurrentPlaylist.Item[songIndex - 4].Genre.Equals(curGenre))
+                                                if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex - 4].Genre))
+                                                {
+                                                }
+                                                else if (SDB.Player.CurrentPlaylist.Item[songIndex - 4].Genre.Equals(curGenre))
                                                 {
                                                     tot += 1;
                                                     cur += 1;
@@ -219,26 +231,37 @@ namespace MediaInfo
 
                     if (songIndex < SDB.Player.CurrentSongList.Count - 1)
                     {
-
-                        if (SDB.Player.CurrentPlaylist.Item[songIndex + 1].Genre.Equals(curGenre))
+                        if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex + 1].Genre))
+                        {
+                        }
+                        else if (SDB.Player.CurrentPlaylist.Item[songIndex + 1].Genre.Equals(curGenre))
                         {
                             tot += 1;
 
                             if (songIndex + 2 < SDB.Player.CurrentSongList.Count)
                             {
-                                if (SDB.Player.CurrentPlaylist.Item[songIndex + 2].Genre.Equals(curGenre))
+                                if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex + 2].Genre))
+                                {
+                                }
+                                else if (SDB.Player.CurrentPlaylist.Item[songIndex + 2].Genre.Equals(curGenre))
                                 {
                                     tot += 1;
 
                                     if (songIndex + 3 < SDB.Player.CurrentSongList.Count)
                                     {
-                                        if (SDB.Player.CurrentPlaylist.Item[songIndex + 3].Genre.Equals(curGenre))
+                                        if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex + 3].Genre))
+                                        {
+                                        }
+                                        else if (SDB.Player.CurrentPlaylist.Item[songIndex + 3].Genre.Equals(curGenre))
                                         {
                                             tot += 1;
 
                                             if (songIndex + 4 < SDB.Player.CurrentSongList.Count)
                                             {
-                                                if (SDB.Player.CurrentPlaylist.Item[songIndex + 4].Genre.Equals(curGenre))
+                                                if (string.IsNullOrEmpty(SDB.Player.CurrentPlaylist.Item[songIndex + 4].Genre))
+                                                {
+                                                }
+                                                else if (SDB.Player.CurrentPlaylist.Item[songIndex + 4].Genre.Equals(curGenre))
                                                 {
                                                     tot += 1;
                                                 }
@@ -253,12 +276,11 @@ namespace MediaInfo
             }
             else
             {
-
-
             }
 
             songC[0] = cur;
             songC[1] = tot;
+
             return songC;
         }
     }

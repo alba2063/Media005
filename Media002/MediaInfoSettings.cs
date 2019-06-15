@@ -19,7 +19,7 @@ namespace MediaInfo
         private static UISettingsCollection fixedCollection;    //working collection (fixed themes + user's themes)
         private UISettingsCollection userCollection;            //collection for user's themes only
         List<string> themeList;                                 //List of theme names
-        MainForm mainForm;
+        readonly MainForm mainForm;
 
         public MediaInfoSettings()
         {
@@ -501,7 +501,7 @@ namespace MediaInfo
                 var n = Double.Parse(s, CultureInfo.InvariantCulture);
                 v = true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 v = false;
             }
